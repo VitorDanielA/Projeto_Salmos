@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipo de Usuário</title>
+    <link rel="stylesheet" href="styles/style5.css">
+</head>
+<body>
+    <div class="popupRemove" id="popupRemove">
+        <img src="images/ask.png" alt="question-sign-in-circles">
+        <h2>Você tem certeza que deseja remover esse Tipo de Usuário?</h2>
+        <button type="button" onclick="remover(), closePopup(), telaEnabled()">Sim</button>
+        <button type="button" onclick="closePopup(), telaEnabled()">Não</button>
+    </div>
+
+    <div class="popupEdit" id="popupEdit">
+        <img src="images/caneta.png" alt="editar">
+        <h2>Digite as novas informações</h2>
+        <input type="text" name="tipoDeUsuarioName" placeholder="Nome..." autocomplete="off" class="tipoDeUsuarioName" id="tipoDeUsuarioName">
+        <input type="text" name="tipoDeUsuarioDescricao" placeholder="Descrição..." autocomplete="off" class="tipoDeUsuarioDescricao" id="tipoDeUsuarioDescricao">
+        <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
+        <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
+    </div>
+
+    <div class="popupAdd" id="popupAdd">
+        <img src="images/botao-adicionar3.png" alt="editar">
+        <h2>Digite as informações do Tipo de Usuário</h2>
+        <input type="text" name="tipoDeUsuarioName" placeholder="Nome..." autocomplete="off" class="tipoDeUsuarioName" id="tipoDeUsuarioNameAdd">
+        <input type="text" name="tipoDeUsuarioDescricao" placeholder="Descrição..." autocomplete="off" class="tipoDeUsuarioDescricao" id="tipoDeUsuarioDescricaoAdd">
+        <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
+        <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
+    </div>
+
+    <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>
+
+
+    <div class="tela" id="tela">
+        <div class="search">
+            <input type="text" placeholder="Procurar..." class="loupe" id="loupe" onkeyup="buscar()"> 
+        </div>
+
+        <div class="scroll">
+        <table class="itens-table" id="itens-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Remover</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onmouseover="getindex(this)">
+                    <td>1</td>
+                    <td>Administrador</td>
+                    <td>Acesso Total</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>2</td>
+                    <td>Funcionário</td>
+                    <td>Acesso parcial</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>3</td>
+                    <td>Estudante</td>
+                    <td>Acesso mínimo</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        </div>
+        
+        <button class="homescreen"> <a href="homescreen.html"> <img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></button>
+
+        <button class="adicionar" type="button" onclick="openAddPopup(), teladisabled()"><img src="images/botao-adicionar2.png" alt="adicionar" title="Adicionar"></button>
+
+        <script>
+
+            function stopPropagation(event){
+                event.stopPropagation();
+            }
+
+            function openAddPopup(){
+                popupAdd.classList.add("openAddPopup");
+            }
+
+            function closeAddPopup(){
+                popupAdd.classList.remove("openAddPopup");
+            }
+
+            function openPopup(){
+                popup.classList.add("open_popup");
+            }
+
+            function teladisabled(){
+                telaDesativada.classList.add("disabled_tela");
+                backdrop.classList.add("disabled_tela");
+            }
+
+            function getindex(x){
+                globalThis.Index = x.rowIndex;
+            }
+
+            function telaEnabled(){
+                telaDesativada.classList.remove("disabled_tela");
+                backdrop.classList.remove("disabled_tela");
+            }
+
+            var tablee = document.getElementById("itens-table");
+
+            function closePopup(){
+                popup.classList.remove("open_popup");
+            }
+
+            function openEditPopup(){
+                popupEdit.classList.add("popupEditOpen");
+                document.getElementById("tipoDeUsuarioName").value = tablee.rows[Index].cells[1].innerHTML;
+                document.getElementById("tipoDeUsuarioDescricao").value = tablee.rows[Index].cells[2].innerHTML;
+            }
+
+            function closeEditPopup(){
+                popupEdit.classList.remove("popupEditOpen");
+            }
+
+            function adicionar(){
+            
+                var tablee = document.getElementById("itens-table");
+
+                var row =  tablee.insertRow(1);
+                row.onmouseover = () =>{
+                    getindex(row);
+                }
+                const itens = document.querySelectorAll('tr');
+                console.log(itens);
+            
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                
+                var nome = document.getElementById("tipoDeUsuarioNameAdd").value;
+                var quantidade = document.getElementById("tipoDeUsuarioDescricaoAdd").value;
+                
+                cell1.innerHTML = 4;
+                cell2.innerHTML = nome;
+                cell3.innerHTML = quantidade;
+                cell4.innerHTML = '<a href="#"><img src="images/excluir2.png" alt="remover"></a>'
+                cell4.onclick = () => {
+                    openPopup();
+                    teladisabled();
+                }
+                cell5.innerHTML = '<a href="#"><img src="images/botao-editar2.png" alt="remover"></a>'
+                cell5.onclick = () => {
+                    openEditPopup();
+                    teladisabled();
+                }
+
+                document.getElementById("tipoDeUsuarioNameAdd").value = "";
+                document.getElementById("tipoDeUsuarioDescricaoAdd").value = "";
+                
+            }
+            
+            function remover(){
+                console.log(Index);
+                if(Index > -1){
+                    document.getElementById("itens-table").deleteRow(Index);
+                }
+            }
+
+            function buscar(){
+
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("loupe");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("itens-table");
+                tr = table.getElementsByTagName("tr");
+
+                        for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[1];
+                        if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
+            var table = document.getElementById("itens-table");
+
+
+            function editar(){
+
+                var nome = document.getElementById("tipoDeUsuarioName").value;
+                var quantidade = document.getElementById("tipoDeUsuarioDescricao").value;
+                
+                table.rows[Index].cells[1].innerHTML = nome;
+                table.rows[Index].cells[2].innerHTML = quantidade;
+            }
+        
+        let popup = document.getElementById("popupRemove");
+        let telaDesativada = document.getElementById("tela");
+        let backdrop = document.getElementById("backdrop");
+        let popupEdit = document.getElementById("popupEdit");
+        let popupAdd = document.getElementById("popupAdd");
+        var tableInteract = document.getElementById("itens-table");
+
+        </script>
+    </div>
+
+</body>
+</html>

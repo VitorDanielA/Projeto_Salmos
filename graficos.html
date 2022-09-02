@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos</title>
+    <link rel="stylesheet" href="styles/style6.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Itens no estoque'],
+          ['Melancia', 20],
+          ['Maça',    80],
+          ['Pera',  10],
+          ['Banana', 100],
+          ['Laranja',  60],
+          ['Tangerina',  30],
+          ['Amora',  40]
+        ]);
+
+        var options = {
+          // title: 'Itens no Estoque',
+          backgroundColor: 'transparent',
+          colors: ['#13293D', '#247BA0', '#bac9a9', '#02416d', '#0a5483'],
+          chartArea: {'width': '90%', 'height': '90%'},
+          is3D: true,
+          // titleTextStyle: {
+          // color: '#000000', 
+          // fontName: 'Trebuchet MS', 
+          // fontSize: 24, 
+          // bold: false,    
+          // italic: false,
+          // paddingLeft: 100,  
+          // }
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Itens no estoque'],
+          ['Alimentício', 10],
+          ['Vendas', 10],
+          ['Financeiro',  10],
+          ['Administrativo', 10],
+        ]);
+
+        var options = {
+          // title: 'Itens no Estoque',
+          backgroundColor: 'transparent',
+          colors: ['#13293D', '#247BA0', '#bac9a9', '#02416d', '#0a5483'],
+          chartArea: {'width': '90%', 'height': '90%'},
+          is3D: true,
+          // titleTextStyle: {
+          // color: '#000000', 
+          // fontName: 'Trebuchet MS', 
+          // fontSize: 24, 
+          // bold: false,    
+          // italic: false,
+          // paddingLeft: 100,  
+          // }
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
+
+      }
+    </script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Itens no estoque'],
+        ['Empresa A', 50],
+        ['Empresa B', 50],
+        ['Empresa C',  50],
+      ]);
+
+      var options = {
+        // title: 'Itens no Estoque',
+        backgroundColor: 'transparent',
+        colors: ['#13293D', '#247BA0', '#bac9a9', '#02416d', '#0a5483'],
+        chartArea: {'width': '90%', 'height': '90%'},
+        is3D: true,
+        // titleTextStyle: {
+        // color: '#000000', 
+        // fontName: 'Trebuchet MS', 
+        // fontSize: 24, 
+        // bold: false,    
+        // italic: false,
+        // paddingLeft: 100,  
+        // }
+
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+      chart.draw(data, options);
+
+    }
+  </script>
+</head>
+<body>
+
+  <div class="screen">
+
+    <h1>Gráficos do Sistema</h1>
+
+    <div class="sidebar">
+      <ul class="buttons">
+        <li onclick="graficoItens()"><a href="#"><img src="images/lista-de-marcadores.png" alt="Itens"><p>Itens</p></a></li>
+        <li onclick="graficoSetores()"><a href="#"><img src="images/grafico-de-pizza.png" alt="setores"><p>Setores</p></a></li>
+        <li onclick="graficoFornecedores()"><a href="#"><img src="images/fornecedor1.png" alt=""><p>Fornecedores</p></a></li>
+        <li><a href="homescreen.html"><img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></li>
+      </ul>
+    </div>
+  </div>
+    <!-- <canvas id="myChart"></canvas> -->
+    <div id="piechart" class="chart1"></div>
+    <div id="piechart2" class="chart2"></div>
+    <div id="piechart3" class="chart3"></div>
+
+    <div class="footer">
+      <p>Sistema de Almoxarifado</p>
+    </div>
+    <script>
+
+      function graficoItens(){
+        piechart.classList.remove("tableItensNull");
+        piechart.classList.add("tableAdd");
+        piechart2.classList.add("tableItensNull");
+        piechart3.classList.add("tableItensNull");
+      }
+
+      function graficoSetores(){
+        piechart2.classList.add("tableAdd");
+        piechart.classList.add("tableItensNull");
+        piechart3.classList.add("tableItensNull");
+        piechart2.classList.remove("tableItensNull");
+      }
+
+      function graficoFornecedores(){
+        piechart3.classList.remove("tableItensNull");
+        piechart3.classList.add("tableAdd");
+        piechart2.classList.add("tableItensNull");
+        piechart.classList.add("tableItensNull");
+      }
+
+      var piechart =  document.getElementById("piechart");
+      var piechart2 = document.getElementById("piechart2");
+      var piechart3 = document.getElementById("piechart3");
+
+    </script>
+</body>
+</html>

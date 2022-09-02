@@ -1,0 +1,263 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+main{
+    display: flex;
+    border: none;
+    background-image: url(../images/pexels-tiger-lily-4481326\ \(1\).jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.sidebar{
+    width: 300px;
+    height: 100vh;
+    background-image: linear-gradient(#006494, #13293D);
+    position: fixed;
+    padding: 61px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(0);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.sidebar.active{
+    transform: translateX(-100%);
+}
+
+/*
+.side-bar h1{
+    color: #1A1A1A;
+    margin-bottom: 40px;
+    font-size: 50px;
+}*/
+
+.links-option{
+    list-style: none;
+    position: relative;
+}
+
+.links-option li{
+    padding: 10px 0;
+}
+
+.links-option li a{
+    text-decoration: none;
+    color: #1A1A1A;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: 120%;
+    height: 45px;
+    margin: 5px 2px;
+    border-radius: 25px;
+    border: 2px #EDF4ED solid;
+    background-color: #EDF4ED;
+}
+
+.links-option li a img{
+    margin-right: 8px;
+}
+
+.projector{
+    background-color: #EDF4ED;
+    width: 122%;
+    height: 52px;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgb(255, 255, 255, 0.4);
+    display: none;
+    transition: top 0.5s;
+}
+
+.links-option li:hover a{
+    color: #1A1A1A;
+    transition: 0.3s;
+}
+
+
+.links-option li:hover ~ .projector{
+    display: block;
+}
+
+.links-option li:nth-child(1):hover ~ .projector{
+    top: 2.0%;
+}
+
+.links-option li:nth-child(2):hover ~ .projector{
+    top: 16.5%;
+}
+
+.links-option li:nth-child(3):hover ~ .projector{
+    top: 30.6%;
+}
+
+.links-option li:nth-child(4):hover ~ .projector{
+    top: 44.8%;
+}
+
+.links-option li:nth-child(5):hover ~ .projector{
+    top: 59.6%;
+}
+
+.links-option li:nth-child(6):hover ~ .projector{
+    top: 73.8%;
+}
+
+.links-option li:nth-child(7):hover ~ .projector{
+    top: 87.9%;
+}
+
+.closeopen{
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    padding: 10px 15px;
+    font-size: 20px;
+    background-image: linear-gradient(#006494, #13293D);
+    height: 100vh;
+    position: absolute;
+}
+
+.closeopen .barra{
+    display: none;
+    cursor: pointer;
+}
+
+.closeopen:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.closeopen .sair{
+    display: block;
+    cursor: pointer;
+}
+
+.sidebar.active .closeopen .barra{
+    display: block;
+}
+
+.sidebar.active .closeopen .sair{
+    display: none;
+}
+
+.complement{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px); 
+    text-align: center; 
+    align-items:center;  
+    flex-direction: column;
+    padding-top: 85vh; 
+    padding-left: 300px;
+    background-image: url(../images/estoque-maior.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: 575px;
+    
+}
+
+.complement h5{
+    color: #247BA0;
+    font-size: 60px;
+    /* margin-right: -140px; */
+}
+
+.menu-user{
+    text-decoration: none;
+    color: #E8F1F8;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    width: 211px;
+    height: 45px;   
+    margin: 6px 2px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #0070A3;
+    transition: 0.5;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+}
+
+button img{
+    padding: 5px;
+}
+
+button:hover{
+    background-color: #5CB6EB;
+}
+
+.menubar{
+   padding-top: 40px;
+   padding-right: 20px;
+   background-color: aliceblue;
+   position: absolute;
+   right: 0;
+   background: transparent;
+}
+
+.menubar div{
+    display: none;
+    transition: 1s;
+}
+
+.menubar a img{
+    margin-right: 1px;
+    margin-left: -6px;
+}
+
+.menubar div a{
+    text-decoration: none;
+    color: #E8F1F8;
+    padding: 22px;
+    width: 211px;
+    display: flex;
+    align-items: center;
+    height: 45px;   
+    margin: 6px 2px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #0070A3;
+    transition: 0.5;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menubar a img{
+    padding-right: 5px;
+}
+
+.menubar:hover div{
+    display: block;
+}
+
+.menubar a:hover{
+    background-color: #5CB6EB;
+}
+
+@media(max-width:421px){
+
+    .sidebar .closeopen{
+        width: 100vw;
+    }
+}
+

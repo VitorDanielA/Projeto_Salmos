@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itens</title>
+    <link rel="stylesheet" href="styles/style3.css">
+</head>
+<body>
+
+    <div class="popupRemove" id="popupRemove">
+        <img src="images/ask.png" alt="question-sign-in-circles">
+        <h2>Você tem certeza que deseja remover esse Item?</h2>
+        <button type="button" onclick="remover(), closePopup(), telaEnabled()">Sim</button>
+        <button type="button" onclick="closePopup(), telaEnabled()">Não</button>
+    </div>
+
+    <div class="popupEdit" id="popupEdit">
+        <img src="images/caneta.png" alt="editar">
+        <h2>Digite as novas informações</h2>
+        <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemName">
+        <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidade">
+        <input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemType">
+        <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedor">
+        <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
+        <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
+    </div>
+
+    <div class="popupAdd" id="popupAdd">
+        <img src="images/botao-adicionar3.png" alt="editar">
+        <h2>Digite as informações do Item</h2>
+        <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemNameAdd">
+        <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeAdd">
+        <input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd">
+        <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedorAdd">
+        <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
+        <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
+    </div>
+
+    <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>
+
+
+    <div class="tela" id="tela">
+        <div class="search">
+            <input type="text" placeholder="Procurar..." class="loupe" id="loupe" onkeyup="buscar()"> 
+        </div>
+
+        <div class="scroll">
+        <table class="itens-table" id="itens-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Descrição</th>
+                    <th>Fornecedor</th>
+                    <th>Remover</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onmouseover="getindex(this)">
+                    <td>Melancia</td>
+                    <td>20</td>
+                    <td>Fruta</td>
+                    <td>Empresa A</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>Maça</td>
+                    <td>80</td>
+                    <td>Fruta</td>
+                    <td>Empresa C</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>Pera</td>
+                    <td>10</td>
+                    <td>Fruta</td>
+                    <td>Empresa B</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>Banana</td>
+                    <td>100</td>
+                    <td>Fruta</td>
+                    <td>Empresa A</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>Laranja</td>
+                    <td>60</td>
+                    <td>Fruta</td>
+                    <td>Empresa D</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>Tangerina</td>
+                    <td>30</td>
+                    <td>Fruta</td>
+                    <td>Empresa C</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+                <tr onmouseover="getindex(this)">
+                    <td>Amora</td>
+                    <td>40</td>
+                    <td>Fruta</td>
+                    <td>Empresa A</td>
+                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
+                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        </div>
+        
+        <button class="homescreen"> <a href="homescreen.html"> <img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></button>
+
+        <button class="adicionar" type="button" onclick="openAddPopup(), teladisabled()"><img src="images/botao-adicionar2.png" alt="adicionar" title="Adicionar"></button>
+
+        <!-- <button class="remover" type="button" onclick="remover()"><img src="images/excluir3.png" alt="excluir" title="Remover"></button>
+
+        <button class="editar" type="button" onclick="editar()"><img src="images/botao-editar.png" alt="editar" title="Editar"></button> -->
+
+        <script>
+
+            function stopPropagation(event){
+                event.stopPropagation();
+            }
+
+            function openAddPopup(){
+                popupAdd.classList.add("openAddPopup");
+            }
+
+            function closeAddPopup(){
+                popupAdd.classList.remove("openAddPopup");
+            }
+
+            function openPopup(){
+                popup.classList.add("open_popup");
+            }
+
+            function teladisabled(){
+                telaDesativada.classList.add("disabled_tela");
+                backdrop.classList.add("disabled_tela");
+            }
+
+            function getindex(x){
+                globalThis.Index = x.rowIndex;
+            }
+
+            function telaEnabled(){
+                telaDesativada.classList.remove("disabled_tela");
+                backdrop.classList.remove("disabled_tela");
+            }
+
+            var tablee = document.getElementById("itens-table");
+
+            function closePopup(){
+                popup.classList.remove("open_popup");
+            }
+
+            function openEditPopup(){
+                popupEdit.classList.add("popupEditOpen");
+                document.getElementById("itemName").value = tablee.rows[Index].cells[0].innerHTML;
+                document.getElementById("itemQuantidade").value = tablee.rows[Index].cells[1].innerHTML;
+                document.getElementById("itemType").value = tablee.rows[Index].cells[2].innerHTML;
+                document.getElementById("itemFornecedor").value = tablee.rows[Index].cells[3].innerHTML;
+            }
+
+            function closeEditPopup(){
+                popupEdit.classList.remove("popupEditOpen");
+            }
+
+            function adicionar(){
+            
+                var tablee = document.getElementById("itens-table");
+
+                var row =  tablee.insertRow(1);
+                row.onmouseover = () =>{
+                    getindex(row);
+                }
+                const itens = document.querySelectorAll('tr');
+                console.log(itens);
+            //     if(itens){
+            //     itens.forEach(element =>{
+            //         element.addEventListener('click', (event) => {
+            //             itens.forEach(item =>{
+            //                 item.classList.remove('selected')
+            //             })
+            //             event.target.classList.add('selected');
+            //             event.target.parentElement.classList.add('selected');
+            //     })} )
+            // }
+                
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                
+
+                var nome = document.getElementById("itemNameAdd").value;
+                var quantidade = document.getElementById("itemQuantidadeAdd").value;
+                var descricao = document.getElementById("itemTypeAdd").value;
+                var fornecedor = document.getElementById("itemFornecedorAdd").value;
+                
+                cell1.innerHTML = nome;
+                cell2.innerHTML = quantidade;
+                cell3.innerHTML = descricao;
+                cell4.innerHTML = fornecedor;
+                cell5.innerHTML = '<a href="#"><img src="images/excluir2.png" alt="remover"></a>'
+                cell5.onclick = () => {
+                    openPopup();
+                    teladisabled();
+                }
+                cell6.innerHTML = '<a href="#"><img src="images/botao-editar2.png" alt="remover"></a>'
+                cell6.onclick = () => {
+                    openEditPopup();
+                    teladisabled();
+                }
+
+                document.getElementById("itemNameAdd").value = "";
+                document.getElementById("itemQuantidadeAdd").value = "";
+                document.getElementById("itemTypeAdd").value = "";
+                document.getElementById("itemFornecedorAdd").value = "";
+            }
+            
+            function remover(){
+                console.log(Index);
+                if(Index > -1){
+                    document.getElementById("itens-table").deleteRow(Index);
+                }
+            }
+
+            function buscar(){
+
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("loupe");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("itens-table");
+                tr = table.getElementsByTagName("tr");
+
+                        for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
+            // var Index;
+            var table = document.getElementById("itens-table");
+            // console.log(table);
+    
+            // for(var i = 1; i < table.rows.length; i++){
+            //     table.rows[i].onclick = function()
+            //     {
+            //         Index = this.rowIndex;
+            //         console.log(Index);
+            //     }
+            // }
+
+            function editar(){
+
+                var nome = document.getElementById("itemName").value;
+                var quantidade = document.getElementById("itemQuantidade").value;
+                var descricao = document.getElementById("itemType").value;
+                var fornecedor = document.getElementById("itemFornecedor").value;
+
+                table.rows[Index].cells[0].innerHTML = nome;
+                table.rows[Index].cells[1].innerHTML = quantidade;
+                table.rows[Index].cells[2].innerHTML = descricao;
+                table.rows[Index].cells[3].innerHTML = fornecedor;
+
+                // table.rows[Index].cells[0].innerHTML = document.getElementById("Elemento selecionado").value
+                //Nomenclatura pra colocar o valor dentro de um botão
+                
+            }
+
+            // const itens = document.querySelectorAll('tr');
+            // console.log(itens);
+            // if(itens){
+            //     itens.forEach(element =>{
+            //         element.addEventListener('click', (event) => {
+            //             itens.forEach(item =>{
+            //                 item.classList.remove('selected')
+            //             })
+            //             event.target.classList.add('selected');
+            //             console.log(event.target.parentElement.classList.add('selected'));
+            //         })} )
+            // }
+        
+        let popup = document.getElementById("popupRemove");
+        let telaDesativada = document.getElementById("tela");
+        let backdrop = document.getElementById("backdrop");
+        let popupEdit = document.getElementById("popupEdit");
+        let popupAdd = document.getElementById("popupAdd");
+        var tableInteract = document.getElementById("itens-table");
+
+        // $(document).ready(function () {
+        //     $('#itens-table').DataTable({
+        //     scrollY: true,
+        //     });
+        // });
+
+        </script>
+    </div>
+
+</body>
+</html>
