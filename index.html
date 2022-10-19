@@ -20,17 +20,29 @@
         </div>
 
         <div class="part2">
-            <form>
+            <div class="form">
                 <h2>Login</h2>
-                <input type="text" name="username" placeholder="E-mail/Login" class="user" autocomplete="off">
-                <input type="password" name="password" placeholder="Senha" class="keyword" autocomplete="off">
-                <input type="submit" name="send" value="Logar" class="button">
+                <input id="usuario" type="text" name="username" placeholder="E-mail/Login" class="user" autocomplete="off">
+                <input id="senha" type="password" name="password" placeholder="Senha" class="keyword" autocomplete="off">
+                <input type="submit" name="send" value="Logar" class="button" onclick="getDatas()">
                 <p class="forgot">Esqueceu a senha?</p>
                 <a href="homescreen.html"><input type="button" name="back" value="Sair" class="button-out"></a>
-            </form>
+            </div>
         </div>  
     </main>
-
-    
+    <script src="js/requisitions.js"></script>
+    <script>    
+        function getDatas(){
+            
+            var usuario = document.getElementById("usuario").value
+            var senha = document.getElementById("senha").value
+            get_params('login', {login:usuario, senha:senha}).then(dados=>{
+                console.log(dados)
+                window.location.replace('homescreen.html')
+            }).catch(erro=>{
+                console.log(erro)
+            })
+        }
+    </script>
 </body>
 </html>
