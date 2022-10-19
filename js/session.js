@@ -3,7 +3,8 @@
 function validateUser(){
     let user = localStorage.getItem('logged_user')
     if(user == null || user == undefined){
-        window.location.href = "/";
+        localStorage.setItem("error_message", "Por Favor, faça login para acessar a página")
+        window.location.href = "./index.html"
     }
 }
 
@@ -12,6 +13,6 @@ function setUser(user){
 }
 
 function logOut(){
-    localStorage.setItem('logged_user', undefined)
+    localStorage.removeItem('logged_user')
     validateUser()
 }

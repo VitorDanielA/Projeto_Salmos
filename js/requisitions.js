@@ -1,6 +1,8 @@
 const HOST = 'http://localhost:8081/'
 const API = 'api/v1/app/'
 
+addErrorOnStart()
+
 async function get(endpoint){
     loadingStart()
     try{
@@ -161,7 +163,7 @@ function fade(element) {
             element.style.display = 'none';
         }
         element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")"
         op -= op * 0.1;
     }, 50);
 }
@@ -170,4 +172,11 @@ function wait(milliseconds){
   return new Promise(resolve => {
       setTimeout(resolve, milliseconds);
   });
+}
+
+function addErrorOnStart(){
+    if(localStorage.getItem('error_message')){
+        showMessage({message:localStorage.getItem('error_message'), type:'warning'})
+        localStorage.removeItem('error_message')
+    }
 }
