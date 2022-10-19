@@ -1,4 +1,4 @@
-const HOST = 'http://localhost:8080/'
+const HOST = 'http://localhost:8081/'
 const API = 'api/v1/app/'
 
 async function get(endpoint){
@@ -13,7 +13,8 @@ async function get(endpoint){
         }
         throw fetched
     }catch(error){
-        //loadingEnd()
+        loadingEnd()
+        showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
 }
@@ -34,7 +35,8 @@ async function get_params(endpoint, paramsMap){
         }
         throw fetched
     }catch(error){
-        //loadingEnd()
+        loadingEnd()
+        showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
 }
@@ -51,11 +53,13 @@ async function post(endpoint, body){
         }
         throw fetched
     }catch(error){
+        
+        showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
 }
 
-const body = document.getElementById('body')
+const body = document.body
 
 function loadingStart() {
     var loadingDiv = document.createElement('div')
@@ -98,4 +102,74 @@ function loadingStart() {
 
 function loadingEnd(){
     document.getElementById('loading-default-div').remove()
+}
+
+function showMessage(params){
+    let src = 'images/icons8-ok-48.png'
+
+    let back = 'green'
+
+    if(params.type == 'error'){
+        src = 'images/icons8-blocked-48.png'
+
+        back = 'red'
+    }else if(params.type=='warning'){
+        src= 'images/icons8-warning-48.png'
+        back = 'orange'
+    }
+
+
+    let img = '<img style="width:40px;height:40px;margin-right:10px" src="'+src+'">'
+
+    let errorElementHTML = '<div id="error-message"><div>'+img+'<p style="align-self: center;">'+params.message+'</p><div></div>'
+    console.log('body', document.body)
+    document.body.innerHTML += (errorElementHTML)
+    
+    
+    var errorElement = document.getElementById('error-message')
+    errorElement.style.position = 'absolute'
+    errorElement.style.top = '30px'
+    errorElement.style.width = '100%'
+    errorElement.style.alignContent = 'center'
+
+    errorElement.firstChild.style.backgroundColor = back
+    errorElement.firstChild.style.display = 'flex'
+    errorElement.firstChild.style.color = 'white'
+    errorElement.firstChild.style.color = 'white'
+    errorElement.firstChild.style.minHeight = '50px'
+    errorElement.firstChild.style.width = '40%'
+    errorElement.firstChild.style.borderRadius = '10px'
+    errorElement.firstChild.style.padding = '10px'
+    errorElement.firstChild.style.textAlign = 'center'
+    errorElement.firstChild.style.verticalAlign = 'middle'    
+    errorElement.firstChild.style.marginLeft = 'auto' 
+    errorElement.firstChild.style.marginRight = 'auto' 
+//
+    
+    wait(2500).then(res=>{
+        fade(errorElement)
+        
+        wait(500).then(res=>{
+            errorElement.remove()
+        })
+    })
+}
+
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
+
+function wait(milliseconds){
+  return new Promise(resolve => {
+      setTimeout(resolve, milliseconds);
+  });
 }
