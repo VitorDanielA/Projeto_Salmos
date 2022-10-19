@@ -4,13 +4,13 @@ const API = 'api/v1/app/'
 addErrorOnStart()
 
 async function get(endpoint){
-    //loadingStart()
+    loadingStart()
     try{
         const fetched = await fetch(HOST+API+endpoint, {method:'GET', headers: {'Content-type': 'application/json'}})
         
         if (fetched.ok){
             const result = await fetched.json();
-            //loadingEnd()
+            loadingEnd()
             return result
         }
         throw fetched
@@ -23,7 +23,7 @@ async function get(endpoint){
 
 
 async function get_params(endpoint, paramsMap){
-    //loadingStart()
+    loadingStart()
     let params = Object.entries(paramsMap).map(a => a.join('='));
      try{
         let url = HOST+API+endpoint+'?'+params.join('&')
@@ -32,7 +32,7 @@ async function get_params(endpoint, paramsMap){
         
         if (fetched.ok){
             const result = await fetched.json();
-            //loadingEnd()
+            loadingEnd()
             return result
         }
         throw fetched
@@ -50,12 +50,12 @@ async function post(endpoint, body){
         
         if (fetched.ok){
             const result = await fetched.json();
-
+            loadingEnd()
             return result
         }
         throw fetched
     }catch(error){
-        
+        loadingEnd()
         showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
