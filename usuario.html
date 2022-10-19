@@ -35,12 +35,12 @@
     <div class="popupAdd" id="popupAdd">
         <img src="images/botao-adicionar3.png" alt="adicionar">
         <h2>Digite as informações do Usuario</h2>
-        <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioAdd">
-        <input type="text" name="senhaUsuario" placeholder="Senha..." autocomplete="off" class="senhaUsuario" id="senhaUsuarioAdd">
-        <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioAdd">
-        <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioAdd">
+        <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioAdd" onchange="loginUsuarioAddChange()">
+        <input type="password" name="senhaUsuario" placeholder="Senha..." autocomplete="off" class="senhaUsuario" id="senhaUsuarioAdd" onchange="senhaUsuarioAddChange()">
+        <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioAdd" onchange="emailUsuarioAddChange()">
+        <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioAdd" onchange="nomeUsuarioAddChange()">
         <label for="tipos">Selecione o tipo de Usuario: </label>
-        <select name="Tipo de Usuário" id="tipoUsuario">
+        <select name="Tipo de Usuário" id="tipoUsuario" onchange="tipoUsuarioChange()">
             <option value="1">Administrador</option>
             <option value="2">Funcionário</option>
             <option value="3">Estudante</option>

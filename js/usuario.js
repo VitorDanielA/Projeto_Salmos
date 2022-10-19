@@ -11,6 +11,33 @@
 
 var selectedId
 
+var usuario = {}
+
+function loginUsuarioAddChange(){
+    usuario.login = document.getElementById('loginUsuarioAdd').value;
+    console.log(usuario)
+}
+
+function senhaUsuarioAddChange(){
+    usuario.senha = document.getElementById('senhaUsuarioAdd').value;
+    console.log(usuario)
+}
+
+function emailUsuarioAddChange(){
+    usuario.email = document.getElementById('emailUsuarioAdd').value;
+    console.log(usuario)
+}
+
+function nomeUsuarioAddChange(){
+    usuario.nome = document.getElementById('nomeUsuarioAdd').value;
+    console.log(usuario)
+}
+
+function tipoUsuarioChange(){
+    usuario.tipodeusuario = document.getElementById('tipoUsuario').value;
+    console.log(usuario)
+}
+
 atualizarTabela()
 
 function atualizarTabela(){
@@ -114,54 +141,7 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-
-    var tablee = document.getElementById("itens-table");
-
-    var row =  tablee.insertRow(1);
-    row.onmouseover = () =>{
-        getindex(row);
-    }
-    const itens = document.querySelectorAll('tr');
-    console.log(itens);
-    
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
-    var cell7 = row.insertCell(6);
-    var cell8 = row.insertCell(7);
-    
-
-    var login = document.getElementById("loginUsuarioAdd").value;
-    var senha = document.getElementById("senhaUsuarioAdd").value;
-    var email = document.getElementById("emailUsuarioAdd").value;
-    var nome = document.getElementById("nomeUsuarioAdd").value;
-    var tipousuario = document.getElementById("tipoUsuario");
-    var valor = tipousuario.options[tipousuario.selectedIndex].value;
-    
-    cell1.innerHTML = 8;
-    cell2.innerHTML = login;
-    cell3.innerHTML = senha;
-    cell4.innerHTML = email;
-    cell5.innerHTML = nome;
-    cell6.innerHTML = valor;
-    cell7.innerHTML = '<a href="#"><img src="images/excluir2.png" alt="remover"></a>'
-    cell7.onclick = () => {
-        openPopup();
-        teladisabled();
-    }
-    cell8.innerHTML = '<a href="#"><img src="images/botao-editar2.png" alt="remover"></a>'
-    cell8.onclick = () => {
-        openEditPopup();
-        teladisabled();
-    }
-
-    document.getElementById("loginUsuarioAdd").value = "";
-    document.getElementById("senhaUsuarioAdd").value = "";
-    document.getElementById("emailUsuarioAdd").value = "";
-    document.getElementById("nomeUsuarioAdd").value = "";
+    post('salvarUsuario', JSON.stringify(usuario)).then().catch()
 }
 
 function remover(){
