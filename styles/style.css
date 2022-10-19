@@ -65,7 +65,7 @@ main{
     color: #E8F1F8;
 }
 
-form{
+.form{
     /* position: absolute;
     top: 50%;
     left: 72%;
@@ -78,12 +78,12 @@ form{
     width: 350px;
 }
 
-form a{
+.form a{
     align-self: flex-end;
     justify-self: end;
 }
 
-form h2{
+.form h2{
     color: #006494;
     font-size: 30px;
     padding-bottom: 20px;

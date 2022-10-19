@@ -2,37 +2,39 @@ const HOST = 'http://localhost:8080/'
 const API = 'api/v1/app/'
 
 async function get(endpoint){
-    loadingStart()
+    //loadingStart()
     try{
         const fetched = await fetch(HOST+API+endpoint, {method:'GET', headers: {'Content-type': 'application/json'}})
         
         if (fetched.ok){
             const result = await fetched.json();
-            loadingEnd()
+            //loadingEnd()
             return result
         }
         throw fetched
     }catch(error){
-        loadingEnd()
+        //loadingEnd()
         throw error
     }
 }
 
 
 async function get_params(endpoint, paramsMap){
-    loadingStart()
+    //loadingStart()
     let params = Object.entries(paramsMap).map(a => a.join('='));
      try{
-         const fetched = await fetch(HOST+API+endpoint+'?'+params.join('&'), {method:'GET', headers: {'Content-type': 'application/json'}})
+        let url = HOST+API+endpoint+'?'+params.join('&')
+        console.log('URL ', url)
+         const fetched = await fetch(url, {method:'GET', headers: {'Content-type': 'application/json'}})
         
         if (fetched.ok){
             const result = await fetched.json();
-            loadingEnd()
+            //loadingEnd()
             return result
         }
         throw fetched
     }catch(error){
-        loadingEnd()
+        //loadingEnd()
         throw error
     }
 }
