@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Login</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script type="text/javascript" src="js/session.js"></script>
 </head>
 <body>
 
@@ -36,8 +37,9 @@
             
             var usuario = document.getElementById("usuario").value
             var senha = document.getElementById("senha").value
-            get_params('login', {login:usuario, senha:senha}).then(dados=>{
-                console.log(dados)
+            get_params('login', {login:usuario, senha:senha}).then(usuario=>{
+                console.log(usuario)
+                setUser(usuario)
                 window.location.replace('homescreen.html')
             }).catch(erro=>{
                 console.log(erro)

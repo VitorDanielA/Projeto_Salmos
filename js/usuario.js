@@ -141,7 +141,12 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-    post('salvarUsuario', JSON.stringify(usuario)).then().catch()
+    post('salvarUsuario', usuario).then(result=>{
+        console.log('result', result)
+        atualizarTabela()
+    }).catch(error=>{
+        console.log('error', error)
+    })
 }
 
 function remover(){

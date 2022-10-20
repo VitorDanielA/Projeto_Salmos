@@ -38,6 +38,7 @@ async function get_params(endpoint, paramsMap){
         throw fetched
     }catch(error){
         loadingEnd()
+        console.log('Erro', error)
         showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
@@ -46,7 +47,7 @@ async function get_params(endpoint, paramsMap){
 async function post(endpoint, body){
     loadingStart()
     try{
-        const fetched = await fetch(HOST+API+endpoint, {method:'POST', headers: {'Content-type': 'application/json'}, body:body})
+        const fetched = await fetch(HOST+API+endpoint, {method:'POST', headers: {'Content-type': 'application/json'}, body:JSON.stringify(body)})
         
         if (fetched.ok){
             const result = await fetched.json();
@@ -177,8 +178,8 @@ function wait(milliseconds){
 }
 
 function addErrorOnStart(){
-    if(localStorage.getItem('error_message')){
-        showMessage({message:localStorage.getItem('error_message'), type:'warning'})
-        localStorage.removeItem('error_message')
+    if(localStorage.getItem('warning_message')){
+        showMessage({message:localStorage.getItem('warning_message'), type:'warning'})
+        localStorage.removeItem('warning_message')
     }
 }
