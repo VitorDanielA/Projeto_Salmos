@@ -12,11 +12,12 @@ function tipoDeUsuarioDescricaoAddChange(){
     console.log(tipodeusuario);
 }
 
+atualizarTabela()
 
 function atualizarTabela(){
     var tableBody = document.getElementById('table-body');
     tableBody.innerHTML = ''
-    get('tipodeusuario').then(data=>{
+    get('tipodeusuarios').then(data=>{
     console.log('Data ', data)
 
     }).catch(error=>{
