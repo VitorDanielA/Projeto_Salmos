@@ -16,10 +16,26 @@ atualizarTabela()
 
 function atualizarTabela(){
     var tableBody = document.getElementById('table-body');
-    //tableBody.innerHTML = ''
-    get('tipodeusuarios').then(data=>{
-    console.log('Data ', data)
+    tableBody.innerHTML = ''
+    get('tipodeusuario').then(data=>{
+    console.log('Data', data)
+    data.forEach(element => {
+        var row = document.createElement("tr");
+        
+        var colId = document.createElement("td")
+        colId.appendChild(document.createTextNode(element.id))
+        row.appendChild(colId)
 
+        var colNome = document.createElement("td")
+        colNome.appendChild(document.createTextNode(element.nome))
+        row.appendChild(colNome)
+
+        var colDescricao = document.createElement("td")
+        colDescricao.appendChild(document.createTextNode(element.descricao))
+        row.appendChild(colDescricao)
+        
+
+    });
     }).catch(error=>{
         console.log('Error ', error)
     })
@@ -79,21 +95,15 @@ function atualizarTabela(){
                     console.log('error', error)
                 })
             }
+            
+            
             function remover(){
                 console.log('Deletar ' + this.selectedId)
-            
-                get_params('deletarTipoDeUsuario', {id:this.selectedId}).then(result=>{
+
+                get_params('deletarTipoDeUsuario', {id:this.selectedId, p2:'is'}).then(result=>{
                     atualizarTabela()
                 }).catch(error=>{
                 })
-            }
-            
-            
-            function remover(){
-                console.log(Index);
-                if(Index > -1){
-                    document.getElementById("itens-table").deleteRow(Index);
-                }
             }
 
             function buscar(){
