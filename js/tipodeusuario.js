@@ -16,7 +16,7 @@ atualizarTabela()
 
 function atualizarTabela(){
     var tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ''
+    //tableBody.innerHTML = ''
     get('tipodeusuarios').then(data=>{
     console.log('Data ', data)
 
@@ -77,6 +77,14 @@ function atualizarTabela(){
                     atualizarTabela()
                 }).catch(error=>{
                     console.log('error', error)
+                })
+            }
+            function remover(){
+                console.log('Deletar ' + this.selectedId)
+            
+                get_params('deletarTipoDeUsuario', {id:this.selectedId}).then(result=>{
+                    atualizarTabela()
+                }).catch(error=>{
                 })
             }
             
