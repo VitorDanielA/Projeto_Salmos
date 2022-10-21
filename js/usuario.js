@@ -79,9 +79,18 @@ function atualizarTabela(){
         var imgRemove = document.createElement("img")
         imgRemove.setAttribute("src", "images/excluir2.png")
         removerLink.appendChild(imgRemove)
-        
         colRemover.appendChild(removerLink)
         row.appendChild(colRemover)
+
+        var colEditar = document.createElement("td")
+        colEditar.setAttribute("onclick", "openEditPopup("+element.id+")")
+        var editarLink = document.createElement("a")
+        var imgEdit = document.createElement("img")
+        imgEdit.setAttribute("src", "images/botao-editar2.png")
+        editarLink.appendChild(imgEdit)
+        colEditar.appendChild(editarLink)
+
+        row.appendChild(colEditar)
         
 
         tableBody.appendChild(row)
@@ -126,19 +135,7 @@ function closePopup(){
     popup.classList.remove("open_popup");
 }
 
-function openEditPopup(){
-    popupEdit.classList.add("popupEditOpen");
-    document.getElementById("loginUsuario").value = tablee.rows[Index].cells[1].innerHTML;
-    document.getElementById("senhaUsuario").value = tablee.rows[Index].cells[2].innerHTML;
-    document.getElementById("emailUsuario").value = tablee.rows[Index].cells[3].innerHTML;
-    document.getElementById("nomeUsuario").value = tablee.rows[Index].cells[4].innerHTML;
-}
-
 var tablee = document.getElementById("itens-table");
-
-function closeEditPopup(){
-    popupEdit.classList.remove("popupEditOpen");
-}
 
 function adicionar(){
     post('salvarUsuario', usuario).then(result=>{
@@ -200,6 +197,5 @@ function editar(){
 let popup = document.getElementById("popupRemove");
 let telaDesativada = document.getElementById("tela");
 let backdrop = document.getElementById("backdrop");
-let popupEdit = document.getElementById("popupEdit");
 let popupAdd = document.getElementById("popupAdd");
 var tableInteract = document.getElementById("itens-table");
