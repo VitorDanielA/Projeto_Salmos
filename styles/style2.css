@@ -36,13 +36,6 @@ main{
     transform: translateX(-100%);
 }
 
-/*
-.side-bar h1{
-    color: #1A1A1A;
-    margin-bottom: 40px;
-    font-size: 50px;
-}*/
-
 .links-option{
     list-style: none;
     position: relative;
@@ -78,7 +71,7 @@ main{
     left: 0;
     z-index: -1;
     border-radius: 6px;
-    box-shadow: 0 5px 10px rgb(255, 255, 255, 0.4);
+    box-shadow: 3px 5px 10px rgb(255, 255, 255, 0.6);
     display: none;
     transition: top 0.5s;
 }
@@ -178,7 +171,6 @@ main{
 .complement h5{
     color: #247BA0;
     font-size: 60px;
-    /* margin-right: -140px; */
 }
 
 .menu-user{
@@ -252,6 +244,10 @@ button:hover{
 
 .menubar a:hover{
     background-color: #5CB6EB;
+}
+
+.logout{
+    cursor: pointer;
 }
 
 @media(max-width:421px){

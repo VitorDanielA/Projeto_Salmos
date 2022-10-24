@@ -52,7 +52,6 @@ function atualizarTabela(){
         colId.appendChild(document.createTextNode(element.id))
         row.appendChild(colId)
 
-        
         var colLogin = document.createElement("td")
         colLogin.appendChild(document.createTextNode(element.login))
         row.appendChild(colLogin)
