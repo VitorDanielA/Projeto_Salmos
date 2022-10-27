@@ -46,16 +46,15 @@ function tableCreate(data){
             row.appendChild(colEmail)
             
             var colNome = document.createElement("td")
-            colNome.appendChild(document.createTextNode(element.nome))
+            var userLink = document.createElement("a")
+            userLink.setAttribute("href", HOST+API+'usuario/'+element.id)
+            userLink.setAttribute("target", '_blank')
+            userLink.innerHTML = element.nome
+            colNome.appendChild(userLink)
             row.appendChild(colNome)
             
             var colTipo = document.createElement("td")
-            var tipoLink = document.createElement("a")
-            tipoLink.setAttribute("href", HOST+API+'usuario/'+element.id)
-            tipoLink.setAttribute("target", '_blank')
-            tipoLink.innerHTML = element.tipodeusuario ? element.tipodeusuario.nome : ''
-
-            colTipo.appendChild(tipoLink)
+            colTipo.appendChild(document.createTextNode(element.tipodeusuario ? element.tipodeusuario.nome : ''))
             row.appendChild(colTipo)
             
             var colRemover = document.createElement("td")
