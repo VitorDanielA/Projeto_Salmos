@@ -17,7 +17,7 @@ atualizarTabela()
 function atualizarTabela(){
     var tableBody = document.getElementById('table-body');
     tableBody.innerHTML = ''
-    get('tipodeusuarios').then(data=>{
+    get('tipodeusuario').then(data=>{
     console.log('Data ', data)
 
     }).catch(error=>{

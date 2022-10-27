@@ -27,8 +27,8 @@ async function get_params(endpoint, paramsMap){
     let params = Object.entries(paramsMap).map(a => a.join('='));
      try{
         let url = HOST+API+endpoint+'?'+params.join('&')
-        console.log('URL ', url)
          const fetched = await fetch(url, {method:'GET', headers: {'Content-type': 'application/json'}})
+         console.log('fecthed ', fetched)
         
         if (fetched.ok){
             const result = await fetched.json();

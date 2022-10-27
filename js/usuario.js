@@ -70,7 +70,7 @@ function atualizarTabela(){
         row.appendChild(colNome)
         
         var colTipo = document.createElement("td")
-        colTipo.appendChild(document.createTextNode(element.tipodeusuario))
+        colTipo.appendChild(document.createTextNode(element.tipodeusuario.nome))
         row.appendChild(colTipo)
         
         var colRemover = document.createElement("td")
