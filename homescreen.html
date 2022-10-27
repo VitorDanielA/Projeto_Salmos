@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homescreen</title>
     <link rel="stylesheet" href="styles/style2.css">
-    <!-- <script type="text/javascript" src="js/session.js" onload="validateUser()"></script> -->
+    <script type="text/javascript" src="js/session.js" onload="validateUser()"></script>
 </head>
 <body>
     <main>
@@ -45,11 +45,12 @@
         </div>
 
         <div class="menubar">
-            <button class="menu-user"><img src="images/userlogin.png" alt="userlogin"><p id="username">Dudinha</p></button>
+            <button class="menu-user"><img src="images/userlogin.png" alt="userlogin"> <p id="user_name">Dudinha</p></button>
                 <div>
                     <a href="#"> <img src="images/usuario-logado2.png" alt="perfil-de-usuario"> Perfil</a>
                     <a href="#"> <img src="images/info-button.png" alt="info"> Sobre</a>
-                    <a onclick="logOut()"> <img src="images/logout2.png" alt="logout"> Logout</a>
+                    <!--Por enquanto deixa o href, até a função de logOut tiver funcionando-->
+                    <a onclick="logOut()" class="logout" href="index.html"> <img src="images/logout2.png" alt="logout" > Logout</a>
                 </div>
         </div>
     </main>

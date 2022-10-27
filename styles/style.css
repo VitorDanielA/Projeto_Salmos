@@ -75,7 +75,10 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 350px;
+    width: 400px;
+    height: 600px;
+    box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
+    padding: 20px;
 }
 
 .form a{
@@ -86,46 +89,65 @@ main{
 .form h2{
     color: #006494;
     font-size: 30px;
-    padding-bottom: 20px;
     text-align: center;
     font-size: 50px;
+    padding-bottom: 10px;
+}
+
+.form img{
+    margin-bottom: 25px;
+}
+
+.form span{
+    padding-bottom: 20px;
+    font-size: 18px;
+    color: #666;
 }
 
 .user{
-    border: 1px #13293D solid;
+    border: none;
     padding-left: 10px;
     width: 100%;
     height: 45px;
     margin: 4px 2px;
-    border-radius: 25px;
+    background-color: #f1f1f1;
     background-image: url(../images/o-email.png);
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: right;
     padding-left: 50px;
     background-size: 1.3em;
     background-position-x: 20px;
 }
 
+.user:focus{
+    background-color: #f1f1f1;
+    outline: none;
+    border-bottom: #006494 3px solid;
+}
+
 .keyword{
-    border: 1px #13293D solid;
+    border: none;
     padding-left: 10px;
     width: 100%;
     height: 45px;
     margin: 15px 2px;
-    border-radius: 25px;
     background-image: url(../images/cadeado.png);
+    background-color: #f1f1f1;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: right;
     padding-left: 50px;
     background-size: 1.3em;
     background-position-x: 20px;
-    background-color: white;
+}
+
+.keyword:focus{
+    outline: none;
+    border-bottom: #006494 3px solid;
 }
 
 .button{
     width: 100%;
     height: 40px;
-    border-radius: 25px;
     background-color: #006494;
     color: white;
     cursor: pointer;
@@ -135,24 +157,6 @@ main{
 }
 
 .button:hover{
-    background-color: #247BA0;
-    color: rgb(241, 238, 238);
-    transition: 1s;
-}
-
-.button-out{
-    width: 200px;
-    height: 40px;
-    border-radius: 25px;
-    background-color: #006494;
-    color: white;
-    cursor: pointer;
-    border: 0;
-    font-size: 16px;
-    transition: 1s;
-}
-
-.button-out:hover{
     background-color: #247BA0;
     color: rgb(241, 238, 238);
     transition: 1s;

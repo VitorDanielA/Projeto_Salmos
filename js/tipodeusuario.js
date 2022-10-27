@@ -18,8 +18,24 @@ function atualizarTabela(){
     var tableBody = document.getElementById('table-body');
     tableBody.innerHTML = ''
     get('tipodeusuario').then(data=>{
-    console.log('Data ', data)
+    console.log('Data', data)
+    data.forEach(element => {
+        var row = document.createElement("tr");
+        
+        var colId = document.createElement("td")
+        colId.appendChild(document.createTextNode(element.id))
+        row.appendChild(colId)
 
+        var colNome = document.createElement("td")
+        colNome.appendChild(document.createTextNode(element.nome))
+        row.appendChild(colNome)
+
+        var colDescricao = document.createElement("td")
+        colDescricao.appendChild(document.createTextNode(element.descricao))
+        row.appendChild(colDescricao)
+        
+
+    });
     }).catch(error=>{
         console.log('Error ', error)
     })
@@ -82,10 +98,12 @@ function atualizarTabela(){
             
             
             function remover(){
-                console.log(Index);
-                if(Index > -1){
-                    document.getElementById("itens-table").deleteRow(Index);
-                }
+                console.log('Deletar ' + this.selectedId)
+
+                get_params('deletarTipoDeUsuario', {id:this.selectedId, p2:'is'}).then(result=>{
+                    atualizarTabela()
+                }).catch(error=>{
+                })
             }
 
             function buscar(){
