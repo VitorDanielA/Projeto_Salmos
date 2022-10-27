@@ -20,15 +20,12 @@
     <div class="popupEdit" id="popupEdit">
         <img src="images/caneta.png" alt="editar">
         <h2>Digite as novas informações</h2>
-        <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuario">
-        <input type="text" name="senhaUsuario" placeholder="Senha..." autocomplete="off" class="senhaUsuario" id="senhaUsuario">
-        <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuario">
-        <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuario">
+        <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioEditar">
+        <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioEditar">
+        <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioEditar">
         <label for="tipos">Selecione o tipo de Usuario: </label>
         <select name="Tipo de Usuário" id="tipoUsuarioEdit">
-            <option value="1">Administrador</option>
-            <option value="2">Funcionário</option>
-            <option value="3">Estudante</option>
+
         </select> <br>
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
@@ -37,15 +34,13 @@
     <div class="popupAdd" id="popupAdd">
         <img src="images/botao-adicionar3.png" alt="adicionar">
         <h2>Digite as informações do Usuario</h2>
-        <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioAdd" onchange="loginUsuarioAddChange()">
-        <input type="password" name="senhaUsuario" placeholder="Senha..." autocomplete="off" class="senhaUsuario" id="senhaUsuarioAdd" onchange="senhaUsuarioAddChange()">
-        <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioAdd" onchange="emailUsuarioAddChange()">
-        <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioAdd" onchange="nomeUsuarioAddChange()">
+        <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioAdd" >
+        <input type="password" name="senhaUsuario" placeholder="Senha..." autocomplete="off" class="senhaUsuario" id="senhaUsuarioAdd" >
+        <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioAdd" >
+        <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioAdd" >
         <label for="tipos">Selecione o tipo de Usuario: </label>
-        <select name="Tipo de Usuário" id="tipoUsuario" onchange="tipoUsuarioChange()">
-            <option value="1">Administrador</option>
-            <option value="2">Funcionário</option>
-            <option value="3">Estudante</option>
+        <select name="Tipo de Usuário" id="tipoUsuario">
+            
         </select> <br>
         <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
@@ -63,12 +58,10 @@
         <table class="itens-table" id="itens-table">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Login</th>
-                    <th>Senha</th>
                     <th>Email</th>
                     <th>Nome</th>
-                    <th>TipoDeUsuario</th>
+                    <th>Tipo De Usuario</th>
                     <th>Remover</th>
                     <th>Editar</th>
                 </tr>
