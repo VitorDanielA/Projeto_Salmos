@@ -50,7 +50,12 @@ function tableCreate(data){
             row.appendChild(colNome)
             
             var colTipo = document.createElement("td")
-            colTipo.appendChild(document.createTextNode(element.tipodeusuario ? element.tipodeusuario.nome : ''))
+            var tipoLink = document.createElement("a")
+            tipoLink.setAttribute("href", HOST+API+'usuario/'+element.id)
+            tipoLink.setAttribute("target", '_blank')
+            tipoLink.innerHTML = element.tipodeusuario ? element.tipodeusuario.nome : ''
+
+            colTipo.appendChild(tipoLink)
             row.appendChild(colTipo)
             
             var colRemover = document.createElement("td")
