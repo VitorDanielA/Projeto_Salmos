@@ -9,11 +9,11 @@ function validateUser(){
 }
 
 function setUser(user){
-    localStorage.setItem('logged_user', user)
+    localStorage.setItem('logged_user', JSON.stringify(user))
 }
 
 function getUser(){
-    return localStorage.getItem('logged_user')
+    return JSON.parse(localStorage.getItem('logged_user'))
 }
 
 
