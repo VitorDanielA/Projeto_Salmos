@@ -1,5 +1,5 @@
 var selectedId
-
+var TipoDeUsuarioList = [] 
 var tipodeusuario = {}
 
 function tipoDeUsuarioNameAddChange(){
@@ -13,13 +13,22 @@ function tipoDeUsuarioDescricaoAddChange(){
 }
 
 atualizarTabela()
-
 function atualizarTabela(){
-    var tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ''
+    
     get('tipodeusuario').then(data=>{
     console.log('Data', data)
-    data.forEach(element => {
+    this.TipoDeUsuarioList = data
+    this.tableCreate(this.TipoDeUsuarioList)
+        }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
+function tableCreate(data){
+    var tableBody = document.getElementById('table-body');
+    if(tableBody){
+        tableBody.innerHTML = ''
+         data.forEach(element => {
         var row = document.createElement("tr");
         
         var colId = document.createElement("td")
@@ -34,13 +43,12 @@ function atualizarTabela(){
         colDescricao.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colDescricao)
         
+        
+            tableBody.appendChild(row)
 
     });
-    }).catch(error=>{
-        console.log('Error ', error)
-    })
+    }
 }
-            
             function stopPropagation(event){
                 event.stopPropagation();
             }
@@ -145,3 +153,5 @@ function atualizarTabela(){
         let popupEdit = document.getElementById("popupEdit");
         let popupAdd = document.getElementById("popupAdd");
         var tableInteract = document.getElementById("itens-table");
+
+   
