@@ -166,8 +166,6 @@ function openEditPopup(id){
     document.getElementById('nomeUsuarioEditar').value = usr.nome
     if(usr.tipodeusuario)
         document.getElementById('tipoUsuarioEdit').value = usr.tipodeusuario.id
-    
-
 }
 
 var tablee = document.getElementById("itens-table");

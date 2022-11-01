@@ -44,7 +44,27 @@ function tableCreate(data){
         row.appendChild(colDescricao)
         
         
-            tableBody.appendChild(row)
+        tableBody.appendChild(row)
+
+        var colRemover = document.createElement("td")
+        colRemover.setAttribute("onclick", "openPopup("+element.id+")")
+        var removerLink = document.createElement("a")
+        var imgRemove = document.createElement("img")
+        imgRemove.setAttribute("src", "images/excluir2.png")
+        removerLink.appendChild(imgRemove)
+        
+        colRemover.appendChild(removerLink)
+        row.appendChild(colRemover)
+        
+        var colEditar = document.createElement("td")
+        colEditar.setAttribute("onclick", "openEditPopup("+element.id+")")
+        var editarLink = document.createElement("a")
+        var imgEditar = document.createElement("img")
+        imgEditar.setAttribute("src", "images/botao-editar2.png")
+        editarLink.appendChild(imgEditar)
+        
+        colEditar.appendChild(editarLink)
+        row.appendChild(colEditar)
 
     });
     }
@@ -61,7 +81,8 @@ function tableCreate(data){
                 popupAdd.classList.remove("openAddPopup");
             }
 
-            function openPopup(){
+            function openPopup(id){
+                this.selectedId = id
                 popup.classList.add("open_popup");
             }
 
@@ -85,10 +106,18 @@ function tableCreate(data){
                 popup.classList.remove("open_popup");
             }
 
-            function openEditPopup(){
+            function openEditPopup(id){
+                this.selectedId = id
                 popupEdit.classList.add("popupEditOpen");
-                document.getElementById("tipoDeUsuarioName").value = tablee.rows[Index].cells[1].innerHTML;
-                document.getElementById("tipoDeUsuarioDescricao").value = tablee.rows[Index].cells[2].innerHTML;
+                console.log('Id ',id)
+                let usr = this.TipoDeUsuarioList.find(user=>{
+                    return user.id === id
+                })
+
+                console.log('Tipo de Usuário achado ', usr)
+                
+                document.getElementById('tipoDeUsuarioName').value = usr.nome
+                document.getElementById('tipoDeUsuarioDescricao').value = usr.descricao
             }
 
             function closeEditPopup(){
@@ -141,10 +170,23 @@ function tableCreate(data){
             function editar(){
 
                 var nome = document.getElementById("tipoDeUsuarioName").value;
-                var quantidade = document.getElementById("tipoDeUsuarioDescricao").value;
-                
-                table.rows[Index].cells[1].innerHTML = nome;
-                table.rows[Index].cells[2].innerHTML = quantidade;
+                var descricao = document.getElementById("tipoDeUsuarioDescricao").value;
+
+                this.tipodeusuario = this.TipoDeUsuarioList.find(user=>{
+                    return user.id === this.selectedId
+                })
+
+                this.tipodeusuario.nome = nome
+                this.tipodeusuario.descricao = descricao
+
+                console.log('Novo tipo user ', this.tipodeusuario)
+                post('salvarTipoDeUsuario', this.tipodeusuario).then(result=>{
+                    console.log('Result ', result)
+                    this.atualizarTabela()
+                }).catch(error=>{
+                    console.log('Error ', error)
+                })
+                this.tipodeusuario = {}
             }
         
         let popup = document.getElementById("popupRemove");

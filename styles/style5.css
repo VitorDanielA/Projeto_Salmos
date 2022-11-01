@@ -87,6 +87,11 @@ tr:last-child td:first-child{
 tr:last-child td:last-child{
     border-bottom-right-radius: 20px;
 }
+
+td:nth-child(4), td:nth-child(5){
+    cursor: pointer;
+}
+
 thead th{
     background-color: #13293D;
 }
