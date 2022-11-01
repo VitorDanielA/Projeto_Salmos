@@ -107,6 +107,7 @@ function setTiposDeUsuario() {
             optionEdit.innerHTML = tipo.nome
 
             multiComboEdit.appendChild(optionEdit)
+            
         })
     }).catch(error=>{
         console.log('Error ', error)
