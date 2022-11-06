@@ -73,8 +73,13 @@
             background-color: #666;
             color: #e3e6d0;
         }
+
+        #alterarSenha:hover{
+            background-color: #666;
+            color: #e3e6d0;
+        }
         
-        #submit-actions button{
+        #submit-actions button, #alterarSenha{
             width: 45%;
             padding: 10px 0;
             background: #165b79;
@@ -103,15 +108,31 @@
             height: 40px;
             border: 0;
             border-radius: 20px;
+            padding: 20px;
             font-size: 16px;
             outline: 0;
             cursor: auto;
             box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
         }
 
+
     </style>
     <div class="tela" id="tela">
         <button class="homescreen"> <a href="homescreen.html"> <img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></button>
+
+        
+        <div class="popupEdit" id="popupEdit">
+            <img src="images/caneta.png" alt="editar">
+            <h2>Digite a nova senha</h2>
+
+            <input class="input-edit" type="password" id="senhanova" style="margin-bottom: 30px;" onkeyup="checkPass()">
+            
+            <p>Repita a senha</p>
+            <input class="input-edit" type="password" id="senhacheck" onkeyup="checkPass()">
+
+            <button id="confirm-pass" disabled="true" type="button" onclick="savePass(), closeEditPopup(), telaEnabled()">Confirmar</button>
+            <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
+        </div>
 
         <div id="user-info">
             <div id="profile-syntax">
@@ -131,7 +152,13 @@
                         <tr><td>Nome</td>   <td><input class="input-show input-form" type="text" id="nome" value="Tarcisio Abade Mendonça"> <img src="images/botao-editar2.png" class="image-edit-input" onclick="enableEdition()" alt="Editar" width="20px"></td></tr>
                         <tr><td>Email</td>   <td><input class="input-show input-form" type="email" id="email" value="sidtarcisiosid88@gmail.com"> <img src="images/botao-editar2.png" class="image-edit-input" onclick="enableEdition()" alt="Editar" width="20px"></td></tr>
                         <tr><td>Login</td>   <td><input class="input-show input-form" type="text" id="login" value="tarciiz"> <img src="images/botao-editar2.png" class="image-edit-input" onclick="enableEdition()" alt="Editar" width="20px"></td></tr>
-                        <tr><td>Senha</td>   <td><input class="input-show input-form" type="password" id="senha" value="******"><img src="images/botao-editar2.png" class="image-edit-input" onclick="enableEdition()" alt="Editar" width="20px"></td> </tr>
+                        <tr><td>Senha</td>   <td>
+
+                            <button id="alterarSenha" onclick="openEditPopup()">Alterar senha</button>
+
+
+                            <!-- <input class="input-show input-form" type="password" id="senha" value="******"><img src="images/botao-editar2.png" class="image-edit-input" onclick="enableEdition()" alt="Editar" width="20px"> -->
+                        </td> </tr>
 
                         <tr colspan="2" id="submit-actions"><td colspan="2"><button type="button" onclick="cacelEdition()" id="">Cancelar</button> <button type="submit" name="" id="">Salvar</button></td></tr>
                         

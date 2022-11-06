@@ -16,7 +16,7 @@ async function get(endpoint){
         throw fetched
     }catch(error){
         loadingEnd()
-        showMessage({message:error.type + ' - ' + error.status, type:'error'})
+        // showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
 }
@@ -39,7 +39,7 @@ async function get_params(endpoint, paramsMap){
     }catch(error){
         loadingEnd()
         console.log('Erro', error)
-        showMessage({message:error.type + ' - ' + error.status, type:'error'})
+        // showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
 }
@@ -57,7 +57,7 @@ async function post(endpoint, body){
         throw fetched
     }catch(error){
         loadingEnd()
-        showMessage({message:error.type + ' - ' + error.status, type:'error'})
+        // showMessage({message:error.type + ' - ' + error.status, type:'error'})
         throw error
     }
 }

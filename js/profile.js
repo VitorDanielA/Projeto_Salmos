@@ -2,11 +2,13 @@
 var user = getUser()
 setData()
 
+var oldInputBorder = document.getElementById('senhanova').style.border
+
 function setData(){
     document.getElementById('nome').value = user.nome
     document.getElementById('email').value = user.email
     document.getElementById('login').value = user.login
-    document.getElementById('senha').value = user.senha
+    // document.getElementById('senha').value = user.senha
 
     document.getElementById('nome-desc').innerHTML = user.nome
     document.getElementById('email-desc').innerHTML = user.email
@@ -17,12 +19,10 @@ function saveUser(){
     let nome = document.getElementById('nome').value
     let email = document.getElementById('email').value
     let login = document.getElementById('login').value
-    let senha = document.getElementById('senha').value
 
     user.nome = nome
     user.email = email
     user.login = login
-    user.senha = senha
 
     post('salvarUsuario', this.user).then(result=>{
         console.log('result', result)
@@ -34,6 +34,39 @@ function saveUser(){
         console.log('error', error)
     })
 
+}
+
+function savePass(){
+    let senha = document.getElementById('senhanova').value
+    user.senha = senha
+
+    post('salvarUsuario', this.user).then(result=>{
+        console.log('result', result)
+        setUser(result)
+        user = result
+        setData()
+        disableEdition()
+        showMessage({type:'success', message:"Senha atualizada"})
+    }).catch(error=>{
+        console.log('error', error)
+        showMessage({type:'error', message:"Erro ao salvar senha, tente novamente"})
+    })
+}
+
+function checkPass(){
+    let senha = document.getElementById('senhanova')
+    let senhaConfirm = document.getElementById('senhacheck')
+
+    if(senha.value === senhaConfirm.value){
+        console.log("Tudo certo")
+        document.getElementById('confirm-pass').disabled = false
+        senha.style.border = '2px solid green'
+        senhaConfirm.style.border = '2px solid green'
+    }else{
+        console.log("senhas nao coincidem")
+        senha.style.border = '2px solid red'
+        senhaConfirm.style.border = '2px solid red'
+    }
 }
 
 function cacelEdition(){
@@ -59,4 +92,26 @@ function disableEdition(){
     }
     
     document.getElementById('submit-actions').style.visibility = 'hidden'
+}
+
+function openEditPopup(){
+    popupEdit.classList.add("popupEditOpen");
+    let senha = document.getElementById('senhanova')
+    let senhaConfirm = document.getElementById('senhacheck')
+
+    senha.value = '';
+    senhaConfirm.value = '';
+    senha.style.border = oldInputBorder
+    senhaConfirm.style.border = oldInputBorder
+    document.getElementById('confirm-pass').disabled = true
+}
+
+
+function closeEditPopup(){
+    popupEdit.classList.remove("popupEditOpen");
+}
+
+
+function telaEnabled(){
+    // backdrop.classList.remove("disabled_tela");
 }
