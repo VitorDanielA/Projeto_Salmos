@@ -317,7 +317,7 @@ tr:hover {
 .popupAdd{
     width: 1200px;
     height: 500px;
-    background-color: #13293D;
+    background-color: #020f1b;
     border-radius: 10px;
     position: absolute;
     top: 0%;
@@ -354,15 +354,15 @@ tr:hover {
     outline: none;
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .popupAdd .loginUsuario{
-    border: 1px #13293D solid;
+    border: 1px #0d1b29 solid;
     padding-left: 10px;
-    width: 90%;
+    width: 60%;
     height: 45px;
-    margin: 4px 2px;
+    margin: 4px 0px 4px 30px;
     border-radius: 25px;
     background-image: url(../images/login.png);
     background-repeat: no-repeat;
@@ -427,11 +427,12 @@ tr:hover {
 }
 
 .popupAdd select{
-    width: 220px;
+    width: 215px;
     background-color: #fff;
     border: 1px solid #165b79;
     outline: 0;
     margin-top: 20px;
+    margin-left: 20px;
     border-radius: 20px;
     height: 35px;
     text-align: center;
@@ -645,3 +646,56 @@ tr:hover {
     background-color: #2177a8;
 }
 
+table.itens-table2{
+    border-radius: 20px;
+    width: 500px;
+    /* max-height: 500px; */
+    text-align: center;
+    /* margin-top: 100px; */
+    background-color: white;
+    box-shadow: 1px 1px 8px 1px #000000;
+    overflow: scroll;
+    margin-left: 60px;
+}
+
+table.itens-table2 td, table.itens-table2 th + table.itens-table2 th{
+    border-top: 1px solid #f2f2f2;
+    padding: 2px 2px;
+}
+
+table.itens-table2 thead th{
+    color: #e3e6d0;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+table.itens-table2 td{
+    color: #666;
+}
+
+table.itens-table2 tr{
+    height: 61.39px;
+}
+
+.scroll2{
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px; 
+    margin-top: 40px;
+}
+
+.scroll2::-webkit-scrollbar{
+    width: 0;
+}
+
+.info_container{
+    width: 700px;
+    height: 100px;
+    position: absolute;
+    top: 220px;
+    right: 30px;
+}
