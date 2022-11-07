@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição</title>
+    <link rel="stylesheet" href="styles/style9.css">
+</head>
+<body>
+    <div class='box'>
+        <div class='wave -one'></div>
+        <div class='wave -two'></div>
+        <div class='wave -three'></div>
+    </div>
+
+    <div class="tela">
+
+        <div class="popupRemove" id="popupRemove">
+            <img src="images/ask.png" alt="question-sign-in-circles">
+            <h2>Você tem certeza que deseja remover essa Requisição?</h2>
+            <button type="button" onclick="remover(), closePopup(), telaEnabled()">Sim</button>
+            <button type="button" onclick="closePopup(), telaEnabled()">Não</button>
+        </div>
+    
+        <div class="popupEdit" id="popupEdit">
+            <img src="images/caneta.png" alt="editar">
+            <h2>Digite as novas informações</h2>
+            <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioEditar">
+            <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioEditar">
+            <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioEditar">
+            <label for="tipos">Selecione o tipo de Usuario: </label>
+            <select name="Tipo de Usuário" id="tipoUsuarioEdit">
+    
+            </select> <br>
+            <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
+            <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
+        </div>
+    
+        <div class="popupAdd" id="popupAdd">
+            <img src="images/botao-adicionar3.png" alt="adicionar">
+            <h2>Digite as informações da Requisição</h2>
+            
+            </select>
+
+            <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
+            <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
+        </div>
+    
+        <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>
+
+    <div class="search">
+        <input type="text" placeholder="Procurar..." class="loupe" id="loupe" onkeyup="buscar()"> 
+    </div>
+
+    <div class="scroll">
+        <table class="itens-table" id="itens-table">
+            <thead>
+                <tr>
+                    <th>Num Requisição</th>
+                    <th>Usuário Requisitante</th>
+                    <th>Descrição</th>
+                    <th>Informações</th>
+                    <th>Remover</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                
+            </tbody>
+        </table>
+
+    </div>
+
+    <button class="homescreen"> <a href="homescreen.html"> <img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></button>
+
+    <button class="adicionar" type="button" onclick="openAddPopup(), teladisabled()"><img src="images/botao-adicionar2.png" alt="adicionar" title="Adicionar"></button>
+
+    </div>
+
+    <script type="text/javascript" src="js/requisitions.js"></script>
+    <script type="text/javascript" src="js/requisicao.js"></script>
+</body>
+</html>
