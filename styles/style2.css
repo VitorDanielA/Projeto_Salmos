@@ -53,7 +53,7 @@ main{
     align-items: center;
     width: 120%;
     height: 45px;
-    margin: 5px 2px;
+    margin: 0px 2px;
     border-radius: 25px;
     border: 2px #EDF4ED solid;
     background-color: #EDF4ED;
@@ -87,31 +87,35 @@ main{
 }
 
 .links-option li:nth-child(1):hover ~ .projector{
-    top: 2.0%;
+    top: 1.5%;
 }
 
 .links-option li:nth-child(2):hover ~ .projector{
-    top: 16.5%;
+    top: 13.5%;
 }
 
 .links-option li:nth-child(3):hover ~ .projector{
-    top: 30.6%;
+    top: 25.8%;
 }
 
 .links-option li:nth-child(4):hover ~ .projector{
-    top: 44.8%;
+    top: 38.8%;
 }
 
 .links-option li:nth-child(5):hover ~ .projector{
-    top: 59.6%;
+    top: 50.8%;
 }
 
 .links-option li:nth-child(6):hover ~ .projector{
-    top: 73.8%;
+    top: 63.6%;
 }
 
 .links-option li:nth-child(7):hover ~ .projector{
-    top: 87.9%;
+    top: 76.2%;
+}
+
+.links-option li:nth-child(8):hover ~ .projector{
+    top: 88.8%;
 }
 
 .closeopen{
