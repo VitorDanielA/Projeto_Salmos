@@ -1,18 +1,43 @@
 var selectedId
 var requisicaoList = [] 
 var requisicao = {}
+var itensList = [] 
+var itens = {}
 
-function requisicaoAddChange(){
-    requisicao.nome = document.getElementById('qtdReq').value;
+function requisicaoQtdAddChange(){
+    requisicao.qtd = document.getElementById('qtdReq').value;
     console.log(requisicao);
 }
 
+function requisicaoUsuAddChange(){
+    requisicao.nome = document.getElementById('usuReq').value;
+    console.log(requisicao);
+}
+
+// function requisicaoQtdAddChange(){
+//     requisicao.nome = document.getElementById('descReq').value;
+//     console.log(requisicao);
+// }
+
+setItens()
+setFornecedor()
 atualizarTabela()
 function atualizarTabela(){
     get('requisicao').then(data=>{
     console.log('Data', data)
     this.requisicaoList = data
     this.tableCreate(this.requisicaoList)
+        }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
+atualizarTabelaItens()
+function atualizarTabelaItens(){
+    get('item').then(data=>{
+    console.log('Data', data)
+    this.itensList = data
+    this.tableCreateItens(this.itensList)
         }).catch(error=>{
         console.log('Error ', error)
     })
@@ -73,6 +98,60 @@ function tableCreate(data){
     }
 }
 
+function setItens() {
+
+    get('item').then(itens=>{
+        console.log('Itens ', itens)
+
+        var multiCombo = document.getElementById('Setor')
+        // var multiComboEdit = document.getElementById('tipoUsuarioEdit')
+        itens.forEach(tipo=>{
+            let option = document.createElement('option')
+            option.value = tipo.id
+            option.innerHTML = tipo.nome
+
+            multiCombo.appendChild(option)
+
+            // let optionEdit = document.createElement('option')
+            // optionEdit.value = tipo.id
+            // optionEdit.innerHTML = tipo.nome
+
+            // multiComboEdit.appendChild(optionEdit)
+            
+        })
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
+function setFornecedor(){
+
+}
+
+function tableCreateItens(data){
+    var tableBody2 = document.getElementById('table-body2');
+    if(tableBody2){
+        tableBody2.innerHTML = ''
+        data.forEach(element => {
+        var row = document.createElement("tr");
+        
+        var colNome = document.createElement("td")
+        colNome.appendChild(document.createTextNode(element.nome))
+        row.appendChild(colNome)
+
+        var colQuantidade = document.createElement("td")
+        colQuantidade.appendChild(document.createTextNode(element.quantidade))
+        row.appendChild(colQuantidade)
+
+        var colFornecedor = document.createElement("td")
+        colFornecedor.appendChild(document.createTextNode(element.fornecedor))
+        row.appendChild(colFornecedor)
+        
+        tableBody2.appendChild(row)
+    });
+    }
+}
+
 function stopPropagation(event){
     event.stopPropagation();
 }
@@ -109,3 +188,21 @@ var tablee = document.getElementById("itens-table");
 function closePopup(){
     popup.classList.remove("open_popup");
 }
+
+function remover(){
+    console.log('Deletar ' + this.selectedId)
+
+    get_params('deletarRequisicoes', {id:this.selectedId}).then(result=>{
+        atualizarTabela()
+    }).catch(error=>{
+    })
+}
+
+
+
+let popup = document.getElementById("popupRemove");
+let telaDesativada = document.getElementById("tela");
+let backdrop = document.getElementById("backdrop");
+let popupEdit = document.getElementById("popupEdit");
+let popupAdd = document.getElementById("popupAdd");
+var tableInteract = document.getElementById("itens-table");

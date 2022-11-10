@@ -14,6 +14,8 @@
         <div class='wave -three'></div>
     </div>
 
+    <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>
+
     <div class="tela">
 
         <div class="popupRemove" id="popupRemove">
@@ -57,23 +59,21 @@
             </div>
 
             <div class="info_container">
-                <input type="text" name="qtdReq" placeholder="Quantidade..." autocomplete="off" class="loginUsuario" id="qtdReq">
+                <input type="text" name="qtdReq" placeholder="Quantidade..." autocomplete="off" class="loginUsuario" id="qtdReq" onchange="requisicaoQtdAddChange()">
+                <input type="text" name="usuReq" placeholder="Usuario da Requisição..." autocomplete="off" class="loginUsuario" id="usuReq" onchange="requisicaoUsuAddChange()">
+                <!-- <input type="text" name="descReq" placeholder="Descrição da Requisição..." autocomplete="off" class="loginUsuario" id="descReq"> -->
 
                 <select name="Setor" id="Setor">
-                    <option value="">Setor 1</option>
-                    <option value="">Setor 2</option>
-                    <option value="">Setor 3</option>
+                    
                 </select>
 
                 <select name="Item" id="Item">
-                    <option value="">Banana</option>
-                    <option value="">Pera</option>
-                    <option value="">Melancia</option>
+                    
                 </select>
-            </div>
 
-            <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
-            <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
+                <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
+                <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
+            </div>
         </div>
 
         <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>

@@ -84,11 +84,6 @@ function tableCreate(data){
 }
           
 function setTiposDeUsuario() {
-/* <select name="Tipo de Usuário" id="tipoUsuario" onchange="tipoUsuarioChange()">
-            <option value="1">Administrador</option>
-            <option value="2">Funcionário</option>
-            <option value="3">Estudante</option>
-        </select> */
 
     get('tipodeusuario').then(tiposdeusuarios=>{
         console.log('Tipos de usuario ', tiposdeusuarios)

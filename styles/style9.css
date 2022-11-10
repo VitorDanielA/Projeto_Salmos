@@ -345,7 +345,7 @@ tr:hover {
 }
 
 .popupAdd button{
-    width: 45%;
+    width: 40%;
     margin-top: 50px;
     padding: 10px 0;
     background: #fff;
@@ -696,6 +696,6 @@ table.itens-table2 tr{
     width: 700px;
     height: 100px;
     position: absolute;
-    top: 220px;
+    top: 180px;
     right: 30px;
 }
