@@ -25,7 +25,7 @@ function itemForncedorAddChange(){
 atualizarTabela()
 function atualizarTabela(){
     
-    get('item').then(data=>{
+    get('Item').then(data=>{
     console.log('Data', data)
     this.ItemList = data
     this.tableCreate(this.ItemList)

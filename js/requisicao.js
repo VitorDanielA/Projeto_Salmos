@@ -30,7 +30,7 @@ function atualizarTabela(){
 
 atualizarTabelaItens()
 function atualizarTabelaItens(){
-    get('item').then(data=>{
+    get('Item').then(data=>{
     console.log('Data', data)
     this.itensList = data
     this.tableCreateItens(this.itensList)
@@ -41,7 +41,7 @@ function atualizarTabelaItens(){
 
 atualizarTabelaItensEdit()
 function atualizarTabelaItensEdit(){
-    get('item').then(data=>{
+    get('Item').then(data=>{
     console.log('Data', data)
     this.itensList = data
     this.tableCreateEdit(this.itensList)
@@ -107,7 +107,7 @@ function tableCreate(data){
 
 function setItens() {
 
-    get('item').then(itens=>{
+    get('Item').then(itens=>{
         console.log('Itens ', itens)
 
         var multiCombo = document.getElementById('Item')
@@ -126,7 +126,7 @@ function setItens() {
 
 function setItensEdit() {
 
-    get('item').then(itens=>{
+    get('Item').then(itens=>{
         console.log('Itens ', itens)
 
         var multiComboEdit = document.getElementById('EditItem')
