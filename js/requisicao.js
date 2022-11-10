@@ -5,12 +5,12 @@ var itensList = []
 var itens = {}
 
 function requisicaoQtdAddChange(){
-    requisicao.qtd = document.getElementById('qtdReq').value;
+    requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
     console.log(requisicao);
 }
 
 function requisicaoUsuAddChange(){
-    requisicao.nome = document.getElementById('usuReq').value;
+    requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
     console.log(requisicao);
 }
 
@@ -20,7 +20,7 @@ function requisicaoUsuAddChange(){
 // }
 
 setItens()
-setFornecedor()
+setSetores()
 atualizarTabela()
 function atualizarTabela(){
     get('requisicao').then(data=>{
@@ -103,9 +103,35 @@ function setItens() {
     get('item').then(itens=>{
         console.log('Itens ', itens)
 
-        var multiCombo = document.getElementById('Setor')
+        var multiCombo = document.getElementById('Item')
         // var multiComboEdit = document.getElementById('tipoUsuarioEdit')
         itens.forEach(tipo=>{
+            let option = document.createElement('option')
+            option.value = tipo.id
+            option.innerHTML = tipo.nome
+
+            multiCombo.appendChild(option)
+
+            // let optionEdit = document.createElement('option')
+            // optionEdit.value = tipo.id
+            // optionEdit.innerHTML = tipo.nome
+
+            // multiComboEdit.appendChild(optionEdit)
+            
+        })
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
+function setSetores() {
+
+    get('setor').then(setor=>{
+        console.log('Setores ', setor)
+
+        var multiCombo = document.getElementById('Setor')
+        // var multiComboEdit = document.getElementById('tipoUsuarioEdit')
+        setor.forEach(tipo=>{
             let option = document.createElement('option')
             option.value = tipo.id
             option.innerHTML = tipo.nome
@@ -187,6 +213,23 @@ var tablee = document.getElementById("itens-table");
 
 function closePopup(){
     popup.classList.remove("open_popup");
+}
+
+function adicionar(){
+    this.requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
+    this.requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
+    this.requisicao.setor = {id:document.getElementById('Setor').value};
+    this.requisicao.itemRequisitado = {id:document.getElementById('Item').value};
+    this.requisicao.nome = document.getElementById('usuReq').value;
+
+    post('salvarRequisicoes', this.requisicao).then(result=>{
+        console.log('result', result)
+        atualizarTabela()
+    }).catch(error=>{
+        console.log('error', error)
+    })
+    
+    this.requisicao = {}
 }
 
 function remover(){
