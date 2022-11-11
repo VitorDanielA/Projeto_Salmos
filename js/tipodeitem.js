@@ -1,34 +1,30 @@
 var selectedId
-var ItemList = [] 
-var item = {}
+var TipoDeItemList = [] 
+var tipodeitem = {}
 
-function itemNameAddChange(){
-    item.nome = document.getElementById('itemNameAdd').value;
-    console.log(item);
-}
-function itemQuantidadeAddChange(){
-    item.quantidade = document.getElementById('itemQuantidadeAdd').value;
-    console.log(item);
+function tipoDeItemNameAddChange(){
+    tipodeitem.nome = document.getElementById('tipoDeItemNameAdd').value;
+    console.log(tipodeitem);
 }
 
-function itemTypeAddChange(){
-    item.descricao = document.getElementById('itemTypeAdd').value;
-    console.log(item);
+function tipoDeItemDescricaoAddChange(){
+    tipodeitem.descricao = document.getElementById('tipoDeItemDescricaoAdd').value;
+    console.log(tipodeitem);
 }
 
-function itemForncedorAddChange(){
-    item.fornecedor = document.getElementById('itemFornecedorAdd').value;
-    console.log(item);
+function tipoDeItemTipoAddChange(){
+    tipodeitem.tipo = document.getElementById('tipoDeItemTipoAdd').value;
+    console.log(tipodeitem);
 }
 
 
 atualizarTabela()
 function atualizarTabela(){
     
-    get('Item').then(data=>{
+    get('item').then(data=>{
     console.log('Data', data)
-    this.ItemList = data
-    this.tableCreate(this.ItemList)
+    this.TipoDeItemList= data
+    this.tableCreate(this.TipoDeItemList)
         }).catch(error=>{
         console.log('Error ', error)
     })
@@ -38,7 +34,7 @@ function tableCreate(data){
     var tableBody = document.getElementById('table-body');
     if(tableBody){
         tableBody.innerHTML = ''
-         data.forEach(element => {
+        data.forEach(element => {
         var row = document.createElement("tr");
 
         var colId = document.createElement("td")
@@ -49,16 +45,12 @@ function tableCreate(data){
         colNome.appendChild(document.createTextNode(element.nome))
         row.appendChild(colNome)
 
-        var colQuantidade = document.createElement("td")
-        colQuantidade.appendChild(document.createTextNode(element.quantidade))
-        row.appendChild(colQuantidade)
-
         var colDescricao = document.createElement("td")
         colDescricao.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colDescricao)
         
         var colFornecedor = document.createElement("td")
-        colFornecedor.appendChild(document.createTextNode(element.fornecedor))
+        colFornecedor.appendChild(document.createTextNode(element.tipo))
         
         tableBody.appendChild(row)
 
@@ -127,16 +119,15 @@ function openEditPopup(id){
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
     console.log('Id ',id)
-    let usr = this.ItemList.find(user=>{
+    let usr = this.TipoDeItemList.find(user=>{
         return user.id === id
     })
 
     console.log('Item achado ', usr)
     
-    document.getElementById('itemName').value = usr.nome
-    document.getElementById('itemType').value = usr.descricao
-    document.getElementById('itemQuantidade').value = usr.quantidade
-    document.getElementById('itemFornecedor').value = usr.fornecedor
+    document.getElementById('itipoDeItemName').value = usr.nome
+    document.getElementById('tipoDeItemDescricao').value = usr.descricao
+    document.getElementById('tipoDeItemTipo').value = usr.tipo
 }
 
 function closeEditPopup(){
@@ -144,7 +135,7 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-    post('salvarItem', item ).then(result=>{
+    post('salvarTipoDeItem', tipodeitem ).then(result=>{
         console.log('result', result)
         atualizarTabela()
     }).catch(error=>{
@@ -155,7 +146,7 @@ function adicionar(){
 function remover(){
     console.log('Deletar ' + this.selectedId)
 
-    get_params('deletarItem', {id:this.selectedId, p2:'is'}).then(result=>{
+    get_params('deletarTipoDeItem', {id:this.selectedId, p2:'is'}).then(result=>{
         atualizarTabela()
     }).catch(error=>{
     })
@@ -186,28 +177,27 @@ var table = document.getElementById("itens-table");
 
 function editar(){
 
-    var nome = document.getElementById("itemName").value;
-    var descricao = document.getElementById("itemType").value;
-    var quantidade = document.getElementById("itemQuantidade").value;
-    var fornecedor = document.getElementById("itemFornecedor").value;
+    var nome = document.getElementById("tipoDeItemName").value;
+    var descricao = document.getElementById("tipoDeItemDescricao").value;
+    var tipo = document.getElementById("tipoDeItemTipo").value;
+
 
     this.item = this.ItemList.find(user=>{
         return user.id === this.selectedId
     })
 
-    this.item.nome = nome
-    this.item.quantidade = quantidade
-    this.item.descricao = descricao
-    this.item.fornecedor = fornecedor
+    this.tipodeitem.nome = nome
+    this.tipodeitem.descricao = descricao
+    this.tipodeitem.tipo = tipo
 
-    console.log('Novo Item user ', this.item)
-    post('salvarItem', this.item).then(result=>{
+    console.log('novo tipodeitem ', this.tipodeitem)
+    post('salvarTipoDeItem', this.tipodeitem).then(result=>{
         console.log('Result ', result)
         this.atualizarTabela()
     }).catch(error=>{
         console.log('Error ', error)
     })
-    this.item = {}
+    this.tipodeitem = {}
 }
 
         let popup = document.getElementById("popupRemove");

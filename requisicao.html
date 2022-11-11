@@ -14,8 +14,16 @@
         <div class='wave -three'></div>
     </div>
 
-    <div class="tela">
-
+    <div class="form-popup" id="myForm">
+    <form class="form-container">
+        <h1>Info Requisição</h1>
+        <div class="infos">
+            <p>Item Requisitado: <span id="itemDemonstration"></span></p>
+            <p>Quantidade do Item Requisitado: <span id="itemQuantia"></span></p>
+            <button type="button" onclick="closeForm(), telaEnabled()">Fechar</button>
+        </div>
+    </form>
+    </div>
         <div class="popupRemove" id="popupRemove">
             <img src="images/ask.png" alt="question-sign-in-circles">
             <h2>Você tem certeza que deseja remover essa Requisição?</h2>
@@ -24,18 +32,41 @@
         </div>
 
         <div class="popupEdit" id="popupEdit">
-            <img src="images/caneta.png" alt="editar">
-            <h2>Digite as novas informações</h2>
-            <input type="text" name="loginUsuario" placeholder="Login..." autocomplete="off" class="loginUsuario" id="loginUsuarioEditar">
-            <input type="text" name="emailUsuario" placeholder="Email..." autocomplete="off" class="emailUsuario" id="emailUsuarioEditar">
-            <input type="text" name="nomeUsuario" placeholder="Nome..." autocomplete="off" class="nomeUsuario" id="nomeUsuarioEditar">
-            <label for="tipos">Selecione o tipo de Usuario: </label>
-            <select name="Tipo de Usuário" id="tipoUsuarioEdit">
+            <img src="images/botao-adicionar3.png" alt="adicionar">
+            <h2>Digite as novas informações da Requisição</h2>
 
-            </select> <br>
-            <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
-            <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
-        </div>
+            <div class="scroll2">
+                <table class="itens-table2" id="itens-table3">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Quantidade</th>
+                            <th>Fornecedor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body3">
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info_container">
+                <input type="text" name="qtdReq" placeholder="Quantidade..." autocomplete="off" class="loginUsuario" id="EditqtdReq">
+                <input type="text" name="usuReq" placeholder="Usuario da Requisição..." autocomplete="off" class="loginUsuario" id="EditusuReq" >
+                <!-- <input type="text" name="descReq" placeholder="Descrição da Requisição..." autocomplete="off" class="loginUsuario" id="descReq"> -->
+
+                <select name="Setor" id="EditSetor">
+                    
+                </select>
+
+                <select name="Item" id="EditItem">
+                    
+                </select>
+
+                <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
+                <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
+            </div>
+        </div> 
 
         <div class="popupAdd" id="popupAdd">
             <img src="images/botao-adicionar3.png" alt="adicionar">
@@ -51,47 +82,31 @@
                         </tr>
                     </thead>
                     <tbody id="table-body2">
-                        <tr>
-                            <td>Banana</td>
-                            <td>50</td>
-                            <td>Empresa A</td>
-                        </tr>
-                        <tr>
-                            <td>Pera</td>
-                            <td>90</td>
-                            <td>Empresa B</td>
-                        </tr>
-                        <tr>
-                            <td>Melancia</td>
-                            <td>100</td>
-                            <td>Empresa C</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
 
             <div class="info_container">
-                <input type="text" name="loginUsuario" placeholder="Quantidade..." autocomplete="off" class="loginUsuario" id="loginUsuarioEditar">
+                <input type="text" name="qtdReq" placeholder="Quantidade..." autocomplete="off" class="loginUsuario" id="qtdReq" onchange="requisicaoQtdAddChange()">
+                <input type="text" name="usuReq" placeholder="Usuario da Requisição..." autocomplete="off" class="loginUsuario" id="usuReq" onchange="requisicaoUsuAddChange()">
+                <!-- <input type="text" name="descReq" placeholder="Descrição da Requisição..." autocomplete="off" class="loginUsuario" id="descReq"> -->
 
                 <select name="Setor" id="Setor">
-                    <option value="">Setor 1</option>
-                    <option value="">Setor 2</option>
-                    <option value="">Setor 3</option>
+                    
                 </select>
 
                 <select name="Item" id="Item">
-                    <option value="">Banana</option>
-                    <option value="">Pera</option>
-                    <option value="">Melancia</option>
+                    
                 </select>
+
+                <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
+                <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
             </div>
-
-            <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
-            <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
         </div>
-
-        <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>
-
+    
+    <div class="tela" id="tela">
+    <div class="backdrop" id="backdrop" onclick="stopPropagation()"></div>
     <div class="search">
         <input type="text" placeholder="Procurar..." class="loupe" id="loupe" onkeyup="buscar()">
     </div>
@@ -102,7 +117,7 @@
                 <tr>
                     <th>Num Requisição</th>
                     <th>Usuário Requisitante</th>
-                    <th>Descrição</th>
+                    <th>Setor</th>
                     <th>Informações</th>
                     <th>Remover</th>
                     <th>Editar</th>
@@ -113,8 +128,8 @@
             </tbody>
         </table>
 
+        </div>
     </div>
-
     <button class="homescreen"> <a href="homescreen.html"> <img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></button>
 
     <button class="adicionar" type="button" onclick="openAddPopup(), teladisabled()"><img src="images/botao-adicionar2.png" alt="adicionar" title="Adicionar"></button>
