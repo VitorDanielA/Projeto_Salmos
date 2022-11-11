@@ -4,17 +4,16 @@ var setor = {}
 
 function setorNameAddChange(){
     setor.nome = document.getElementById('setorNameAdd').value;
-    console.log(tipodeusuario);
+    console.log(setor);
 }
 
 function setorDescricaoAddChange(){
-    setor.descricao = document.getElementById('setorDescricaoAdd').value;
-    console.log(tipodeusuario);
+    setor.descrição = document.getElementById('setorDescricaoAdd').value;
+    console.log(setor);
 }
 
 atualizarTabela()
 function atualizarTabela(){
-    
     get('setor').then(data=>{
     console.log('Data', data)
     this.setorList = data
@@ -40,7 +39,7 @@ function tableCreate(data){
         row.appendChild(colNome)
 
         var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.descricao))
+        colDescricao.appendChild(document.createTextNode(element.descrição))
         row.appendChild(colDescricao)
         
         
@@ -117,7 +116,7 @@ function tableCreate(data){
                 console.log('Tipo de Usuário achado ', usr)
                 
                 document.getElementById('setorName').value = usr.nome
-                document.getElementById('setorDescricao').value = usr.descricao
+                document.getElementById('setorDescricao').value = usr.descrição
             }
 
             function closeEditPopup(){
@@ -125,19 +124,25 @@ function tableCreate(data){
             }
 
             function adicionar(){
+
+                this.setor.nome = document.getElementById('setorNameAdd').value;
+                this.setor.descrição = document.getElementById('setorDescricaoAdd').value;
+
                 post('salvarSetor', setor ).then(result=>{
                     console.log('result', result)
                     atualizarTabela()
                 }).catch(error=>{
                     console.log('error', error)
                 })
+
+                this.setor = {}
             }
             
             
             function remover(){
                 console.log('Deletar ' + this.selectedId)
 
-                get_params('deletarSetor', {id:this.selectedId, p2:'is'}).then(result=>{
+                get_params('deletarSetor', {id:this.selectedId}).then(result=>{
                     atualizarTabela()
                 }).catch(error=>{
                 })
@@ -177,7 +182,7 @@ function tableCreate(data){
                 })
 
                 this.setor.nome = nome
-                this.setor.descricao = descricao
+                this.setor.descrição = descricao
 
                 console.log('Novo setor ', this.setor)
                 post('salvarSetor', this.setor).then(result=>{
@@ -186,7 +191,7 @@ function tableCreate(data){
                 }).catch(error=>{
                     console.log('Error ', error)
                 })
-                this.tipodeusuario = {}
+                this.setor = {}
             }
         
         let popup = document.getElementById("popupRemove");
