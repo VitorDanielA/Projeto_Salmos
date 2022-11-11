@@ -66,7 +66,7 @@ function tableCreate(data){
         row.appendChild(colUsuReq)
 
         var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.setor))
+        colDescricao.appendChild(document.createTextNode(element.setor ? element.setor.nome : ''))
         row.appendChild(colDescricao)
         
         tableBody.appendChild(row)
@@ -270,7 +270,7 @@ function openForm(id) {
 
     console.log('Requisicao achada ', usr)
 
-    document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado
+    document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado.nome
     document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
     teladisabled();
 }
@@ -345,7 +345,7 @@ function adicionar(){
     this.requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
     this.requisicao.setor = {id:document.getElementById('Setor').value};
     this.requisicao.itemRequisitado = {id:document.getElementById('Item').value};
-    this.requisicao.nome = document.getElementById('usuReq').value;
+    this.requisicao.nome = "Req";
 
     post('salvarRequisicoes', this.requisicao).then(result=>{
         console.log('result', result)
