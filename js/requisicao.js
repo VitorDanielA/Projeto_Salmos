@@ -335,16 +335,16 @@ function editar(){
 
 function adicionar(){
 
-    var selectSetor = document.getElementById("Setor");
-    var opcaoSetor = selectSetor.options[selectSetor.selectedIndex].text;
-    console.log(opcaoSetor)
-    var selectItem = document.getElementById("Item");
-    var opcaoItem = selectItem.options[selectItem.selectedIndex].text;
-    console.log(opcaoItem)
+    // var selectSetor = document.getElementById("Setor");
+    // var opcaoSetor = selectSetor.options[selectSetor.selectedIndex].text;
+    // console.log(opcaoSetor)
+    // var selectItem = document.getElementById("Item");
+    // var opcaoItem = selectItem.options[selectItem.selectedIndex].text;
+    // console.log(opcaoItem)
     this.requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
     this.requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
-    this.requisicao.setor = opcaoSetor
-    this.requisicao.itemRequisitado = opcaoItem
+    this.requisicao.setor = {id:document.getElementById('Setor').value};
+    this.requisicao.itemRequisitado = {id:document.getElementById('Item').value};
     this.requisicao.nome = document.getElementById('usuReq').value;
 
     post('salvarRequisicoes', this.requisicao).then(result=>{
