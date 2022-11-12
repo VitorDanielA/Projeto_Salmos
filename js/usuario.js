@@ -1,21 +1,6 @@
-/* <tr onmouseover="getindex(this)">
-                    <td>1</td>
-                    <td>Duda</td>
-                    <td>1234</td>
-                    <td>duda@gmail.com</td>
-                    <td>Eduarda</td>
-                    <td>1</td>
-                    <td class="remove" onclick="openPopup(), teladisabled()"><a href="#"><img src="images/excluir2.png" alt="remover"></a></td>
-                    <td class="edit" onclick="openEditPopup(), teladisabled()"><a href="#"><img src="images/botao-editar2.png" alt="remover"></a></td>
-                </tr> */
-
 var selectedId
 var usuariosList = []
 var usuario = {}
-
-    
-
-
 
 atualizarTabela()
 setTiposDeUsuario()

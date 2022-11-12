@@ -1,20 +1,19 @@
 var selectedId
 var setorList = [] 
-var setor= {}
+var setor = {}
 
 function setorNameAddChange(){
     setor.nome = document.getElementById('setorNameAdd').value;
-    console.log(tipodeusuario);
+    console.log(setor);
 }
 
 function setorDescricaoAddChange(){
-    setor.descricao = document.getElementById('setorDescricaoAdd').value;
-    console.log(tipodeusuario);
+    setor.descrição = document.getElementById('setorDescricaoAdd').value;
+    console.log(setor);
 }
 
 atualizarTabela()
 function atualizarTabela(){
-    
     get('setor').then(data=>{
     console.log('Data', data)
     this.setorList = data
@@ -40,7 +39,7 @@ function tableCreate(data){
         row.appendChild(colNome)
 
         var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.descricao))
+        colDescricao.appendChild(document.createTextNode(element.descrição))
         row.appendChild(colDescricao)
         
         
@@ -117,7 +116,7 @@ function tableCreate(data){
                 console.log('Tipo de Usuário achado ', usr)
                 
                 document.getElementById('setorName').value = usr.nome
-                document.getElementById('setorDescricao').value = usr.descricao
+                document.getElementById('setorDescricao').value = usr.descrição
             }
 
             function closeEditPopup(){
@@ -125,19 +124,25 @@ function tableCreate(data){
             }
 
             function adicionar(){
-                post('salvarTipoDeUsuario', tipodeusuario ).then(result=>{
+
+                this.setor.nome = document.getElementById('setorNameAdd').value;
+                this.setor.descrição = document.getElementById('setorDescricaoAdd').value;
+
+                post('salvarSetor', setor ).then(result=>{
                     console.log('result', result)
                     atualizarTabela()
                 }).catch(error=>{
                     console.log('error', error)
                 })
+
+                this.setor = {}
             }
             
             
             function remover(){
                 console.log('Deletar ' + this.selectedId)
 
-                get_params('deletarTipoDeUsuario', {id:this.selectedId, p2:'is'}).then(result=>{
+                get_params('deletarSetor', {id:this.selectedId}).then(result=>{
                     atualizarTabela()
                 }).catch(error=>{
                 })
@@ -169,24 +174,24 @@ function tableCreate(data){
 
             function editar(){
 
-                var nome = document.getElementById("tipoDeUsuarioName").value;
-                var descricao = document.getElementById("tipoDeUsuarioDescricao").value;
+                var nome = document.getElementById("setorName").value;
+                var descricao = document.getElementById("setorDescricao").value;
 
-                this.tipodeusuario = this.TipoDeUsuarioList.find(user=>{
+                this.setor = this.setorList.find(user=>{
                     return user.id === this.selectedId
                 })
 
-                this.tipodeusuario.nome = nome
-                this.tipodeusuario.descricao = descricao
+                this.setor.nome = nome
+                this.setor.descrição = descricao
 
-                console.log('Novo tipo user ', this.tipodeusuario)
-                post('salvarTipoDeUsuario', this.tipodeusuario).then(result=>{
+                console.log('Novo setor ', this.setor)
+                post('salvarSetor', this.setor).then(result=>{
                     console.log('Result ', result)
                     this.atualizarTabela()
                 }).catch(error=>{
                     console.log('Error ', error)
                 })
-                this.tipodeusuario = {}
+                this.setor = {}
             }
         
         let popup = document.getElementById("popupRemove");
