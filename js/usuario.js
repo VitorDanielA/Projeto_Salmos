@@ -1,11 +1,6 @@
-
 var selectedId
 var usuariosList = []
 var usuario = {}
-
-    
-
-
 
 atualizarTabela()
 setTiposDeUsuario()
