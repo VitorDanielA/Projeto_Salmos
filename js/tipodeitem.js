@@ -12,21 +12,18 @@ function tipoDeItemDescricaoAddChange(){
     console.log(tipodeitem);
 }
 
-function tipoDeItemTipoAddChange(){
-    tipodeitem.tipo = document.getElementById('tipoDeItemTipoAdd').value;
-    console.log(tipodeitem);
-}
 
 
 atualizarTabela()
 function atualizarTabela(){
     
-    get('item').then(data=>{
+    get('tipoDeItem').then(data=>{
     console.log('Data', data)
-    this.TipoDeItemList= data
+    this.TipoDeItemList = data
     this.tableCreate(this.TipoDeItemList)
+    console.log(TipoDeItemList);
         }).catch(error=>{
-        console.log('Error ', error)
+        console.log('Error ', error);
     })
 }
 
@@ -48,10 +45,7 @@ function tableCreate(data){
         var colDescricao = document.createElement("td")
         colDescricao.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colDescricao)
-        
-        var colFornecedor = document.createElement("td")
-        colFornecedor.appendChild(document.createTextNode(element.tipo))
-        
+
         tableBody.appendChild(row)
 
         var colRemover = document.createElement("td")
@@ -119,15 +113,14 @@ function openEditPopup(id){
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
     console.log('Id ',id)
-    let usr = this.TipoDeItemList.find(user=>{
-        return user.id === id
+    let tItem = this.TipoDeItemList.find(tipodeitem=>{
+        return tipodeitem.id === id
     })
 
-    console.log('Item achado ', usr)
+    console.log('Item achado ', tItem)
     
-    document.getElementById('itipoDeItemName').value = usr.nome
-    document.getElementById('tipoDeItemDescricao').value = usr.descricao
-    document.getElementById('tipoDeItemTipo').value = usr.tipo
+    document.getElementById('tipoDeItemName').value = tItem.nome
+    document.getElementById('tipoDeItemDescricao').value = tItem.descricao
 }
 
 function closeEditPopup(){
@@ -135,8 +128,9 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-    post('salvarTipoDeItem', tipodeitem ).then(result=>{
+    post('salvarTipoItem', tipodeitem ).then(result=>{
         console.log('result', result)
+        console.log('item list',TipoDeItemList)
         atualizarTabela()
     }).catch(error=>{
         console.log('error', error)
@@ -146,7 +140,7 @@ function adicionar(){
 function remover(){
     console.log('Deletar ' + this.selectedId)
 
-    get_params('deletarTipoDeItem', {id:this.selectedId, p2:'is'}).then(result=>{
+    get_params('deletarTipoItem', {id:this.selectedId, p2:'is'}).then(result=>{
         atualizarTabela()
     }).catch(error=>{
     })
@@ -179,19 +173,17 @@ function editar(){
 
     var nome = document.getElementById("tipoDeItemName").value;
     var descricao = document.getElementById("tipoDeItemDescricao").value;
-    var tipo = document.getElementById("tipoDeItemTipo").value;
 
 
-    this.item = this.ItemList.find(user=>{
-        return user.id === this.selectedId
+    this.tipodeitem = this.TipoDeItemList.find(tItem=>{
+        return tItem.id === this.selectedId
     })
 
     this.tipodeitem.nome = nome
     this.tipodeitem.descricao = descricao
-    this.tipodeitem.tipo = tipo
 
     console.log('novo tipodeitem ', this.tipodeitem)
-    post('salvarTipoDeItem', this.tipodeitem).then(result=>{
+    post('salvarTipoItem', this.tipodeitem).then(result=>{
         console.log('Result ', result)
         this.atualizarTabela()
     }).catch(error=>{

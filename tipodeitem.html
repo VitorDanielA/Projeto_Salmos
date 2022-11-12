@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipo de Item</title>
-    <link rel="stylesheet" href="styles/style9.css">
+    <link rel="stylesheet" href="styles/style5.css">
 </head>
 <body>
     <div class="popupRemove" id="popupRemove">
@@ -20,7 +20,6 @@
         <h2>Digite as novas informações</h2>
         <input type="text" name="tipoDeItemName" placeholder="Nome..." autocomplete="off" class="tipoDeItemName" id="tipoDeItemName">
         <input type="text" name="tipoDeItemDescricao" placeholder="Descrição..." autocomplete="off" class="tipoDeItemDescricao" id="tipoDeItemDescricao">
-        <input type="text" name="tipoDeItemTipo" placeholder="Tipo..." autocomplete="off" class="tipoDeItemTipo" id="tipoDeItemTipo">
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
     </div>
@@ -30,7 +29,6 @@
         <h2>Digite as informações do Tipo de Item</h2>
         <input type="text" name="tipoDeItemName" placeholder="Nome..." autocomplete="off" class="tipoDeItemName" id="tipoDeItemNameAdd" onchange="tipoDeItemNameAddChange()">
         <input type="text" name="tipoDeItemDescricao" placeholder="Descrição..." autocomplete="off" class="tipoDeItemDescricao" id="tipoDeItemDescricaoAdd" onchange="tipoDeItemDescricaoAddChange()">
-        <input type="text" name="tipoDeItemTipo" placeholder="Tipo..." autocomplete="off" class="tipoDeItemTipo" id="tipoDeItemTipoAdd" onchange="tipoDeItemTipoAddChange()">
         <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
     </div>
@@ -50,7 +48,6 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Descrição</th>
-                    <th>Tipo De Item</th>
                     <th>Remover</th>
                     <th>Editar</th>
                 </tr>
