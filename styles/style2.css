@@ -91,33 +91,36 @@ main{
 }
 
 .links-option li:nth-child(2):hover ~ .projector{
-    top: 13.5%;
+    top: 12.5%;
 }
 
 .links-option li:nth-child(3):hover ~ .projector{
-    top: 25.8%;
+    top: 23.8%;
 }
 
 .links-option li:nth-child(4):hover ~ .projector{
-    top: 38.8%;
+    top: 34.8%;
 }
 
 .links-option li:nth-child(5):hover ~ .projector{
-    top: 50.8%;
+    top: 45.8%;
 }
 
 .links-option li:nth-child(6):hover ~ .projector{
-    top: 63.6%;
+    top: 56.6%;
 }
 
 .links-option li:nth-child(7):hover ~ .projector{
-    top: 76.2%;
+    top: 67.2%;
 }
 
 .links-option li:nth-child(8):hover ~ .projector{
-    top: 88.8%;
+    top: 78.8%;
 }
 
+.links-option li:nth-child(9):hover ~ .projector{
+    top: 88.8%;
+}
 .closeopen{
     border: none;
     position: absolute;
