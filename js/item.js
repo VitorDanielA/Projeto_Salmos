@@ -2,6 +2,7 @@ var selectedId
 var ItemList = [] 
 var item = {}
 
+
 function itemNameAddChange(){
     item.nome = document.getElementById('itemNameAdd').value;
     console.log(item);
@@ -12,11 +13,11 @@ function itemQuantidadeAddChange(){
 }
 
 function itemTypeAddChange(){
-    item.descricao = document.getElementById('itemTypeAdd').value;
+    item.type = document.getElementById('itemTypeAdd').value;
     console.log(item);
 }
 
-function itemForncedorAddChange(){
+function itemFornecedorAddChange(){
     item.fornecedor = document.getElementById('itemFornecedorAdd').value;
     console.log(item);
 }
@@ -53,13 +54,13 @@ function tableCreate(data){
         colQuantidade.appendChild(document.createTextNode(element.quantidade))
         row.appendChild(colQuantidade)
 
-        var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.descricao))
-        row.appendChild(colDescricao)
+        var colType = document.createElement("td")
+        colType.appendChild(document.createTextNode(element.type))
+        row.appendChild(colType)
         
         var colFornecedor = document.createElement("td")
         colFornecedor.appendChild(document.createTextNode(element.fornecedor))
-        
+        row.appendChild(colFornecedor)
         tableBody.appendChild(row)
 
         var colRemover = document.createElement("td")
@@ -81,7 +82,7 @@ function tableCreate(data){
         
         colEditar.appendChild(editarLink)
         row.appendChild(colEditar)
-
+        
     });
     }
 }
@@ -134,9 +135,10 @@ function openEditPopup(id){
     console.log('Item achado ', usr)
     
     document.getElementById('itemName').value = usr.nome
-    document.getElementById('itemType').value = usr.descricao
+    document.getElementById('itemType').value = usr.type
     document.getElementById('itemQuantidade').value = usr.quantidade
     document.getElementById('itemFornecedor').value = usr.fornecedor
+
 }
 
 function closeEditPopup(){
@@ -187,7 +189,7 @@ var table = document.getElementById("itens-table");
 function editar(){
 
     var nome = document.getElementById("itemName").value;
-    var descricao = document.getElementById("itemType").value;
+    var type = document.getElementById("itemType").value;
     var quantidade = document.getElementById("itemQuantidade").value;
     var fornecedor = document.getElementById("itemFornecedor").value;
 
@@ -197,7 +199,7 @@ function editar(){
 
     this.item.nome = nome
     this.item.quantidade = quantidade
-    this.item.descricao = descricao
+    this.item.type = type
     this.item.fornecedor = fornecedor
 
     console.log('Novo Item user ', this.item)

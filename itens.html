@@ -33,7 +33,7 @@
         <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemNameAdd" onchange="itemNameAddChange()">
         <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeAdd" onchange="itemQuantidadeAddChange()">
         <input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd" onchange="itemTypeAddChange()">
-        <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedorAdd" onchange="itemForncedorAddChange()">
+        <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedorAdd" onchange="itemFornecedorAddChange()">
         <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
     </div>
@@ -50,6 +50,7 @@
         <table class="itens-table" id="itens-table">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nome</th>
                     <th>Quantidade</th>
                     <th>Descrição</th>
