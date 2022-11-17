@@ -13,16 +13,16 @@ function itemQuantidadeAddChange(){
 }
 
 function itemTypeAddChange(){
-    item.type = document.getElementById('itemTypeAdd').value;
+    item.tipoItem = {id:document.getElementById('itemType').value};
     console.log(item);
 }
 
 function itemFornecedorAddChange(){
-    item.fornecedor = document.getElementById('itemFornecedorAdd').value;
+    item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value};
     console.log(item);
 }
-
-
+setFornecedor()
+setTiposItem()
 atualizarTabela()
 function atualizarTabela(){
     
@@ -55,7 +55,7 @@ function tableCreate(data){
         row.appendChild(colQuantidade)
 
         var colType = document.createElement("td")
-        colType.appendChild(document.createTextNode(element.type))
+        colType.appendChild(document.createTextNode(element.tipoItem ? element.tipoItem.nome : ''))
         row.appendChild(colType)
         
         var colFornecedor = document.createElement("td")
@@ -135,7 +135,7 @@ function openEditPopup(id){
     console.log('Item achado ', usr)
     
     document.getElementById('itemName').value = usr.nome
-    document.getElementById('itemType').value = usr.type
+    document.getElementById('itemType').value = usr.tipoItem
     document.getElementById('itemQuantidade').value = usr.quantidade
     document.getElementById('itemFornecedor').value = usr.fornecedor
 
@@ -189,7 +189,7 @@ var table = document.getElementById("itens-table");
 function editar(){
 
     var nome = document.getElementById("itemName").value;
-    var type = document.getElementById("itemType").value;
+    var tipoItem = document.getElementById("itemType").value;
     var quantidade = document.getElementById("itemQuantidade").value;
     var fornecedor = document.getElementById("itemFornecedor").value;
 
@@ -199,7 +199,7 @@ function editar(){
 
     this.item.nome = nome
     this.item.quantidade = quantidade
-    this.item.type = type
+    this.item.tipoItem = tipoItem
     this.item.fornecedor = fornecedor
 
     console.log('Novo Item user ', this.item)
@@ -210,6 +210,43 @@ function editar(){
         console.log('Error ', error)
     })
     this.item = {}
+}
+
+function setTiposItem(){
+    get('tipoDeItem').then(tipoitem=>{
+        console.log('Tipos de item ', tipoitem)
+        var multiCombo = document.getElementById('itemType')
+        var multiComboEdit = document.getElementById('itemTypeEdit')
+        tipoitem.forEach(tipo=>{
+            let option = document.createElement('option')
+            option.value = tipo.id
+            option.innerHTML = tipo.nome
+
+            multiCombo.appendChild(option)
+            
+        })
+           
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
+function setFornecedor(){
+    get('fornecedor').then(fornecedores=>{
+        console.log('Fornecedores ', fornecedores)
+        var multiCombo = document.getElementById('itemFornecedorAdd')
+        fornecedores.forEach(forn=>{
+            let option = document.createElement('option')
+            option.value = forn.id
+            option.innerHTML = forn.nome
+
+            multiCombo.appendChild(option)
+            
+        })
+           
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
 }
 
         let popup = document.getElementById("popupRemove");

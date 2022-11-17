@@ -21,7 +21,11 @@
         <h2>Digite as novas informações</h2>
         <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemName">
         <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidade">
-        <input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemType">
+        <select name="Tipo de Item" id="itemTypeEdit" class="itemType" >
+
+        </select> <br>        
+        
+        <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemType">-->
         <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedor">
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
@@ -32,8 +36,16 @@
         <h2>Digite as informações do Item</h2>
         <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemNameAdd" onchange="itemNameAddChange()">
         <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeAdd" onchange="itemQuantidadeAddChange()">
-        <input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd" onchange="itemTypeAddChange()">
-        <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedorAdd" onchange="itemFornecedorAddChange()">
+        <select name="Tipo de Item" id="itemType" class="itemType"  placeholder="Tipo..." onchange="itemTypeAddChange()">
+
+        </select> <br>   
+        
+        <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd" onchange="itemTypeAddChange()">-->
+        <select name="Fornecedor" id="itemFornecedorAdd" class="itemFornecedor"  placeholder="Fornecedor...">
+
+        </select> <br>  
+        
+        <!--<input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedorAdd" onchange="itemFornecedorAddChange()">-->
         <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
     </div>
