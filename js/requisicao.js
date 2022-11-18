@@ -276,6 +276,7 @@ function openForm(id) {
 
     document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado.nome
     document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
+    document.getElementById('itemCodSaida').innerHTML = usr.codSaida
     teladisabled();
 }
   
@@ -361,14 +362,24 @@ function editar(){
     this.requisicao = {}
 }
 
+var codSaida;
+
 function adicionar(){
 
-    // var selectSetor = document.getElementById("Setor");
-    // var opcaoSetor = selectSetor.options[selectSetor.selectedIndex].text;
-    // console.log(opcaoSetor)
-    // var selectItem = document.getElementById("Item");
-    // var opcaoItem = selectItem.options[selectItem.selectedIndex].text;
-    // console.log(opcaoItem)
+    let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ0123456789!@#$&*"
+
+    const gerarCodigoSaida = () =>{
+        let novoCodigo = ""
+
+        for(let i = 0; i < 6; i++){
+            let charactersAleatorios = Math.floor(Math.random() * characters.length)
+            novoCodigo += characters[charactersAleatorios]
+        }
+        codSaida = novoCodigo
+        console.log(codSaida)
+    }
+
+    gerarCodigoSaida()
 
     get('Item').then(itens=>{
         console.log('Itens ', itens)
@@ -396,6 +407,7 @@ function adicionar(){
     this.requisicao.setor = {id:document.getElementById('Setor').value};
     this.requisicao.itemRequisitado = {id:document.getElementById('Item').value};
     this.requisicao.nome = "Req";
+    this.requisicao.codSaida = codSaida;
 
     post('salvarRequisicoes', this.requisicao).then(result=>{
         console.log('result', result)

@@ -87,23 +87,23 @@ main{
 }
 
 .links-option li:nth-child(1):hover ~ .projector{
-    top: 1.5%;
+    top: 1.2%;
 }
 
 .links-option li:nth-child(2):hover ~ .projector{
-    top: 12.5%;
+    top: 12.3%;
 }
 
 .links-option li:nth-child(3):hover ~ .projector{
-    top: 23.8%;
+    top: 23.3%;
 }
 
 .links-option li:nth-child(4):hover ~ .projector{
-    top: 34.8%;
+    top: 34.5%;
 }
 
 .links-option li:nth-child(5):hover ~ .projector{
-    top: 45.8%;
+    top: 45.6%;
 }
 
 .links-option li:nth-child(6):hover ~ .projector{
@@ -111,7 +111,7 @@ main{
 }
 
 .links-option li:nth-child(7):hover ~ .projector{
-    top: 67.2%;
+    top: 67.6%;
 }
 
 .links-option li:nth-child(8):hover ~ .projector{
@@ -119,7 +119,7 @@ main{
 }
 
 .links-option li:nth-child(9):hover ~ .projector{
-    top: 88.8%;
+    top: 89.8%;
 }
 .closeopen{
     border: none;
