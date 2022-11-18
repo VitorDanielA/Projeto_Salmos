@@ -1,182 +1,17 @@
 *{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body{
-  background-color: #0e6cc4;
-  overflow-x:hidden;
-  overflow-y:hidden;
-  height: 100vh;
-}
-
-.box {
-  position: fixed;
-  top: 0;
-  transform: rotate(80deg);
-  left: 0;
-}
-
-.wave {
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: .4;
-  position: absolute;
-  top: 3%;
-  left: 10%;
-  background: #0af;
-  width: 1500px;
-  height: 1300px;
-  margin-left: -150px;
-  margin-top: -250px;
-  transform-origin: 50% 48%;
-  border-radius: 43%;
-  animation: drift 7000ms infinite linear;
-}
-
-.wave.-three {
-  animation: drift 7500ms infinite linear;
-  position: fixed;
-  background-color: #77daff;
-}
-
-.wave.-two {
-  animation: drift 3000ms infinite linear;
-  opacity: .1;
-  background: black;
-  position: fixed;
-}
-
-.box:after {
-  content: '';
-  display: block;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  transform: translate3d(0, 0, 0);
-}
-
-@keyframes drift {
-  from { transform: rotate(0deg); }
-  from { transform: rotate(360deg); }
-}
-
-.contain {
-  animation-delay: 4s;
-  z-index: 1000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: row nowrap;
-  flex-flow: row nowrap;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-
-  background: #25a7d7;
-  background: -webkit-linear-gradient(#25a7d7, #2962FF);
-  background: linear-gradient(#25a7d7, #25a7d7);
-}
-
-.icon {
-  width: 100px;
-  height: 100px;
-  margin: 0 5px;
-}
-
-.icon:nth-child(2) img {-webkit-animation-delay: 0.2s;animation-delay: 0.2s}
-.icon:nth-child(3) img {-webkit-animation-delay: 0.3s;animation-delay: 0.3s}
-.icon:nth-child(4) img {-webkit-animation-delay: 0.4s;animation-delay: 0.4s}
-
-.icon img {
-  -webkit-animation: anim 2s ease infinite;
-  animation: anim 2s ease infinite;
-  -webkit-transform: scale(0,0) rotateZ(180deg);
-  transform: scale(0,0) rotateZ(180deg);
-}
-
-@-webkit-keyframes anim{
-  0% {
-    -webkit-transform: scale(0,0) rotateZ(-90deg);
-    transform: scale(0,0) rotateZ(-90deg);opacity:0
-  }
-  30% {
-    -webkit-transform: scale(1,1) rotateZ(0deg);
-    transform: scale(1,1) rotateZ(0deg);opacity:1
-  }
-  50% {
-    -webkit-transform: scale(1,1) rotateZ(0deg);
-    transform: scale(1,1) rotateZ(0deg);opacity:1
-  }
-  80% {
-    -webkit-transform: scale(0,0) rotateZ(90deg);
-    transform: scale(0,0) rotateZ(90deg);opacity:0
-  }
-}
-
-@keyframes anim{
-  0% {
-    -webkit-transform: scale(0,0) rotateZ(-90deg);
-    transform: scale(0,0) rotateZ(-90deg);opacity:0
-  }
-  30% {
-    -webkit-transform: scale(1,1) rotateZ(0deg);
-    transform: scale(1,1) rotateZ(0deg);opacity:1
-  }
-  50% {
-    -webkit-transform: scale(1,1) rotateZ(0deg);
-    transform: scale(1,1) rotateZ(0deg);opacity:1
-  }
-  80% {
-    -webkit-transform: scale(0,0) rotateZ(90deg);
-    transform: scale(0,0) rotateZ(90deg);opacity:0
-  }
-}
-
-/* Tudo isso aqui de cima é para animar o fundo */
-
-.search{
-    position: absolute;
-    top: 50px;
-    left: 225px;
-}
-
-.search .loupe{
-    background: url(../images/search-interface-symbol2.png);
+    height: 100vh;
+    background-image: linear-gradient(#13293D, #247BA0);
     background-repeat: no-repeat;
-    background-color: white;
-    background-position-x: 10px;
-    background-position-y: center;
-    background-size: 1.8em;
-    margin-left: 10px;
+    background-size: auto;
 }
 
-.search input{
-    width: 260px;
-    height: 40px;
-    border: 0;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 16px;
-    outline: 0;
-    cursor: auto;
-}
-
-.search input:focus{
-    border: 1px solid #0e6cc4;
-}
 
 .scroll{
     max-height: 500px;
@@ -204,7 +39,7 @@ th{
 
 table.itens-table{
     border-radius: 20px;
-    width: 900px;
+    width: 1100px;
     /* max-height: 500px; */
     text-align: center;
     /* margin-top: 100px; */
@@ -222,6 +57,7 @@ table.itens-table thead th{
     color: #e3e6d0;
     font-size: 16px;
     text-transform: uppercase;
+    border-bottom: 1px solid #f2f2f2;
     padding-bottom: 30px;
     padding-top: 20px;
     padding-left: 20px;
@@ -252,7 +88,7 @@ tr:last-child td:last-child{
     border-bottom-right-radius: 20px;
 }
 
-td:nth-child(4), td:nth-child(5){
+td:nth-child(5), td:nth-child(6){
     cursor: pointer;
 }
 
@@ -271,14 +107,15 @@ tr:hover {
     border-radius: 25px;
     background-color: #165b79;
     font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     cursor: pointer;
     position: absolute;
     top: 50px;
-    left: 930px;
+    left: 1035px;
 }
 
 .homescreen:hover{
-    background-color: #13293D;
+    background-color: #2177a8;
 }
 
 .homescreen img{
@@ -297,15 +134,42 @@ tr:hover {
     padding-left: 13px;
 }
 
+.search{
+    position: absolute;
+    top: 50px;
+    left: 125px;
+}
+
+.search .loupe{
+    background: url(../images/search-interface-symbol2.png);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position-x: 10px;
+    background-position-y: center;
+    background-size: 1.8em;
+    margin-left: 10px;
+}
+
+.search input{
+    width: 260px;
+    height: 40px;
+    border: 0;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 16px;
+    outline: 0;
+    cursor: auto;
+}
+
 .adicionar{
     position: absolute;
     top: 50px;
-    right: 570px; 
+    right: 545px; 
     width: 200px;
     height: 45px;
     background-color: #13293D;
     cursor: pointer;
-    border: 1px solid rgb(211, 210, 210);
+    border: 1px solid #666;
     border-radius: 20px;
     display: block;
 }
@@ -315,8 +179,7 @@ tr:hover {
 }
 
 .popupAdd{
-    width: 1200px;
-    height: 500px;
+    width: 500px;
     background-color: #13293D;
     border-radius: 10px;
     position: absolute;
@@ -357,10 +220,11 @@ tr:hover {
     margin-left: 10px;
 }
 
-.popupAdd .loginUsuario{
+/*-----------------adicionar---------------------*/
+.popupAdd .validadeEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
-    width: 90%;
+    width: 100%;
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
@@ -373,10 +237,10 @@ tr:hover {
     outline: 0;
 }
 
-.popupAdd .senhaUsuario{
+.popupAdd .valorEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
-    width: 90%;
+    width: 100%;
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
@@ -389,10 +253,10 @@ tr:hover {
     outline: 0;
 }
 
-.popupAdd .emailUsuario{
+.popupAdd .itensEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
-    width: 90%;
+    width: 100%;
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
@@ -405,10 +269,10 @@ tr:hover {
     outline: 0;
 }
 
-.popupAdd .nomeUsuario{
+.popupAdd .notaEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
-    width: 90%;
+    width: 100%;
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
@@ -420,6 +284,7 @@ tr:hover {
     background-position-x: 20px;
     outline: 0;
 }
+/*-------------------------------------------------*/
 
 .popupAdd button:hover{
     background-color: #666;
@@ -489,7 +354,8 @@ tr:hover {
     color: #e3e6d0;
 }
 
-.popupEdit .loginUsuario{
+/*--------------------------editar--------------------------*/
+.popupEdit .validadeEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -505,7 +371,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .senhaUsuario{
+.popupEdit .valorEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -521,7 +387,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .emailUsuario{
+.popupEdit .itensEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -537,7 +403,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .nomeUsuario{
+.popupEdit .notaEmpenho{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -552,7 +418,7 @@ tr:hover {
     background-position-x: 20px;
     outline: 0;
 }
-
+/*------------------------------------------------------------*/
 .popupEdit select{
     width: 220px;
     background-color: #fff;
@@ -644,4 +510,8 @@ tr:hover {
 .popupRemove button:hover{
     background-color: #2177a8;
 }
+@media(max-width: 600px){
+
+}
+
 
