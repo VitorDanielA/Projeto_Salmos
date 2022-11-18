@@ -135,6 +135,11 @@ function adicionar(){
     })
     
     this.empenho = {}
+
+    document.getElementById('notaEmpenhoAdd').value = '';
+    document.getElementById('validadeEmpenhoAdd').value = '';
+    document.getElementById('valorEmpenhoAdd').value = '';
+    document.getElementById('itensEmpenhoAdd').value = '';
 }
 
 function remover(){
