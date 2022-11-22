@@ -124,12 +124,12 @@ function closeEditPopup(){
 function adicionar(){
     this.empenho.nota = document.getElementById('notaEmpenhoAdd').value;
     this.empenho.validade = document.getElementById('validadeEmpenhoAdd').value;
-    this.empenho.valor = document.getElementById('valorEmpenhoAdd').value;
+    this.empenho.valor = parseFloat(document.getElementById('valorEmpenhoAdd').value);
     this.empenho.itens = document.getElementById('itensEmpenhoAdd').value;
     
     post('salvarEmpenho', this.empenho).then(result=>{
         console.log('result', result)
-        atualizarTabela()
+        atualizarTabela()   
     }).catch(error=>{
         console.log('error', error)
     })
