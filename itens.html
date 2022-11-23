@@ -25,7 +25,7 @@
 
         </select> <br>        
         
-        <!--<----->
+        <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemType">-->
         <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedor">
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
@@ -35,19 +35,19 @@
         <img src="images/botao-adicionar3.png" alt="editar">
         <h2>Digite as informações do Item</h2>
         <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemNameAdd" onchange="itemNameAddChange()">
-        <input type="text" name="itemDescricao" placeholder="Descrição..." autocomplete="off" class="itemDescricao" id="itemDescricaoAdd" onchange="itemDescricaoAddChange()">
+        <input type="text" name="itemDescricao" placeholder="Descrição..." autocomplete="off" class="itemQuantidade" id="itemDescricaoAdd" onchange="itemQuantidadeAddChange()">
         <input type="number" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeAdd" onchange="itemQuantidadeAddChange()">
 
-        <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidadeMinima" id="itemQuantidadeMinimaAdd" onchange="itemQuantidadeMinimaAddChange()">
+        <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeMinimaAdd" onchange="itemQuantidadeAddChange()">
 
          <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd" onchange="itemTypeAddChange()">-->
          <select name="Fornecedor" id="itemFornecedorAdd" class="itemFornecedor"  placeholder="Fornecedor...">
 
-            <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidade" id="itemValidadeAdd" onchange="itemValidadeAddChange()">
+            <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemQuantidade" id="itemValidade" onchange="itemValidadeAddChange()">
 
-            <input type="number" name="itemValor" placeholder="Valor do Item..." autocomplete="off" class="itemValor" id="itemValorAdd" onchange="itemValorAddChange()">
+            <input type="number" name="itemValor" placeholder="Valor do Item..." autocomplete="off" class="itemQuantidade" id="itemValor" onchange="itemValorAddChange()">
 
-            <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivel" id="itemPerecivelAdd" onchange="itemPerecivelAddChange()">
+            <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemQuantidade" id="itemPerecivel" onchange="itemPerecivelAddChange()">
 
 
         </select> <br>   
@@ -76,14 +76,12 @@
             <thead>
                 <tr>
                     <th>Código do item</th>
-                    <th>Item</th>
                     <th>Descrição</th>
                     <th>Fornecedor</th>
                     <th>Tipo de item</th>
                     <th>informações</th>
                     <th>Remover</th>
                     <th>Editar</th>
-                    
                     <!--criar um popup com as informações do item (nome, quantidade mínima, valor do item, data de validade, se é perecível)-->
                 </tr>
             </thead>

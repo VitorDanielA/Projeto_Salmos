@@ -7,30 +7,8 @@ function itemNameAddChange(){
     item.nome = document.getElementById('itemNameAdd').value;
     console.log(item);
 }
-function itemDescricaoAddChange(){
-    item.descricao = document.getElementById('itemDescricaoAdd').value;
-    console.log(item);
-}
 function itemQuantidadeAddChange(){
     item.quantidade = document.getElementById('itemQuantidadeAdd').value;
-    console.log(item);
-}
-
-function itemQuantidadeMinimaAddChange(){
-    item.quantidadeMinima = document.getElementById('itemquantidadeMinimaAdd').value;
-    console.log(item);
-}
-function itemValorAddChange(){
-    item.valor = document.getElementById('itemValorAdd').value;
-    console.log(item);
-}
-function itemValidadeAddChange(){
-    item.validade = document.getElementById('itemValidadeAdd').value;
-    console.log(item);
-
-}
-function itemPerecivelAddChange(){
-    item.perecivel= document.getElementById('itemPerecivelAdd').value;
     console.log(item);
 }
 
@@ -64,33 +42,17 @@ function tableCreate(data){
          data.forEach(element => {
         var row = document.createElement("tr");
 
+        var colId = document.createElement("td")
+        colId.appendChild(document.createTextNode(element.id))
+        row.appendChild(colId)
+
         var colNome = document.createElement("td")
         colNome.appendChild(document.createTextNode(element.nome))
         row.appendChild(colNome)
-        
-        var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.descricao))
-        row.appendChild(colDescricao)
 
         var colQuantidade = document.createElement("td")
         colQuantidade.appendChild(document.createTextNode(element.quantidade))
         row.appendChild(colQuantidade)
-
-        var colQuantidadeMinima = document.createElement("td")
-        colQuantidadeMinima.appendChild(document.createElement(element.quantidadeMinima))
-        row.appendChild(colQuantidadeMinima)
-
-        var colValidade = document.createElement("td")
-        colValidade.appendChild(document.createElement(element.validade))
-        row.appendChild(colValidade)
-
-        var colValor = document.createElement("td")
-        colValor.appendChild(document.createElement(element.valor))
-        row.appendChild(colValor)
-
-        var colPerecivel = document.createElement("td")
-        colPerecivel.appendChild(document.createElement(element.perecivel))
-        row.appendChild(colPerecivel)
 
         var colType = document.createElement("td")
         colType.appendChild(document.createTextNode(element.tipoItem ? element.tipoItem.nome : ''))
@@ -173,13 +135,8 @@ function openEditPopup(id){
     console.log('Item achado ', usr)
     
     document.getElementById('itemName').value = usr.nome
-    document.getElementById('itemDescricao').value = usr.descricao
-    document.getElementById('itemQuantidade').value = usr.quantidade
-    document.getElementById('itemQuantidadeMinima').value = usr.quantidadeMinima
-    document.getElementById('itemValidade').value = usr.validade
-    document.getElementById('itemValor').value = usr.valor
-    document.getElementById('itemPerecivel').value = usr.perecivel
     document.getElementById('itemType').value = usr.tipoItem
+    document.getElementById('itemQuantidade').value = usr.quantidade
     document.getElementById('itemFornecedor').value = usr.fornecedor
 
 }
@@ -232,28 +189,16 @@ var table = document.getElementById("itens-table");
 function editar(){
 
     var nome = document.getElementById("itemName").value;
-    var descricao = document.getElementById("itemDescricao").value;
-    var quantidade = document.getElementById("itemQuantidade").value;
-    var quantidadeMinima = document.getElementById("itemQuantidadeMinima").value;
-    var fornecedor = document.getElementById("itemFornecedor").value;
-    var validade = document.getElementById("itemValidade").value;
-    var valor = document.getElementById("itemValor").value;
-    var perecivel = document.getElementById("itemPerecivel").value;
     var tipoItem = document.getElementById("itemType").value;
-  
-    
+    var quantidade = document.getElementById("itemQuantidade").value;
+    var fornecedor = document.getElementById("itemFornecedor").value;
 
     this.item = this.ItemList.find(user=>{
         return user.id === this.selectedId
     })
 
     this.item.nome = nome
-    this.item.descricao = descricao
     this.item.quantidade = quantidade
-    this.item.quantidadeMinima = quantidadeMinima
-    this.item.validade = validade
-    this.item.valor= valor
-    this.item.perecivel = perecivel
     this.item.tipoItem = tipoItem
     this.item.fornecedor = fornecedor
 
