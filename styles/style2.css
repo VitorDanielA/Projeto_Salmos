@@ -43,12 +43,13 @@ main{
 
 .links-option li{
     padding: 10px 0;
+    margin-bottom: -5px;
 }
 
 .links-option li a{
     text-decoration: none;
     color: #1A1A1A;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     align-items: center;
     width: 120%;

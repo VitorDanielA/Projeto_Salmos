@@ -47,11 +47,11 @@ function tableCreate(data){
         row.appendChild(colId)
 
         var colNome = document.createElement("td")
-        colNome.appendChild(document.createTextNode(element.nome))
+        colNome.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colNome)
 
         var colQuantidade = document.createElement("td")
-        colQuantidade.appendChild(document.createTextNode(element.quantidade))
+        colQuantidade.appendChild(document.createTextNode(element.quantidadeMinima))
         row.appendChild(colQuantidade)
 
         var colType = document.createElement("td")
