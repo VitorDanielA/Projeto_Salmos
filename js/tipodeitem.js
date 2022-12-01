@@ -128,6 +128,11 @@ function closeEditPopup(){
 }
 
 function adicionar(){
+
+    tipodeitem.nome = document.getElementById("tipoDeItemNameAdd").value
+    tipodeitem.descricao = document.getElementById("tipoDeItemDescricaoAdd").value
+    tipodeitem.name = "teste"
+
     post('salvarTipoItem', tipodeitem ).then(result=>{
         console.log('result', result)
         console.log('item list',TipoDeItemList)

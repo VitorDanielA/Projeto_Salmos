@@ -22,7 +22,7 @@ function tableCreate(data){
         var row = document.createElement("tr");
         
         var colNome = document.createElement("td")
-        colNome.appendChild(document.createTextNode(element.nomee))
+        colNome.appendChild(document.createTextNode(element.nome))
         row.appendChild(colNome)
 
         var colEmail = document.createElement("td")
@@ -127,7 +127,7 @@ function openEditPopup(id){
 
     console.log('Fornecedor achado ', usr)
                 
-    document.getElementById('fornecedorName').value = usr.nomee
+    document.getElementById('fornecedorName').value = usr.nome
     document.getElementById('fornecedorEmail').value = usr.email
     document.getElementById('fornecedorTelefone').value = usr.telefone
     document.getElementById('fornecedorCnpj').value = usr.cnpj
@@ -138,7 +138,7 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-    this.fornecedor.nomee = document.getElementById('fornecedorNameAdd').value;
+    this.fornecedor.nome = document.getElementById('fornecedorNameAdd').value;
     this.fornecedor.email = document.getElementById('fornecedorEmailAdd').value;
     this.fornecedor.telefone = document.getElementById('fornecedorTelefoneAdd').value;
     this.fornecedor.cnpj = document.getElementById('fornecedorCpnjAdd').value;
