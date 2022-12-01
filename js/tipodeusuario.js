@@ -2,20 +2,20 @@ var selectedId
 var TipoDeUsuarioList = [] 
 var tipodeusuario = {}
 
-function tipoDeUsuarioNameAddChange(){
-    tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
-    console.log(tipodeusuario);
-}
+// function tipoDeUsuarioNameAddChange(){
+//     tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
+//     console.log(tipodeusuario);
+// }
 
-function tipoDeUsuarioDescricaoAddChange(){
-    tipodeusuario.descricao = document.getElementById('tipoDeUsuarioDescricaoAdd').value;
-    console.log(tipodeusuario);
-}
+// function tipoDeUsuarioDescricaoAddChange(){
+//     tipodeusuario.descricao = document.getElementById('tipoDeUsuarioDescricaoAdd').value;
+//     console.log(tipodeusuario);
+// }
 
 atualizarTabela()
 function atualizarTabela(){
     
-    get('tipodeusuario').then(data=>{
+    get('perfilusuario').then(data=>{
     console.log('Data', data)
     this.TipoDeUsuarioList = data
     this.tableCreate(this.TipoDeUsuarioList)
@@ -125,7 +125,15 @@ function tableCreate(data){
             }
 
             function adicionar(){
-                post('salvarTipoDeUsuario', tipodeusuario ).then(result=>{
+
+                this.tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
+                this.tipodeusuario.descricao = document.getElementById('tipoDeUsuarioDescricaoAdd').value;
+                this.tipodeusuario.name = document.getElementById('tipoDeUsuarioNameAdd').value;
+
+                console.log(tipodeusuario)
+                console.log(tipodeusuario.id)
+
+                post('salvarPerfilUsuario', tipodeusuario).then(result=>{
                     console.log('result', result)
                     atualizarTabela()
                 }).catch(error=>{
@@ -137,7 +145,7 @@ function tableCreate(data){
             function remover(){
                 console.log('Deletar ' + this.selectedId)
 
-                get_params('deletarTipoDeUsuario', {id:this.selectedId, p2:'is'}).then(result=>{
+                get_params('deletarPerfilDeUsuario', {id:this.selectedId, p2:'is'}).then(result=>{
                     atualizarTabela()
                 }).catch(error=>{
                 })
@@ -180,7 +188,7 @@ function tableCreate(data){
                 this.tipodeusuario.descricao = descricao
 
                 console.log('Novo tipo user ', this.tipodeusuario)
-                post('salvarTipoDeUsuario', this.tipodeusuario).then(result=>{
+                post('salvarPerfilUsuario', this.tipodeusuario).then(result=>{
                     console.log('Result ', result)
                     this.atualizarTabela()
                 }).catch(error=>{

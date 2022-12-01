@@ -35,11 +35,11 @@ function tableCreate(data){
         row.appendChild(colId)
 
         var colNome = document.createElement("td")
-        colNome.appendChild(document.createTextNode(element.nome))
+        colNome.appendChild(document.createTextNode(element.name))
         row.appendChild(colNome)
 
         var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.descrição))
+        colDescricao.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colDescricao)
         
         
@@ -115,8 +115,8 @@ function tableCreate(data){
 
                 console.log('Tipo de Usuário achado ', usr)
                 
-                document.getElementById('setorName').value = usr.nome
-                document.getElementById('setorDescricao').value = usr.descrição
+                document.getElementById('setorName').value = usr.name
+                document.getElementById('setorDescricao').value = usr.descricao
             }
 
             function closeEditPopup(){
@@ -125,13 +125,14 @@ function tableCreate(data){
 
             function adicionar(){
 
-                this.setor.nome = document.getElementById('setorNameAdd').value;
-                this.setor.descrição = document.getElementById('setorDescricaoAdd').value;
-
-                post('salvarSetor', setor ).then(result=>{
+                this.setor.name = document.getElementById('setorNameAdd').value;
+                this.setor.descricao = document.getElementById('setorDescricaoAdd').value;
+                console.log(setor)
+                post('salvarSetor', this.setor).then(result=>{
                     console.log('result', result)
                     atualizarTabela()
                 }).catch(error=>{
+                    console.log(setor)
                     console.log('error', error)
                 })
 
@@ -181,8 +182,8 @@ function tableCreate(data){
                     return user.id === this.selectedId
                 })
 
-                this.setor.nome = nome
-                this.setor.descrição = descricao
+                this.setor.name = nome
+                this.setor.descricao = descricao
 
                 console.log('Novo setor ', this.setor)
                 post('salvarSetor', this.setor).then(result=>{

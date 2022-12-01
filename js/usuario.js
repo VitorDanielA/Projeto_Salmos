@@ -25,18 +25,14 @@ function tableCreate(data){
             var colLogin = document.createElement("td")
             colLogin.appendChild(document.createTextNode(element.login))
             row.appendChild(colLogin)
-                    
-            var colEmail = document.createElement("td")
-            colEmail.appendChild(document.createTextNode(element.email))
-            row.appendChild(colEmail)
             
-            var colNome = document.createElement("td")
-            var userLink = document.createElement("a")
-            userLink.setAttribute("href", HOST+API+'usuario/'+element.id)
-            userLink.setAttribute("target", '_blank')
-            userLink.innerHTML = element.nome
-            colNome.appendChild(userLink)
-            row.appendChild(colNome)
+            // var colNome = document.createElement("td")
+            // var userLink = document.createElement("a")
+            // userLink.setAttribute("href", HOST+API+'usuario/'+element.id)
+            // userLink.setAttribute("target", '_blank')
+            // userLink.innerHTML = element.nome
+            // colNome.appendChild(userLink)
+            // row.appendChild(colNome)
             
             var colTipo = document.createElement("td")
             colTipo.appendChild(document.createTextNode(element.tipodeusuario ? element.tipodeusuario.nome : ''))
@@ -70,8 +66,8 @@ function tableCreate(data){
           
 function setTiposDeUsuario() {
 
-    get('tipodeusuario').then(tiposdeusuarios=>{
-        console.log('Tipos de usuario ', tiposdeusuarios)
+    get('perfilusuario').then(tiposdeusuarios=>{
+        console.log('Perfis de usuario ', tiposdeusuarios)
 
         var multiCombo = document.getElementById('tipoUsuario')
         var multiComboEdit = document.getElementById('tipoUsuarioEdit')
@@ -142,8 +138,6 @@ function openEditPopup(id){
     console.log('Usuario achado ', usr)
     
     document.getElementById('loginUsuarioEditar').value = usr.login
-    document.getElementById('emailUsuarioEditar').value = usr.email
-    document.getElementById('nomeUsuarioEditar').value = usr.nome
     if(usr.tipodeusuario)
         document.getElementById('tipoUsuarioEdit').value = usr.tipodeusuario.id
 }
@@ -155,11 +149,13 @@ function closeEditPopup(){
 }
 
 function adicionar(){
+
     this.usuario.login = document.getElementById('loginUsuarioAdd').value;
-    this.usuario.nome = document.getElementById('nomeUsuarioAdd').value;
     this.usuario.senha = document.getElementById('senhaUsuarioAdd').value;
-    this.usuario.email = document.getElementById('emailUsuarioAdd').value;
-    this.usuario.tipodeusuario = {id:document.getElementById('tipoUsuario').value};
+    this.usuario.nome = "Teste"
+    this.usuario.name = "Testee"
+    this.usuario.perfilUsuario = {id:document.getElementById('tipoUsuario').value};
+    console.log(this.usuario)
 
     post('salvarUsuario', this.usuario).then(result=>{
         console.log('result', result)
@@ -205,17 +201,13 @@ var table = document.getElementById("itens-table");
 
 function editar(){
     let newLogin = document.getElementById('loginUsuarioEditar').value
-    let newEmail = document.getElementById('emailUsuarioEditar').value
-    let newNome = document.getElementById('nomeUsuarioEditar').value
     let newTipoId = document.getElementById('tipoUsuarioEdit').value
 
     this.usuario = this.usuariosList.find(user=>{
         return user.id === this.selectedId
     })
     
-    this.usuario.nome = newNome
     this.usuario.login = newLogin
-    this.usuario.email = newEmail
     this.usuario.tipodeusuario = {id:newTipoId}
 
     console.log('Novo user ', this.usuario)
