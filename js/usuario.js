@@ -26,13 +26,17 @@ function tableCreate(data){
             colLogin.appendChild(document.createTextNode(element.login))
             row.appendChild(colLogin)
             
-            // var colNome = document.createElement("td")
-            // var userLink = document.createElement("a")
-            // userLink.setAttribute("href", HOST+API+'usuario/'+element.id)
-            // userLink.setAttribute("target", '_blank')
-            // userLink.innerHTML = element.nome
-            // colNome.appendChild(userLink)
-            // row.appendChild(colNome)
+            var colNome = document.createElement("td")
+            var userLink = document.createElement("a")
+            userLink.setAttribute("href", HOST+API+'usuario/'+element.id)
+            userLink.setAttribute("target", '_blank')
+            userLink.innerHTML = element.name
+            colNome.appendChild(userLink)
+            row.appendChild(colNome)
+            
+            var colEmail = document.createElement("td")
+            colEmail.appendChild(document.createTextNode(element.login))
+            row.appendChild(colEmail)
             
             var colTipo = document.createElement("td")
             colTipo.appendChild(document.createTextNode(element.tipodeusuario ? element.tipodeusuario.nome : ''))
@@ -152,9 +156,11 @@ function adicionar(){
 
     this.usuario.login = document.getElementById('loginUsuarioAdd').value;
     this.usuario.senha = document.getElementById('senhaUsuarioAdd').value;
-    this.usuario.nome = "Teste"
-    this.usuario.name = "Testee"
+
     this.usuario.perfilUsuario = {id:document.getElementById('tipoUsuario').value};
+    console.log(this.usuario)
+
+    this.usuario.pessoa = null;
     console.log(this.usuario)
 
     post('salvarUsuario', this.usuario).then(result=>{

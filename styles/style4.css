@@ -220,6 +220,24 @@ tr:hover {
     margin-left: 10px;
 }
 
+
+.popupAdd .emailUsuario{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 45px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/o-email2.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
+
+
 .popupAdd .loginUsuario{
     border: 1px #13293D solid;
     padding-left: 10px;
@@ -244,6 +262,22 @@ tr:hover {
     margin: 4px 2px;
     border-radius: 25px;
     background-image: url(../images/senha.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
+
+.popupAdd .nomeUsuario{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 45px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/nome.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
