@@ -30,6 +30,7 @@ function atualizarTabela(){
     console.log('Data', data)
     this.ItemList = data
     this.tableCreate(this.ItemList)
+    console.log(ItemList)
         }).catch(error=>{
         console.log('Error ', error)
     })
@@ -135,10 +136,14 @@ function openEditPopup(id){
     console.log('Item achado ', usr)
     
     document.getElementById('itemName').value = usr.nome
-    document.getElementById('itemType').value = usr.tipoItem
+    document.getElementById('itemDescricao').value = usr.descricao
     document.getElementById('itemQuantidade').value = usr.quantidade
+    document.getElementById('itemQuantidadeMinima').value = usr.quantidadeMinima
     document.getElementById('itemFornecedor').value = usr.fornecedor
-
+    document.getElementById('itemValidade').value = usr.validade
+    document.getElementById('itemValor').value = usr.valor
+   
+    document.getElementById('itemType').value = usr.tipoItem
 }
 
 function closeEditPopup(){
@@ -146,6 +151,17 @@ function closeEditPopup(){
 }
 
 function adicionar(){
+    this.item.name = getElementById("itemNameAdd").value;
+    this.item.descricao = getElementById("itemDescicaoAdd").value;
+    this.item.quantidade = getElementById("itemQuantidade").value;
+    this.item.quantidadeMinima = getElementById("ItemQuantidadeMinima").value;
+    this.item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value}
+    this.item.data = getElementById('itemValidadeAdd').value;
+    this.item.perecivel = getElementById('itemPerecivelAdd').value;
+    this.item.valor = getElementById('itemValorAdd').value;
+    this.item.tipoItem = {id:document.getElementById('itemType').value}
+    this.item.name = 'teste'
+
     post('salvarItem', item ).then(result=>{
         console.log('result', result)
         atualizarTabela()
