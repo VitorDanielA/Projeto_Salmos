@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="styles/style3.css">
 </head>
 <body>
+
+    <!--Olha isso daqui vertinho, é modelo da requisição, isso aqui é pra você mostrar as informações no popup de info, ja configurei o clique-->
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <h1>Info Requisição</h1>
+            <div class="infos">
+                <p>Item Requisitado: <span id="itemDemonstration"></span></p>
+                <p>Quantidade do Item Requisitado: <span id="itemQuantia"></span></p>
+                <p>Código de Saída: <span id="itemCodSaida"></span></p>
+                <button type="button" onclick="closeForm(), telaEnabled()">Fechar</button>
+            </div>
+        </form>
+        </div>
 
     <div class="popupRemove" id="popupRemove">
         <img src="images/ask.png" alt="question-sign-in-circles">
@@ -34,24 +47,24 @@
     <div class="popupAdd" id="popupAdd">
         <img src="images/botao-adicionar3.png" alt="editar">
         <h2>Digite as informações do Item</h2>
-        <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemNameAdd" onchange="itemNameAddChange()">
-        <input type="text" name="itemDescricao" placeholder="Descrição..." autocomplete="off" class="itemDescricaoAdd" id="itemDescricaoAdd" onchange="itemQuantidadeAddChange()">
-        <input type="number" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeAdd" onchange="itemQuantidadeAddChange()">
+        <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemNameAdd">
+        <input type="text" name="itemDescricao" placeholder="Descrição..." autocomplete="off" class="itemDescricaoAdd" id="itemDescricaoAdd" >
+        <input type="number" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeAdd" >
 
-        <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeMinimaAdd" onchange="itemQuantidadeAddChange()">
+        <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeMinimaAdd" >
 
          <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd" onchange="itemTypeAddChange()">-->
          <select name="Fornecedor" id="itemFornecedorAdd" class="itemFornecedor"  placeholder="Fornecedor...">
 
-            <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidadeAdd" id="itemValidade" onchange="itemValidadeAddChange()">
+            <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidadeAdd" id="itemValidadeAdd">
 
-            <input type="number" name="itemValor" placeholder="Valor do Item..." autocomplete="off" class="itemValorAdd" id="itemValor" onchange="itemValorAddChange()">
+            <input type="number" name="itemValor" placeholder="Valor do Item..." autocomplete="off" class="itemValorAdd" id="itemValorAdd">
 
-            <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivelAdd" id="itemPerecivel" onchange="itemPerecivelAddChange()">
+            <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivelAdd" id="itemPerecivelAdd">
 
         </select> <br>   
         
-        <select name="Tipo de Item" id="itemType" class="itemType"  placeholder="Tipo..." onchange="itemTypeAddChange()">
+        <select name="Tipo de Item" id="itemType" class="itemType"  placeholder="Tipo...">
 
        
 
@@ -97,7 +110,6 @@
     </div>
     <script type="text/javascript" src="js/requisitions.js"></script>
     <script type="text/javascript" src="js/item.js"></script> 
-
 
 </body>
 </html>

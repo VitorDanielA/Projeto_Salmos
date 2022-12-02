@@ -3,24 +3,24 @@ var ItemList = []
 var item = {}
 
 
-function itemNameAddChange(){
-    item.nome = document.getElementById('itemNameAdd').value;
-    console.log(item);
-}
-function itemQuantidadeAddChange(){
-    item.quantidade = document.getElementById('itemQuantidadeAdd').value;
-    console.log(item);
-}
+// function itemNameAddChange(){
+//     item.nome = document.getElementById('itemNameAdd').value;
+//     console.log(item);
+// }
+// function itemQuantidadeAddChange(){
+//     item.quantidade = document.getElementById('itemQuantidadeAdd').value;
+//     console.log(item);
+// }
 
-function itemTypeAddChange(){
-    item.tipoItem = {id:document.getElementById('itemType').value};
-    console.log(item);
-}
+// function itemTypeAddChange(){
+//     item.tipoItem = {id:document.getElementById('itemType').value};
+//     console.log(item);
+// }
 
-function itemFornecedorAddChange(){
-    item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value};
-    console.log(item);
-}
+// function itemFornecedorAddChange(){
+//     item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value};
+//     console.log(item);
+// }
 setFornecedor()
 setTiposItem()
 atualizarTabela()
@@ -50,19 +50,32 @@ function tableCreate(data){
         var colNome = document.createElement("td")
         colNome.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colNome)
-
-        var colQuantidade = document.createElement("td")
-        colQuantidade.appendChild(document.createTextNode(element.quantidadeMinima))
-        row.appendChild(colQuantidade)
+        
+        console.log(element.fornecedor?.name)
+        var colFornecedor = document.createElement("td")
+        colFornecedor.appendChild(document.createTextNode(element.fornecedor ? element.fornecedor.nome: ''))
+        row.appendChild(colFornecedor)
 
         var colType = document.createElement("td")
         colType.appendChild(document.createTextNode(element.tipoItem ? element.tipoItem.nome : ''))
         row.appendChild(colType)
         
-        var colFornecedor = document.createElement("td")
-        colFornecedor.appendChild(document.createTextNode(element.fornecedor))
-        row.appendChild(colFornecedor)
+        // var colFornecedor = document.createElement("td")
+        // colFornecedor.appendChild(document.createTextNode(element.fornecedor))
+        // row.appendChild(colFornecedor)
+        // tableBody.appendChild(row)
+
         tableBody.appendChild(row)
+
+        var colInfo = document.createElement("td")
+        colInfo.setAttribute("onclick", "openForm("+element.id+")")
+        var infoLink = document.createElement("a")
+        var imgInfo = document.createElement("img")
+        imgInfo.setAttribute("src", "images/simbolo-de-informacao.png")
+        infoLink.appendChild(imgInfo)
+
+        colInfo.appendChild(infoLink)
+        row.appendChild(colInfo)
 
         var colRemover = document.createElement("td")
         colRemover.setAttribute("onclick", "openPopup("+element.id+")")
@@ -125,6 +138,29 @@ function closePopup(){
     popup.classList.remove("open_popup");
 }
 
+//Isso daqui é a função do JavaScript pra você colocar as informações la dentro do Span
+
+function openForm(id) {
+    this.selectedId = id
+    this.selectedIdEdit = id
+    document.getElementById("myForm").style.display = "block";
+    console.log('Id ',id)
+    let usr = this.requisicaoList.find(requisicao=>{
+        return requisicao.id === id
+    })
+
+    console.log('Requisicao achada ', usr)
+
+    document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado.nome
+    document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
+    document.getElementById('itemCodSaida').innerHTML = usr.codSaida
+    teladisabled();
+}
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+
 function openEditPopup(id){
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
@@ -151,16 +187,17 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-    this.item.name = getElementById("itemNameAdd").value;
-    this.item.descricao = getElementById("itemDescicaoAdd").value;
-    this.item.quantidade = getElementById("itemQuantidade").value;
-    this.item.quantidadeMinima = getElementById("ItemQuantidadeMinima").value;
+    this.item.name = document.getElementById("itemNameAdd").value;
+    this.item.nome = document.getElementById("itemNameAdd").value;
+    this.item.descricao = document.getElementById("itemDescricaoAdd").value;
+    this.item.quantidade = document.getElementById("itemQuantidadeAdd").value;
+    this.item.quantidadeMinima = document.getElementById("itemQuantidadeMinimaAdd").value;
     this.item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value}
-    this.item.data = getElementById('itemValidadeAdd').value;
-    this.item.perecivel = getElementById('itemPerecivelAdd').value;
-    this.item.valor = getElementById('itemValorAdd').value;
-    this.item.tipoItem = {id:document.getElementById('itemType').value}
-    this.item.name = 'teste'
+    this.item.dataValidade = document.getElementById('itemValidadeAdd').value;
+    this.item.perecivel = document.getElementById('itemPerecivelAdd').value;
+    this.item.valorItem = document.getElementById('itemValorAdd').value;
+    this.item.tipoDeItem = {id:document.getElementById('itemType').value}
+    this.item.codigoItem = "123"
 
     post('salvarItem', item ).then(result=>{
         console.log('result', result)

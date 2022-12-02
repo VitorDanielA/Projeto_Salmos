@@ -97,6 +97,11 @@ tr:last-child td:first-child{
 tr:last-child td:last-child{
     border-bottom-right-radius: 20px;
 }
+
+td:nth-child(5), td:nth-child(6), td:nth-child(7){
+    cursor: pointer;
+}
+
 thead th{
     background-color: #13293D;
 }
@@ -484,6 +489,52 @@ tr:hover {
 
 .popupRemove button:hover{
     background-color: #2177a8;
+}
+
+.form-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: none;
+}
+  
+.form-container {
+    width: 600px;
+    height: 400px;
+    padding: 10px;
+    background-color: #020f1b;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.form-container h1{
+    text-align: center;
+}
+
+.form-container button{
+    width: 82%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 14px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 50px;
+}
+
+.form-container button:hover{
+    background-color: #666;
+}
+
+.form-container p{
+    padding-top: 30px;
+    padding-left: 35px;
+    text-align: justify;
 }
 @media(max-width: 600px){
 
