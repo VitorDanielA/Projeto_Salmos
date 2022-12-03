@@ -49,13 +49,45 @@
         </div>
 
         <div class="menubar">
-            <button class="menu-user"><img src="images/userlogin.png" alt="userlogin"> <p id="user_name">Dudinha</p></button>
-                <div>
-                    <a href="profile.html"> <img src="images/usuario-logado2.png" alt="perfil-de-usuario"> Perfil</a>
-                    <a href="#"> <img src="images/info-button.png" alt="info"> Sobre</a>
-                    <!--Por enquanto deixa o href, até a função de logOut tiver funcionando-->
-                    <a onclick="logOut()" class="logout" href="index.html"> <img src="images/logout2.png" alt="logout" > Logout</a>
+            <div class="notification">
+                <a onclick="showNotifications()">
+                    <div id="not-qty" class="no-not">9</div>
+                    <img src="images/icons8-lembrete-de-compromissos-64.png" alt="" width="20px">
+                </a>
+
+                <div class="notification-popup-hide" id="notification-popup">
                 </div>
+
+            </div>
+
+            <div class="menu-user">
+                <a class="user">
+                    <img src="images/userlogin.png" alt="userlogin" width="40px" height="40px"> 
+                    &nbsp;&nbsp;
+                    <p id="user_name">Dudinha</p>
+                </a>
+                                
+                <div class="user-options">
+                    <a href="profile.html"> 
+                        <img src="images/usuario-logado2.png" alt="perfil-de-usuario"> 
+                        &nbsp;&nbsp;
+                        <p>Perfil</p>
+                    </a>
+                    <a href="#"> 
+                        <img src="images/info-button.png" alt="info"> 
+                        &nbsp;&nbsp;
+                        <p>Sobre</p>
+                    </a>
+                    <a onclick="logOut()" class="logout" href="index.html"> 
+                        <img src="images/logout2.png" alt="logout" >
+                        &nbsp;&nbsp;
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+
+
+            
         </div>
     </main>
     <!--padding: 20px 0;
@@ -65,5 +97,7 @@
     colocar em colunas certinho-->
     <script src="js/session.js"></script>
     <script src="scripts/javascript.js"></script>
+    <script src="js/requisitions.js"></script>
+    <script type="text/javascript" src="js/notification-home.js" onload="initNot()"></script>
 </body>
 </html>

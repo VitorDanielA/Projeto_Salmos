@@ -181,24 +181,6 @@ main{
     font-size: 60px;
 }
 
-.menu-user{
-    text-decoration: none;
-    color: #E8F1F8;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    width: 211px;
-    height: 45px;   
-    margin: 6px 2px;
-    border-radius: 25px;
-    border: 0;
-    background-color: #0070A3;
-    transition: 0.5;
-    font-size: 16px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    cursor: pointer;
-}
-
 button img{
     padding: 5px;
 }
@@ -207,51 +189,175 @@ button:hover{
     background-color: #5CB6EB;
 }
 
-.menubar{
-   padding-top: 40px;
-   padding-right: 20px;
-   background-color: aliceblue;
-   position: absolute;
-   right: 0;
-   background: transparent;
+.menu-user{
+    align-self: baseline;
+    margin-top:5px;
 }
 
-.menubar div{
+.menu-user .user-options{
     display: none;
-    transition: 1s;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: none;
 }
 
-.menubar a img{
-    margin-right: 1px;
-    margin-left: -6px;
+.menu-user .user-options a{
+    all: none;
+    background-color: #0070A3;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display:flex;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.menu-user .user-options a:nth-of-type(1){
+    margin-top: 10px;
+}
+
+.menu-user .user{
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-user:hover .user-options {
+    display:block;
+}
+
+
+.menubar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height:50px;
+    min-width:400px;
+    background-color: #0070A3;
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 40px;
+    margin-right: 50px;
+    right: 0;
+    color:white;
+}
+
+
+.menubar .notification{
+    align-self: center;
+    margin-top: 6px;
+}
+
+.menubar .notification #not-qty{
+    background-color: #eb0036;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 15px;
+    height: 15px;   
+    position: absolute;
+    margin-left: 10px;
+    top: 4px;
+}
+
+.menubar .notification .no-not{
+   display:none;
+}
+
+.menubar .notification .has-not{
+   display: block;
+}
+
+
+.notification-popup-hide{
+    display: none;
+}
+
+.notification-popup{
+    position: absolute;
+    height: 70vh;
+    width: 300px;
+    right: 40%;
+    top: 60px;
+    z-index: 9999;
+    border-radius: 30px;
+    background-color: white;
+    overflow: overlay;
+}
+
+.notification-popup::-webkit-scrollbar {
+    display: none;
+}
+
+
+.notification-not{
+    cursor: pointer;
+}
+
+.notification-not hr{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.notification-not h1{
+    background-color: #0070A3;
+    min-height: 20px;
+    color:white;
+    padding:5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.notification-not:nth-of-type(1) h1{
+    border-top-left-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+}
+
+.notification-not p{
+    text-align: end;
+    padding-right: 10px;
+    color:gray;
+    background-color: white;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.notification-message p{
+    padding-top: 10px;
+    text-align: start;
+    color:black;
+    background-color: white;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.notification-message img{
+    width:40px;
+    height:40px;
+    align-self: flex-end;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top:10px;
+}
+
+.notification-message{
+    display: flex;
 }
 
 .menubar div a{
     text-decoration: none;
-    color: #E8F1F8;
-    padding: 22px;
-    width: 211px;
-    display: flex;
-    align-items: center;
-    height: 45px;   
-    margin: 6px 2px;
-    border-radius: 25px;
-    border: 0;
-    background-color: #0070A3;
-    transition: 0.5;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center
 }
 
-.menubar a img{
-    padding-right: 5px;
-}
 
-.menubar:hover div{
-    display: block;
-}
-
-.menubar a:hover{
-    background-color: #5CB6EB;
+.user-options{
+    left: 50%;
 }
 
 .logout{

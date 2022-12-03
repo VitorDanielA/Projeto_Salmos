@@ -4,8 +4,8 @@ const closeopen = document.getElementById('closeopen');
 var user = getUser();
 
 var val = document.getElementById('user_name')
-val.innerHTML = user.nome
+val.innerHTML = user.login
 
-closeopen.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
+function showUserOptions(){
+    
+}

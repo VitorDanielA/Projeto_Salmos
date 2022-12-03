@@ -21,6 +21,42 @@ async function get(endpoint){
     }
 }
 
+async function get_no_load(endpoint){
+    
+    try{
+        const fetched = await fetch(HOST+API+endpoint, {method:'GET', headers: {'Content-type': 'application/json'}})
+        
+        if (fetched.ok){
+            const result = await fetched.json();
+            return result
+        }
+        throw fetched
+    }catch(error){
+        // showMessage({message:error.type + ' - ' + error.status, type:'error'})
+        throw error
+    }
+}
+
+
+
+async function get_params_no_load(endpoint, paramsMap){
+    let params = Object.entries(paramsMap).map(a => a.join('='));
+     try{
+        let url = HOST+API+endpoint+'?'+params.join('&')
+         const fetched = await fetch(url, {method:'GET', headers: {'Content-type': 'application/json'}})
+         console.log('fecthed ', fetched)
+        
+        if (fetched.ok){
+            const result = await fetched.json();
+            return result
+        }
+        throw fetched
+    }catch(error){
+        console.log('Erro', error)
+        // showMessage({message:error.type + ' - ' + error.status, type:'error'})
+        throw error
+    }
+}
 
 async function get_params(endpoint, paramsMap){
     loadingStart()
