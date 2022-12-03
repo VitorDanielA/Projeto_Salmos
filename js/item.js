@@ -4,7 +4,7 @@ var item = {}
 
 
 // function itemNameAddChange(){
-//     item.name = document.getElementById('itemNameAdd').value;
+//     item.nome = document.getElementById('itemNameAdd').value;
 //     console.log(item);
 // }
 // function itemQuantidadeAddChange(){
@@ -188,7 +188,7 @@ function closeEditPopup(){
 
 function adicionar(){
     this.item.name = document.getElementById("itemNameAdd").value;
-    this.item.name = document.getElementById("itemNameAdd").value;
+    this.item.nome = document.getElementById("itemNameAdd").value;
     this.item.descricao = document.getElementById("itemDescricaoAdd").value;
     this.item.quantidade = document.getElementById("itemQuantidadeAdd").value;
     this.item.quantidadeMinima = document.getElementById("itemQuantidadeMinimaAdd").value;
@@ -250,7 +250,7 @@ function editar(){
         return user.id === this.selectedId
     })
 
-    this.item.name = nme
+    this.item.nome = nome
     this.item.quantidade = quantidade
     this.item.tipoItem = tipoItem
     this.item.fornecedor = fornecedor
