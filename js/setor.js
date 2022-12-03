@@ -35,7 +35,7 @@ function tableCreate(data){
         row.appendChild(colId)
 
         var colNome = document.createElement("td")
-        colNome.appendChild(document.createTextNode(element.name))
+        colNome.appendChild(document.createTextNode(element.nome))
         row.appendChild(colNome)
 
         var colDescricao = document.createElement("td")
@@ -115,7 +115,7 @@ function tableCreate(data){
 
                 console.log('Tipo de Usuário achado ', usr)
                 
-                document.getElementById('setorName').value = usr.name
+                document.getElementById('setorName').value = usr.nome
                 document.getElementById('setorDescricao').value = usr.descricao
             }
 
@@ -125,7 +125,7 @@ function tableCreate(data){
 
             function adicionar(){
 
-                this.setor.name = document.getElementById('setorNameAdd').value;
+                this.setor.nome = document.getElementById('setorNameAdd').value;
                 this.setor.descricao = document.getElementById('setorDescricaoAdd').value;
                 console.log(setor)
                 post('salvarSetor', this.setor).then(result=>{
@@ -182,7 +182,7 @@ function tableCreate(data){
                     return user.id === this.selectedId
                 })
 
-                this.setor.name = nome
+                this.setor.nome = nome
                 this.setor.descricao = descricao
 
                 console.log('Novo setor ', this.setor)

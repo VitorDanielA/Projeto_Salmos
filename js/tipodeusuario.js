@@ -128,7 +128,7 @@ function tableCreate(data){
 
                 this.tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
                 this.tipodeusuario.descricao = document.getElementById('tipoDeUsuarioDescricaoAdd').value;
-                this.tipodeusuario.name = document.getElementById('tipoDeUsuarioNameAdd').value;
+                this.tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
 
                 console.log(tipodeusuario)
                 console.log(tipodeusuario.id)

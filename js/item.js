@@ -51,7 +51,7 @@ function tableCreate(data){
         colNome.appendChild(document.createTextNode(element.descricao))
         row.appendChild(colNome)
         
-        console.log(element.fornecedor?.name)
+        console.log(element.fornecedor?.nome)
         var colFornecedor = document.createElement("td")
         colFornecedor.appendChild(document.createTextNode(element.fornecedor ? element.fornecedor.nome: ''))
         row.appendChild(colFornecedor)
@@ -187,7 +187,6 @@ function closeEditPopup(){
 }
 
 function adicionar(){
-    this.item.name = document.getElementById("itemNameAdd").value;
     this.item.nome = document.getElementById("itemNameAdd").value;
     this.item.descricao = document.getElementById("itemDescricaoAdd").value;
     this.item.quantidade = document.getElementById("itemQuantidadeAdd").value;
