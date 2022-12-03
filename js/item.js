@@ -40,7 +40,7 @@ function tableCreate(data){
     var tableBody = document.getElementById('table-body');
     if(tableBody){
         tableBody.innerHTML = ''
-         data.forEach(element => {
+        data.forEach(element => {
         var row = document.createElement("tr");
 
         var colId = document.createElement("td")
