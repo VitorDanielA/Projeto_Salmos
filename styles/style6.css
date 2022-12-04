@@ -8,6 +8,7 @@
 body{
     height: 100vh;
     background-color: #f0f6f7;
+    width: 100wh;
 }
 
 h1{
@@ -16,7 +17,7 @@ h1{
     font-size: 50px;
     color: #13293D;
 }
-.chart1{
+/* .chart1{
     width: 800px;
     height: 400px;
     transform: translate(53%, 11%);
@@ -37,6 +38,14 @@ h1{
     transform: translate(53%, -300%) scale(0.1);
     visibility: hidden;
     transition: transform 0.8s, top 1.4s; 
+} */
+
+#my-Chart{
+    min-width: 550px;
+    min-height: 420px;
+    position: absolute;
+    top: 33%;
+    left: 31%;
 }
 
 .sidebar{
@@ -46,7 +55,7 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 150px;
     padding-right: 180px;
 }
 

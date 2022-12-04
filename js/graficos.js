@@ -3,6 +3,7 @@ var item = {}
 var arrayItensSelect
 var nameItem
 var qtdItem
+var itemGraf = new Object()
 
 atualizarTabelaItens()
 function atualizarTabelaItens(){
@@ -10,55 +11,45 @@ function atualizarTabelaItens(){
         console.log('Data', dataa)
 
         this.arrayItens = [
-            nameItem = dataa.map(value => value.nome),
-            qtdItem = dataa.map(value => value.quantidade)
-        ];
-        
-        arrayItensSelect = this.arrayItens
-        console.log(this.arrayItens)
-        console.log('Nome e quantidade: ', arrayItensSelect)
+            itemGraf.nome = dataa.map(value => value.nome),
+            itemGraf.quantidade = dataa.map(value => value.quantidade)
+    ];
 
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-
-    var opcoes
-   
-    for(let i = 0; i < 3; i++){
-        
-    }
-
-
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Tabela de Itens'],
-        [`${nameItem[0]}`, qtdItem[0]]
-    ]);
-    
-    var options = {
-        // title: 'Itens no Estoque',
-        backgroundColor: 'transparent',
-        colors: ['#13293D', '#247BA0', '#bac9a9', '#02416d', '#0a5483'],
-        chartArea: {'width': '90%', 'height': '90%'},
-        is3D: true,
-        // titleTextStyle: {
-        // color: '#000000', 
-        // fontName: 'Trebuchet MS', 
-        // fontSize: 24, 
-        // bold: false,    
-        // italic: false,
-        // paddingLeft: 100,  
-        // }
-
-    };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-}
-    }).catch(error=>{
-        console.log('Error ', error)
-    })
-
-}
-console.log(this.arrayItensSelect)
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: itemGraf.nome,
+            datasets: [{
+              label: 'Quantidade',
+              data: itemGraf.quantidade,
+              backgroundColor:[
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+              ],
+              borderWidth: 2
+            }]
+        },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+})}
