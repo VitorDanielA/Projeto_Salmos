@@ -10,25 +10,45 @@
 <body>
     
     <div class="tela" id="tela">
-    <div class="scroll">
-        <table class="itens-table" id="itens-table">
-            <tbody id="table-body">
-
-                <a class="notification">
-                    <h2>Titulo da notificação</h2>
-
-                </a>
-            </tbody>
-        </table>
-
-        </div>
-    </div>
+        
+        
+    <h1 id="title"><p>Central de Notificações</p></h1>
+    
+    
     <button class="homescreen"> <a href="homescreen.html"> <img src="images/homescreen3.png" alt="homescreen"><p>Homescreen</p></a></button>
 
-    <h1 id="title">Central de Notificações</h1>
+    <div class="table-content">
+        <table>
+            <tbody id="notification-table-body">
+                <tr class="notification-unread">
+                    <td>
+                        <h1>Título Notificação</h1>
+                        <div class="notification-message">
+                            <p class="message">
+                                Mensagem da notificação
+                            </p>
+                        </div>
+                        <div class="message-info">
+                            <p>
+                                data message
+                            </p>
+                            <p>
+                                <img class="nao-lido" src="images/icons8-mensagem-24.png" alt="Marcar Como Lida">
+                                data message
+                            </p>
+                        </div>
+
+                        <hr class="separation">
+                    </td>     
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
     </div>
 
     <script type="text/javascript" src="js/requisitions.js"></script>
     <script type="text/javascript" src="js/requisicao.js"></script>
+    <script type="text/javascript" src="js/notification-center.js" onload='initNot()'></script>
 </body>
 </html>
