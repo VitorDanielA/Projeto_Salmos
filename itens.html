@@ -14,9 +14,12 @@
         <form class="form-container">
             <h1>Info Requisição</h1>
             <div class="infos">
-                <p>Item Requisitado: <span id="itemDemonstration"></span></p>
-                <p>Quantidade do Item Requisitado: <span id="itemQuantia"></span></p>
-                <p>Código de Saída: <span id="itemCodSaida"></span></p>
+                <p>Nome do item: <span id="nomeItem"></span>.</p>
+                <p>Quantidade do Item: <span id="QuantiaItem"></span>.</p>
+                <p>Quantidade mínima do item: <span id="quantidadeMinimaItem"></span>.</p>
+                <p>Data de validade do Item: <span id="ValidadeItem"></span>.</p>
+                <p>O item é perecível?: <span id="perecivelItem"></span>.</p>
+                <p>Valor do item: <span id="ValorItem"></span> R$.</p>
                 <button type="button" onclick="closeForm(), telaEnabled()">Fechar</button>
             </div>
         </form>
@@ -42,7 +45,7 @@
         <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedor">
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
-    </div>-->
+    </div>
 
     <div class="popupAdd" id="popupAdd">
         <img src="images/botao-adicionar3.png" alt="editar">
