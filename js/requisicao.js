@@ -1,8 +1,10 @@
 var selectedId
+var selectedIdEdit
 var requisicaoList = [] 
 var requisicao = {}
 var itensList = [] 
 var itens = {}
+var item = {}
 
 function requisicaoQtdAddChange(){
     requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
@@ -14,12 +16,8 @@ function requisicaoUsuAddChange(){
     console.log(requisicao);
 }
 
-// function requisicaoQtdAddChange(){
-//     requisicao.nome = document.getElementById('descReq').value;
-//     console.log(requisicao);
-// }
-
 setItens()
+setItensEdit()
 setSetores()
 atualizarTabela()
 function atualizarTabela(){
@@ -34,10 +32,21 @@ function atualizarTabela(){
 
 atualizarTabelaItens()
 function atualizarTabelaItens(){
-    get('item').then(data=>{
+    get('Item').then(data=>{
     console.log('Data', data)
     this.itensList = data
     this.tableCreateItens(this.itensList)
+        }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
+atualizarTabelaItensEdit()
+function atualizarTabelaItensEdit(){
+    get('Item').then(data=>{
+    console.log('Data', data)
+    this.itensList = data
+    this.tableCreateEdit(this.itensList)
         }).catch(error=>{
         console.log('Error ', error)
     })
@@ -59,13 +68,13 @@ function tableCreate(data){
         row.appendChild(colUsuReq)
 
         var colDescricao = document.createElement("td")
-        colDescricao.appendChild(document.createTextNode(element.setor))
+        colDescricao.appendChild(document.createTextNode(element.setor ? element.setor.nome : ''))
         row.appendChild(colDescricao)
         
         tableBody.appendChild(row)
 
         var colInfo = document.createElement("td")
-        colInfo.setAttribute("onclick", "openPopup("+element.id+")")
+        colInfo.setAttribute("onclick", "openForm("+element.id+")")
         var infoLink = document.createElement("a")
         var imgInfo = document.createElement("img")
         imgInfo.setAttribute("src", "images/simbolo-de-informacao.png")
@@ -100,29 +109,42 @@ function tableCreate(data){
 
 function setItens() {
 
-    get('item').then(itens=>{
+    get('Item').then(itens=>{
         console.log('Itens ', itens)
 
         var multiCombo = document.getElementById('Item')
-        // var multiComboEdit = document.getElementById('tipoUsuarioEdit')
+
         itens.forEach(tipo=>{
             let option = document.createElement('option')
             option.value = tipo.id
             option.innerHTML = tipo.nome
 
-            multiCombo.appendChild(option)
-
-            // let optionEdit = document.createElement('option')
-            // optionEdit.value = tipo.id
-            // optionEdit.innerHTML = tipo.nome
-
-            // multiComboEdit.appendChild(optionEdit)
-            
+            multiCombo.appendChild(option)        
         })
     }).catch(error=>{
         console.log('Error ', error)
     })
 }
+
+function setItensEdit() {
+
+    get('Item').then(itens=>{
+        console.log('Itens ', itens)
+
+        var multiComboEdit = document.getElementById('EditItem')
+
+        itens.forEach(tipo=>{
+            let option = document.createElement('option')
+            option.value = tipo.id
+            option.innerHTML = tipo.nome
+
+            multiComboEdit.appendChild(option)        
+        })
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
+
 
 function setSetores() {
 
@@ -130,7 +152,7 @@ function setSetores() {
         console.log('Setores ', setor)
 
         var multiCombo = document.getElementById('Setor')
-        // var multiComboEdit = document.getElementById('tipoUsuarioEdit')
+        var multiComboEdit = document.getElementById('EditSetor')
         setor.forEach(tipo=>{
             let option = document.createElement('option')
             option.value = tipo.id
@@ -138,20 +160,16 @@ function setSetores() {
 
             multiCombo.appendChild(option)
 
-            // let optionEdit = document.createElement('option')
-            // optionEdit.value = tipo.id
-            // optionEdit.innerHTML = tipo.nome
+            let optionEdit = document.createElement('option')
+            optionEdit.value = tipo.id
+            optionEdit.innerHTML = tipo.nome
 
-            // multiComboEdit.appendChild(optionEdit)
+            multiComboEdit.appendChild(optionEdit)
             
         })
     }).catch(error=>{
         console.log('Error ', error)
     })
-}
-
-function setFornecedor(){
-
 }
 
 function tableCreateItens(data){
@@ -178,6 +196,30 @@ function tableCreateItens(data){
     }
 }
 
+function tableCreateEdit(data){
+    var tableBody3 = document.getElementById('table-body3');
+    if(tableBody3){
+        tableBody3.innerHTML = ''
+        data.forEach(element => {
+        var row = document.createElement("tr");
+        
+        var colNome = document.createElement("td")
+        colNome.appendChild(document.createTextNode(element.nome))
+        row.appendChild(colNome)
+
+        var colQuantidade = document.createElement("td")
+        colQuantidade.appendChild(document.createTextNode(element.quantidade))
+        row.appendChild(colQuantidade)
+
+        var colFornecedor = document.createElement("td")
+        colFornecedor.appendChild(document.createTextNode(element.fornecedor))
+        row.appendChild(colFornecedor)
+        
+        tableBody3.appendChild(row)
+    });
+    }
+}
+
 function stopPropagation(event){
     event.stopPropagation();
 }
@@ -192,7 +234,9 @@ function closeAddPopup(){
 
 function openPopup(id){
     this.selectedId = id
+    this.selectedIdEdit = id
     popup.classList.add("open_popup");
+    teladisabled();
 }
 
 function teladisabled(){
@@ -215,12 +259,143 @@ function closePopup(){
     popup.classList.remove("open_popup");
 }
 
+function closeEditPopup(){
+    popupEdit.classList.remove("popupEditOpen");
+}
+
+function openForm(id) {
+    this.selectedId = id
+    this.selectedIdEdit = id
+    document.getElementById("myForm").style.display = "block";
+    console.log('Id ',id)
+    let usr = this.requisicaoList.find(requisicao=>{
+        return requisicao.id === id
+    })
+
+    console.log('Requisicao achada ', usr)
+
+    document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado.nome
+    document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
+    teladisabled();
+}
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+
+var quantidadeItens
+
+function openEditPopup(id){
+    atualizarTabelaItensEdit()
+    this.selectedId = id
+    this.selectedIdEdit = id
+    popupEdit.classList.add("popupEditOpen");
+    console.log('Id ',id)
+    let usr = this.requisicaoList.find(requisicao=>{
+        return requisicao.id === id
+    })
+
+    quantidadeItens = usr.quantidadeItensReq
+    console.log('Requisicao achada ', usr)
+    
+    document.getElementById('EditqtdReq').value = usr.quantidadeItensReq
+    document.getElementById('EditusuReq').value = usr.usuarioRequisitante
+    if(usr.setor){
+        document.getElementById('EditSetor').value = usr.setor.id
+    }
+    if(usr.itemRequisitado){
+       document.getElementById('EditItem').value = usr.itemRequisitado.id
+    }
+    teladisabled();
+}
+
+function editar(){
+
+    let newRequisitante = document.getElementById('EditusuReq').value;
+    let newSetor = document.getElementById('EditSetor').value
+    let newItemRequisitado = document.getElementById('EditItem').value
+
+    this.requisicao = this.requisicaoList.find(req=>{
+        return req.id === this.selectedIdEdit
+    })
+
+    let newQuantidadeItensReq = document.getElementById('EditqtdReq').value;
+
+    this.requisicao.quantidadeItensReq = newQuantidadeItensReq
+    this.requisicao.usuarioRequisitante = newRequisitante
+    this.requisicao.setor = {id:newSetor}
+    this.requisicao.itemRequisitado = {id:newItemRequisitado}
+    
+    get('Item').then(itens=>{
+        console.log('Itens ', itens)
+        var found = itens.find(element => element.id == document.getElementById('EditItem').value)
+        console.log(found)
+        let usr = this.requisicaoList.find(requisicao=>{
+            return requisicao.id === this.selectedId
+        })
+        console.log(requisicaoList)
+        this.item.id = found.id 
+        this.item.nome = found.nome
+        this.item.quantidade = found.quantidade + Number(quantidadeItens) - Number(document.getElementById('EditqtdReq').value)
+        this.item.descricao = found.descricao
+        this.item.fornecedor = found.fornecedor
+
+        post('atualizarItem', this.item).then(result=>{
+            console.log('Result ', result)
+            atualizarTabelaItens()
+        }).catch(error=>{
+            console.log('Error ', error)
+        })
+
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+
+    console.log('Nova Requisição ', this.requisicao)
+    post('salvarRequisicoes', this.requisicao).then(result=>{
+        console.log('Result ', result)
+        this.atualizarTabela()
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+    this.requisicao = {}
+}
+
 function adicionar(){
+
+    // var selectSetor = document.getElementById("Setor");
+    // var opcaoSetor = selectSetor.options[selectSetor.selectedIndex].text;
+    // console.log(opcaoSetor)
+    // var selectItem = document.getElementById("Item");
+    // var opcaoItem = selectItem.options[selectItem.selectedIndex].text;
+    // console.log(opcaoItem)
+
+    get('Item').then(itens=>{
+        console.log('Itens ', itens)
+        var found = itens.find(element => element.id == document.getElementById('Item').value)
+        console.log(found)
+        this.item.id = found.id
+        this.item.nome = found.nome
+        this.item.quantidade = found.quantidade - document.getElementById('qtdReq').value;
+        this.item.descricao = found.descricao
+        this.item.fornecedor = found.fornecedor
+
+        post('atualizarItem', this.item).then(result=>{
+            console.log('Result ', result)
+            atualizarTabelaItens()
+        }).catch(error=>{
+            console.log('Error ', error)
+        })
+
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+
     this.requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
     this.requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
-    this.requisicao.setor = JSON.stringify({id:document.getElementById('Setor').value});
-    this.requisicao.itemRequisitado = JSON.stringify{id:document.getElementById('Item').value};
-    this.requisicao.nome = document.getElementById('usuReq').value;
+    this.requisicao.setor = {id:document.getElementById('Setor').value};
+    this.requisicao.itemRequisitado = {id:document.getElementById('Item').value};
+    this.requisicao.nome = "Req";
 
     post('salvarRequisicoes', this.requisicao).then(result=>{
         console.log('result', result)
@@ -233,6 +408,39 @@ function adicionar(){
 }
 
 function remover(){
+
+    get('requisicao').then(req=>{
+        console.log('Find requisicao ', req)
+        const found = req.find(element => element.id == this.selectedId)
+        console.log(found)
+        var returnValueQtd = found.quantidadeItensReq
+        var returnValueId = found.itemRequisitado.id
+
+        get('Item').then(itens=>{
+            console.log('Itens ', itens)
+            const foundItens = itens.find(element => element.id == returnValueId)
+            console.log(foundItens)
+            this.item.id = foundItens.id
+            this.item.nome = foundItens.nome
+            this.item.quantidade = foundItens.quantidade + returnValueQtd
+            this.item.descricao = foundItens.descricao
+            this.item.fornecedor = foundItens.fornecedor
+    
+            post('atualizarItem', this.item).then(result=>{
+                console.log('Result ', result)
+                atualizarTabelaItens()
+            }).catch(error=>{
+                console.log('Error ', error)
+            })
+    
+        }).catch(error=>{
+            console.log('Error ', error)
+        })
+        
+    }).catch(error=>{
+        console.log('Error ', error)
+    })
+
     console.log('Deletar ' + this.selectedId)
 
     get_params('deletarRequisicoes', {id:this.selectedId}).then(result=>{
@@ -241,6 +449,26 @@ function remover(){
     })
 }
 
+function buscar(){
+
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("loupe");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("itens-table");
+    tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            } else {
+            tr[i].style.display = "none";
+            }
+        }
+    }
+}
 
 
 let popup = document.getElementById("popupRemove");

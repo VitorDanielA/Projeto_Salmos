@@ -1,4 +1,5 @@
 var selectedId
+var selectedIdEdit
 var ItemList = [] 
 var item = {}
 
@@ -40,7 +41,7 @@ function tableCreate(data){
     var tableBody = document.getElementById('table-body');
     if(tableBody){
         tableBody.innerHTML = ''
-         data.forEach(element => {
+        data.forEach(element => {
         var row = document.createElement("tr");
 
         var colId = document.createElement("td")
@@ -145,15 +146,20 @@ function openForm(id) {
     this.selectedIdEdit = id
     document.getElementById("myForm").style.display = "block";
     console.log('Id ',id)
-    let usr = this.requisicaoList.find(requisicao=>{
-        return requisicao.id === id
+    let usr = this.ItemList.find(Item=>{
+        return Item.id === id
     })
 
-    console.log('Requisicao achada ', usr)
+    console.log('Item achado', usr)
 
-    document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado.nome
-    document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
-    document.getElementById('itemCodSaida').innerHTML = usr.codSaida
+    document.getElementById('nomeItem').innerHTML = usr.nome;
+    document.getElementById('QuantiaItem').innerHTML = usr.quantidade;
+    document.getElementById('quantidadeMinimaItem').innerHTML = usr.quantidadeMinima;
+    document.getElementById('ValidadeItem').innerHTML = usr.dataValidade;
+    document.getElementById('perecivelItem').innerHTML = usr.perecivel;
+    document.getElementById('ValorItem').innerHTML = usr.valorItem;
+    
+
     teladisabled();
 }
   
