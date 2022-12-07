@@ -1,5 +1,6 @@
 var selectedId
 var empenhoList = []
+var empenhosVencidos = []
 var empenho = {}
 var ItemList = [] 
 
@@ -27,6 +28,7 @@ function atualizarTabela(){
     }).catch(error=>{
         console.log('Error ', error)
     })
+    this.empenhoList = []
 }
 
 function tableCreate(data){
@@ -248,9 +250,9 @@ function editar(){
 }
 
 function gerarRelatorio(){
-    get('empenho').then(data=>{
-        console.log('Data ', data)
-        this.empenhoList = data
+    get('empenhosVencidos').then(data=>{
+        this.empenhosVencidos = data
+        console.log('Empenhos vencidos: ', this.empenhosVencidos)
         }).catch(error=>{
             console.log('Error ', error)
         })
@@ -258,23 +260,24 @@ function gerarRelatorio(){
 }
   
 var _gerarCsv = function(){
-    
     var csv = 'id, nota, validade, valor, itens\n';
-    console.log(this.empenho, empenho)
-    empenhoList.forEach(function(row) {
-        csv += row.id;
-        csv += ','+ row.nota;
-        csv += ','+ row.validade;
-        csv += ','+ row.valor;
-        csv += ','+ row.itens;
-        csv += '\n';
+    this.empenhosVencidos.forEach(function(row) {
+            csv += row.id;
+            csv += ','+ row.nota;
+            csv += ','+ row.validade;
+            csv += ','+ row.valor;
+            csv += ','+ row.itens;
+            csv += '\n';        
     });
    
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
     hiddenElement.target = '_blank';
-    hiddenElement.download = 'Empenhos vencidos.csv';
+    hiddenElement.download = 'Empenhos Vencidos.csv';
     hiddenElement.click();
+
+    this.empenhosVencidos = []
+    console.log('Empenhos vencidos:', empenhosVencidos)
 };
 
 let popup = document.getElementById("popupRemove");
