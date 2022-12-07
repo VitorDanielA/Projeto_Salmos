@@ -1,22 +1,22 @@
 var selectedId
 var empenhoList = []
-var empenhosVencidos = []
+var empenhosValidos = []
 var empenho = {}
 var ItemList = [] 
 
-/*testando adicionar os itens no empenho
+//testando adicionar os itens no empenho
 pegarItens()
 function pegarItens(){
     
     get('Item').then(data=>{
     console.log('Data', data)
     this.ItemList = data
-    this.tableCreate(this.ItemList)
+    //this.tableCreate(this.ItemList)
     console.log(ItemList)
         }).catch(error=>{
         console.log('Error ', error)
     })
-}*/
+}
 
 atualizarTabela()
 
@@ -175,7 +175,7 @@ function adicionar(){
     this.empenho.nota = document.getElementById('notaEmpenhoAdd').value;
     this.empenho.validade = document.getElementById('validadeEmpenhoAdd').value;
     this.empenho.valor = parseFloat(document.getElementById('valorEmpenhoAdd').value);
-    // this.empenho.itens = document.getElementById('itensEmpenhoAdd').value;
+    this.empenho.itens = ItemList;
    
     post('salvarEmpenho', this.empenho).then(result=>{
         console.log('result', result)
@@ -250,9 +250,9 @@ function editar(){
 }
 
 function gerarRelatorio(){
-    get('empenhosVencidos').then(data=>{
-        this.empenhosVencidos = data
-        console.log('Empenhos vencidos: ', this.empenhosVencidos)
+    get('empenhosValidos').then(data=>{
+        this.empenhosValidos = data
+        console.log('Empenhos validos: ', this.empenhosValidos)
         }).catch(error=>{
             console.log('Error ', error)
         })
@@ -260,24 +260,21 @@ function gerarRelatorio(){
 }
   
 var _gerarCsv = function(){
-    var csv = 'id, nota, validade, valor, itens\n';
-    this.empenhosVencidos.forEach(function(row) {
+    var csv = 'id, nota, validade, valorTotal\n';
+    this.empenhosValidos.forEach(function(row) {
             csv += row.id;
             csv += ','+ row.nota;
             csv += ','+ row.validade;
             csv += ','+ row.valor;
-            csv += ','+ row.itens;
             csv += '\n';        
     });
    
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
     hiddenElement.target = '_blank';
-    hiddenElement.download = 'Empenhos Vencidos.csv';
+    hiddenElement.download = 'Empenhos Validos.csv';
     hiddenElement.click();
-
-    this.empenhosVencidos = []
-    console.log('Empenhos vencidos:', empenhosVencidos)
+    //window.location.reload(true);
 };
 
 let popup = document.getElementById("popupRemove");
