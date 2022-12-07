@@ -6,15 +6,15 @@ var itensList = []
 var itens = {}
 var item = {}
 
-function requisicaoQtdAddChange(){
-    requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
-    console.log(requisicao);
-}
+// function requisicaoQtdAddChange(){
+//     requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
+//     console.log(requisicao);
+// }
 
-function requisicaoUsuAddChange(){
-    requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
-    console.log(requisicao);
-}
+// function requisicaoUsuAddChange(){
+//     requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
+//     console.log(requisicao);
+// }
 
 setItens()
 setItensEdit()
@@ -22,7 +22,7 @@ setSetores()
 atualizarTabela()
 function atualizarTabela(){
     get('requisicao').then(data=>{
-    console.log('Data', data)
+    console.log('requisicoes', data)
     this.requisicaoList = data
     this.tableCreate(this.requisicaoList)
         }).catch(error=>{
@@ -64,7 +64,7 @@ function tableCreate(data){
         row.appendChild(colNumReq)
 
         var colUsuReq = document.createElement("td")
-        colUsuReq.appendChild(document.createTextNode(element.usuarioRequisitante))
+        colUsuReq.appendChild(document.createTextNode(element.requisitante))
         row.appendChild(colUsuReq)
 
         var colDescricao = document.createElement("td")
@@ -274,9 +274,10 @@ function openForm(id) {
 
     console.log('Requisicao achada ', usr)
 
-    document.getElementById('itemDemonstration').innerHTML = usr.itemRequisitado.nome
+    document.getElementById('itemDemonstration').innerHTML = usr.itens
     document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
     teladisabled();
+    document.getElementById('itemCodSaida').innerHTML = usr.codigoSaida
 }
   
   function closeForm() {
@@ -352,7 +353,7 @@ function editar(){
     })
 
     console.log('Nova Requisição ', this.requisicao)
-    post('salvarRequisicoes', this.requisicao).then(result=>{
+    post('salvarRequisicao', this.requisicao).then(result=>{
         console.log('Result ', result)
         this.atualizarTabela()
     }).catch(error=>{
@@ -360,6 +361,8 @@ function editar(){
     })
     this.requisicao = {}
 }
+
+var codSaida;
 
 function adicionar(){
 
@@ -369,6 +372,21 @@ function adicionar(){
     // var selectItem = document.getElementById("Item");
     // var opcaoItem = selectItem.options[selectItem.selectedIndex].text;
     // console.log(opcaoItem)
+
+    let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ0123456789!@#$&*"
+
+    const gerarCodigoSaida = () =>{
+        let novoCodigo = ""
+
+        for(let i = 0; i < 6; i++){
+            let charactersAleatorios = Math.floor(Math.random() * characters.length)
+            novoCodigo += characters[charactersAleatorios]
+        }
+        codSaida = novoCodigo
+        console.log(codSaida)
+    }
+
+    gerarCodigoSaida()
 
     get('Item').then(itens=>{
         console.log('Itens ', itens)
@@ -392,12 +410,13 @@ function adicionar(){
     })
 
     this.requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
-    this.requisicao.usuarioRequisitante = document.getElementById('usuReq').value;
+    this.requisicao.requisitante = document.getElementById('usuReq').value;
     this.requisicao.setor = {id:document.getElementById('Setor').value};
     this.requisicao.itemRequisitado = {id:document.getElementById('Item').value};
     this.requisicao.nome = "Req";
+    this.requisicao.codigoSaida = codSaida;
 
-    post('salvarRequisicoes', this.requisicao).then(result=>{
+    post('salvarRequisicao', this.requisicao).then(result=>{
         console.log('result', result)
         atualizarTabela()
     }).catch(error=>{
@@ -443,7 +462,7 @@ function remover(){
 
     console.log('Deletar ' + this.selectedId)
 
-    get_params('deletarRequisicoes', {id:this.selectedId}).then(result=>{
+    get_params('deletarRequisicao', {id:this.selectedId}).then(result=>{
         atualizarTabela()
     }).catch(error=>{
     })

@@ -588,7 +588,7 @@ table.itens-table2 tr{
 }
 
 .scroll2{
-    max-height: 500px;
+    max-height: 350px;
     overflow-y: scroll;
     border-radius: 20px; 
     margin-top: 40px;
