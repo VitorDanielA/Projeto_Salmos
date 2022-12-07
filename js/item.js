@@ -2,26 +2,6 @@ var selectedId
 var selectedIdEdit
 var ItemList = [] 
 var item = {}
-
-
-// function itemNameAddChange(){
-//     item.nome = document.getElementById('itemNameAdd').value;
-//     console.log(item);
-// }
-// function itemQuantidadeAddChange(){
-//     item.quantidade = document.getElementById('itemQuantidadeAdd').value;
-//     console.log(item);
-// }
-
-// function itemTypeAddChange(){
-//     item.tipoItem = {id:document.getElementById('itemType').value};
-//     console.log(item);
-// }
-
-// function itemFornecedorAddChange(){
-//     item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value};
-//     console.log(item);
-// }
 setFornecedor()
 setTiposItem()
 atualizarTabela()
@@ -44,28 +24,23 @@ function tableCreate(data){
         data.forEach(element => {
         var row = document.createElement("tr");
 
-        var colId = document.createElement("td")
-        colId.appendChild(document.createTextNode(element.id))
-        row.appendChild(colId)
+        var colCodItem = document.createElement("td")
+        colCodItem.appendChild(document.createTextNode(element.codigoItem))
+        row.appendChild(colCodItem)
 
-        var colNome = document.createElement("td")
-        colNome.appendChild(document.createTextNode(element.descricao))
-        row.appendChild(colNome)
+        var colDescription = document.createElement("td")
+        colDescription.appendChild(document.createTextNode(element.descricao))
+        row.appendChild(colDescription)
         
         console.log(element.fornecedor?.nome)
         var colFornecedor = document.createElement("td")
-        colFornecedor.appendChild(document.createTextNode(element.fornecedor ? element.fornecedor.nome: ''))
+        colFornecedor.appendChild(document.createTextNode(element.fornecedores ? element.fornecedor.nome: ''))
         row.appendChild(colFornecedor)
 
         var colType = document.createElement("td")
         colType.appendChild(document.createTextNode(element.tipoItem ? element.tipoItem.nome : ''))
         row.appendChild(colType)
         
-        // var colFornecedor = document.createElement("td")
-        // colFornecedor.appendChild(document.createTextNode(element.fornecedor))
-        // row.appendChild(colFornecedor)
-        // tableBody.appendChild(row)
-
         tableBody.appendChild(row)
 
         var colInfo = document.createElement("td")
@@ -138,8 +113,6 @@ var tablee = document.getElementById("itens-table");
 function closePopup(){
     popup.classList.remove("open_popup");
 }
-
-//Isso daqui é a função do JavaScript pra você colocar as informações la dentro do Span
 
 function openForm(id) {
     this.selectedId = id
