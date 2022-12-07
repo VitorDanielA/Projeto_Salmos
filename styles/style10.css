@@ -164,7 +164,7 @@ tr:hover {
 .adicionar{
     position: absolute;
     top: 50px;
-    right: 545px; 
+    right: 700px; 
     width: 200px;
     height: 45px;
     background-color: #13293D;
@@ -175,6 +175,26 @@ tr:hover {
 }
 
 .adicionar:hover{
+    opacity: 0.8;
+}
+
+.relatorio{
+    position: absolute;
+    top: 50px;
+    right: 415px; 
+    width: 200px;
+    height: 45px;
+    background-color: #13293D;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    border: 1px solid #666;
+    border-radius: 20px;
+    display: block;
+}
+
+.relatorio:hover{
     opacity: 0.8;
 }
 

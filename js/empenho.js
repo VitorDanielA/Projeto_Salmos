@@ -3,7 +3,7 @@ var empenhoList = []
 var empenho = {}
 var ItemList = [] 
 
-//testando adicionar os itens no empenho ainda
+/*testando adicionar os itens no empenho
 pegarItens()
 function pegarItens(){
     
@@ -15,7 +15,7 @@ function pegarItens(){
         }).catch(error=>{
         console.log('Error ', error)
     })
-}
+}*/
 
 atualizarTabela()
 
@@ -246,6 +246,36 @@ function editar(){
     })
     this.empenho = {}
 }
+
+function gerarRelatorio(){
+    get('empenho').then(data=>{
+        console.log('Data ', data)
+        this.empenhoList = data
+        }).catch(error=>{
+            console.log('Error ', error)
+        })
+    _gerarCsv();
+}
+  
+var _gerarCsv = function(){
+    
+    var csv = 'id, nota, validade, valor, itens\n';
+    console.log(this.empenho, empenho)
+    empenhoList.forEach(function(row) {
+        csv += row.id;
+        csv += ','+ row.nota;
+        csv += ','+ row.validade;
+        csv += ','+ row.valor;
+        csv += ','+ row.itens;
+        csv += '\n';
+    });
+   
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'Empenhos vencidos.csv';
+    hiddenElement.click();
+};
 
 let popup = document.getElementById("popupRemove");
 let telaDesativada = document.getElementById("tela");
