@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!--Olha isso daqui vertinho, é modelo da requisição, isso aqui é pra você mostrar as informações no popup de info, ja configurei o clique-->
     <div class="form-popup" id="myForm">
         <form class="form-container">
             <h1>Info Requisição</h1>
@@ -41,7 +40,6 @@
 
         </select> <br>        
         
-        <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemType">-->
         <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedor">
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
@@ -56,7 +54,6 @@
 
         <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeMinimaAdd" >
 
-         <!--<input type="text" name="itemType" placeholder="Tipo..." autocomplete="off" class="itemType" id="itemTypeAdd" onchange="itemTypeAddChange()">-->
          <select name="Fornecedor" id="itemFornecedorAdd" class="itemFornecedor"  placeholder="Fornecedor...">
 
             <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidadeAdd" id="itemValidadeAdd">
@@ -69,11 +66,8 @@
         
         <select name="Tipo de Item" id="itemType" class="itemType"  placeholder="Tipo...">
 
-       
-
         </select> <br>  
         
-        <!--<input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedorAdd" onchange="itemFornecedorAddChange()">-->
         <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeAddPopup(), telaEnabled()">Cancelar</button>
     </div>
@@ -97,7 +91,6 @@
                     <th>informações</th>
                     <th>Remover</th>
                     <th>Editar</th>
-                    <!--criar um popup com as informações do item (nome, quantidade mínima, valor do item, data de validade, se é perecível)-->
                 </tr>
             </thead>
             <tbody id="table-body">

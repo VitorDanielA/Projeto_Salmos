@@ -1,6 +1,22 @@
 var selectedId
 var empenhoList = []
+var empenhosValidos = []
 var empenho = {}
+var ItemList = [] 
+
+//testando adicionar os itens no empenho
+pegarItens()
+function pegarItens(){
+    
+    get('Item').then(data=>{
+    console.log('Data', data)
+    this.ItemList = data
+    //this.tableCreate(this.ItemList)
+    console.log(ItemList)
+        }).catch(error=>{
+        console.log('Error ', error)
+    })
+}
 
 atualizarTabela()
 
@@ -12,6 +28,7 @@ function atualizarTabela(){
     }).catch(error=>{
         console.log('Error ', error)
     })
+    this.empenhoList = []
 }
 
 function tableCreate(data){
@@ -30,12 +47,18 @@ function tableCreate(data){
             row.appendChild(colValidade)
             
             var colValor = document.createElement("td")
-            colValor.appendChild(document.createTextNode(element.valor))
+            colValor.appendChild(document.createTextNode(element.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })))
             row.appendChild(colValor)
             
-            var colItens = document.createElement("td")
-            colItens.appendChild(document.createTextNode(element.itens))
-            row.appendChild(colItens)
+            var colInfo = document.createElement("td")
+            colInfo.setAttribute("onclick", "openInfoItens("+element.id+")")
+            var infoLink = document.createElement("a")
+            var imgInfo = document.createElement("img")
+            imgInfo.setAttribute("src", "images/simbolo-de-informacao.png")
+            infoLink.appendChild(imgInfo)
+    
+            colInfo.appendChild(infoLink)
+            row.appendChild(colInfo)
             
             
             var colRemover = document.createElement("td")
@@ -63,6 +86,7 @@ function tableCreate(data){
         });
     }
 }
+
 
 function stopPropagation(event){
     event.stopPropagation();
@@ -101,6 +125,32 @@ function closePopup(){
     
 }
 
+function openInfoItens(id) {
+    this.selectedId = id
+    this.selectedIdEdit = id
+    document.getElementById("infoItensEmpenho").style.display = "block";
+    console.log('Id ',id)
+    let usr = this.ItemList.find(Item=>{
+        return Item.id === id
+    })
+
+    console.log('Item achado', usr)
+
+    document.getElementById('nomeItem').innerHTML = usr.nome;
+    document.getElementById('QuantiaItem').innerHTML = usr.quantidade;
+    document.getElementById('quantidadeMinimaItem').innerHTML = usr.quantidadeMinima;
+    document.getElementById('ValidadeItem').innerHTML = usr.dataValidade;
+    document.getElementById('perecivelItem').innerHTML = usr.perecivel;
+    document.getElementById('ValorItem').innerHTML = usr.valorItem;
+    
+
+    teladisabled();
+}
+
+function closeInfoItens() {
+    document.getElementById("infoItensEmpenho").style.display = "none";
+}
+
 function openEditPopup(id){
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
@@ -125,8 +175,8 @@ function adicionar(){
     this.empenho.nota = document.getElementById('notaEmpenhoAdd').value;
     this.empenho.validade = document.getElementById('validadeEmpenhoAdd').value;
     this.empenho.valor = parseFloat(document.getElementById('valorEmpenhoAdd').value);
-    // this.empenho.itens = document.getElementById('itensEmpenhoAdd').value;
-    
+    this.empenho.itens = ItemList;
+   
     post('salvarEmpenho', this.empenho).then(result=>{
         console.log('result', result)
         atualizarTabela()   
@@ -178,7 +228,7 @@ function editar(){
     let newNota = document.getElementById('notaEmpenhoEditar').value
     let newValidade = document.getElementById('validadeEmpenhoEditar').value
     let newValor = document.getElementById('valorEmpenhoEditar').value
-    let newItens = document.getElementById('itensEmpenhoEditar').value
+    //let newItens = document.getElementById('itensEmpenhoEditar').value
 
     this.empenho = this.empenhoList.find(emp=>{
         return emp.id === this.selectedId
@@ -187,7 +237,7 @@ function editar(){
     this.empenho.nota = newNota
     this.empenho.validade = newValidade
     this.empenho.valor = newValor
-    this.empenho.itens = newItens
+   // this.empenho.itens = newItens
 
     console.log('Novo empenho ', this.empenho)
     post('salvarEmpenho', this.empenho).then(result=>{
@@ -198,6 +248,34 @@ function editar(){
     })
     this.empenho = {}
 }
+
+function gerarRelatorio(){
+    get('empenhosValidos').then(data=>{
+        this.empenhosValidos = data
+        console.log('Empenhos validos: ', this.empenhosValidos)
+        }).catch(error=>{
+            console.log('Error ', error)
+        })
+    _gerarCsv();
+}
+  
+var _gerarCsv = function(){
+    var csv = 'id, nota, validade, valorTotal\n';
+    this.empenhosValidos.forEach(function(row) {
+            csv += row.id;
+            csv += ','+ row.nota;
+            csv += ','+ row.validade;
+            csv += ','+ row.valor;
+            csv += '\n';        
+    });
+   
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'Empenhos Validos.csv';
+    hiddenElement.click();
+    //window.location.reload(true);
+};
 
 let popup = document.getElementById("popupRemove");
 let telaDesativada = document.getElementById("tela");

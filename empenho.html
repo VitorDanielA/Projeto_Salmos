@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="styles/style10.css">
 </head>
 <body id="body">
+
+    <div class="form-popup" id="infoItensEmpenho">
+        <form class="form-container">
+            <h1>Info Empenho</h1>
+            <div class="infos">
+                <p>Nome do item: <span id="nomeItem"></span>.</p>
+                <p>Quantidade do Item: <span id="QuantiaItem"></span>.</p>                            
+                <button type="button" onclick="closeInfoItens(), telaEnabled()">Fechar</button>
+            </div>
+        </form>
+    </div>
+
     <div class="popupRemove" id="popupRemove">
         <img src="images/ask.png" alt="question-sign-in-circles">
         <h2>Você tem certeza que deseja remover esse Empenho?</h2>
@@ -22,7 +34,7 @@
         
         <input type="text" name="notaEmpenho" placeholder="Nota empenho..." autocomplete="off" 
         class="notaEmpenho" id="notaEmpenhoEditar">
-        <input type="text" name="validadeEmpenho" placeholder="Validade empenho..." autocomplete="off" class="validadeEmpenho" id="validadeEmpenhoEditar">
+        <input type="date" name="validadeEmpenho" placeholder="Validade empenho..." autocomplete="off" class="validadeEmpenho" id="validadeEmpenhoEditar">
         <input type="text" name="valorEmpenho" placeholder="Valor empenho..." autocomplete="off" class="valorEmpenho" id="valorEmpenhoEditar">
         <input type="text" name="itensEmpenho" placeholder="Itens empenho..." autocomplete="off" class="itensEmpenho" id="itensEmpenhoEditar">
                 
@@ -73,6 +85,7 @@
 
         <button class="adicionar" type="button" onclick="openAddPopup(), teladisabled()"><img src="images/botao-adicionar2.png" alt="adicionar" title="Adicionar"></button>
 
+        <button class="relatorio" type="button" onclick="gerarRelatorio()" title="Empenhos Válidos"><img src="images/imprimir-negativo.png"></button>
         
     </div>
 

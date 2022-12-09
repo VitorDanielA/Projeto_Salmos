@@ -164,7 +164,7 @@ tr:hover {
 .adicionar{
     position: absolute;
     top: 50px;
-    right: 545px; 
+    right: 700px; 
     width: 200px;
     height: 45px;
     background-color: #13293D;
@@ -175,6 +175,26 @@ tr:hover {
 }
 
 .adicionar:hover{
+    opacity: 0.8;
+}
+
+.relatorio{
+    position: absolute;
+    top: 50px;
+    right: 415px; 
+    width: 200px;
+    height: 45px;
+    background-color: #13293D;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    border: 1px solid #666;
+    border-radius: 20px;
+    display: block;
+}
+
+.relatorio:hover{
     opacity: 0.8;
 }
 
@@ -228,7 +248,7 @@ tr:hover {
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
-    background-image: url(../images/login.png);
+    background-image: url(../images/calendario.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
@@ -244,7 +264,7 @@ tr:hover {
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
-    background-image: url(../images/senha.png);
+    background-image: url(../images/valor.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
@@ -276,7 +296,7 @@ tr:hover {
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
-    background-image: url(../images/nome.png);
+    background-image: url(../images/codigo-barras.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
@@ -362,7 +382,7 @@ tr:hover {
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
-    background-image: url(../images/login.png);
+    background-image: url(../images/calendario.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
@@ -378,7 +398,7 @@ tr:hover {
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
-    background-image: url(../images/senha.png);
+    background-image: url(../images/valor.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
@@ -410,7 +430,7 @@ tr:hover {
     height: 45px;
     margin: 4px 2px;
     border-radius: 25px;
-    background-image: url(../images/nome.png);
+    background-image: url(../images/codigo-barras.png);
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 50px;
@@ -510,6 +530,53 @@ tr:hover {
 .popupRemove button:hover{
     background-color: #2177a8;
 }
+
+.form-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: none;
+}
+  
+.form-container {
+    width: 600px;
+    height: 400px;
+    padding: 10px;
+    background-color: #020f1b;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.form-container h1{
+    text-align: center;
+}
+
+.form-container button{
+    width: 82%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 14px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 50px;
+}
+
+.form-container button:hover{
+    background-color: #666;
+}
+
+.form-container p{
+    padding-top: 30px;
+    padding-left: 35px;
+    text-align: justify;
+}
+
 @media(max-width: 600px){
 
 }

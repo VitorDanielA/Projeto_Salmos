@@ -52,7 +52,7 @@ main{
     padding: 15px;
     display: flex;
     align-items: center;
-    width: 120%;
+    width: 112%;
     height: 45px;
     margin: 0px 2px;
     border-radius: 25px;
@@ -92,36 +92,42 @@ main{
 }
 
 .links-option li:nth-child(2):hover ~ .projector{
-    top: 12.3%;
+    top: 11.1%;
 }
 
 .links-option li:nth-child(3):hover ~ .projector{
-    top: 23.3%;
+    top: 21.1%;
 }
 
 .links-option li:nth-child(4):hover ~ .projector{
-    top: 34.5%;
+    top: 31.1%;
 }
 
 .links-option li:nth-child(5):hover ~ .projector{
-    top: 45.6%;
+    top: 41.1%;
 }
 
 .links-option li:nth-child(6):hover ~ .projector{
-    top: 56.6%;
+    top: 51.1%;
 }
 
 .links-option li:nth-child(7):hover ~ .projector{
-    top: 67.6%;
+    top: 61.1%;
 }
 
 .links-option li:nth-child(8):hover ~ .projector{
-    top: 78.8%;
+    top: 71.1%;
 }
 
 .links-option li:nth-child(9):hover ~ .projector{
-    top: 89.8%;
+    top: 81.1%;
 }
+
+.links-option li:nth-child(10):hover ~ .projector{
+    top: 91.1%;
+}
+
+
 .closeopen{
     border: none;
     position: absolute;
