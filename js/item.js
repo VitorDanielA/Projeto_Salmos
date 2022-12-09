@@ -34,11 +34,11 @@ function tableCreate(data){
         
         console.log(element.fornecedor?.nome)
         var colFornecedor = document.createElement("td")
-        colFornecedor.appendChild(document.createTextNode(element.fornecedores ? element.fornecedor.nome: ''))
+        colFornecedor.appendChild(document.createTextNode(element.fornecedor ? element.fornecedor.nome: ''))
         row.appendChild(colFornecedor)
 
         var colType = document.createElement("td")
-        colType.appendChild(document.createTextNode(element.tipoItem ? element.tipoItem.nome : ''))
+        colType.appendChild(document.createTextNode(element.tipoDeItem ? element.tipoDeItem.nome : ''))
         row.appendChild(colType)
         
         tableBody.appendChild(row)

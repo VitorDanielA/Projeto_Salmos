@@ -39,7 +39,7 @@ function tableCreate(data){
             // row.appendChild(colEmail)
             
             var colTipo = document.createElement("td")
-            colTipo.appendChild(document.createTextNode(element.perfilUsuario ? element.perfilUsuario.id : ''))
+            colTipo.appendChild(document.createTextNode(element.perfilUsuario ? element.perfilUsuario.nome : ''))
             row.appendChild(colTipo)
             
             var colRemover = document.createElement("td")
