@@ -233,10 +233,10 @@ function closeAddPopup(){
 }
 
 function openPopup(id){
+    teladisabled()
     this.selectedId = id
     this.selectedIdEdit = id
     popup.classList.add("open_popup");
-    teladisabled();
 }
 
 function teladisabled(){
@@ -264,6 +264,7 @@ function closeEditPopup(){
 }
 
 function openForm(id) {
+    teladisabled()
     this.selectedId = id
     this.selectedIdEdit = id
     document.getElementById("myForm").style.display = "block";
@@ -287,6 +288,7 @@ function openForm(id) {
 var quantidadeItens
 
 function openEditPopup(id){
+    teladisabled()
     atualizarTabelaItensEdit()
     this.selectedId = id
     this.selectedIdEdit = id

@@ -5,13 +5,25 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-body{
+body {
+    background: linear-gradient(45deg, #13293D, #006494, #247BA0, #d3dbe2);
+    background-size: 200% 200%;
+    /* animation: gradient 25s ease infinite; */
     height: 100vh;
-    background-image: linear-gradient(#13293D, #247BA0);
-    background-repeat: no-repeat;
-    background-size: auto;
 }
-
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+ 
+    50% {
+        background-position: 100% 50%;
+    }
+ 
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 .scroll{
     max-height: 500px;
@@ -88,7 +100,7 @@ tr:last-child td:last-child{
     border-bottom-right-radius: 20px;
 }
 
-td:nth-child(5), td:nth-child(6){
+td:nth-child(4), td:nth-child(5), td:nth-child(6){
     cursor: pointer;
 }
 
@@ -105,7 +117,7 @@ tr:hover {
     height: 45px;
     border: 0;
     border-radius: 25px;
-    background-color: #165b79;
+    background-color: #13293D;
     font-size: 16px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     cursor: pointer;
@@ -115,7 +127,9 @@ tr:hover {
 }
 
 .homescreen:hover{
-    background-color: #2177a8;
+    /* background-color: #13293D; */
+    box-shadow: 0 0 5px #13293D, 0 0 25px #13293D, 0 0 50px #13293D, 0 0 200px #13293D; 
+    /* box-shadow: inset -6.5em 0 0 0 #165b79, inset 6.5em 0 0 0 #3f6c80; */
 }
 
 .homescreen img{
@@ -169,13 +183,13 @@ tr:hover {
     height: 45px;
     background-color: #13293D;
     cursor: pointer;
-    border: 1px solid #666;
+    border: 1px solid rgb(211, 210, 210);
     border-radius: 20px;
     display: block;
 }
 
 .adicionar:hover{
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .relatorio{
@@ -189,7 +203,7 @@ tr:hover {
     font-size: 16px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
-    border: 1px solid #666;
+    border: 1px solid rgb(211, 210, 210);
     border-radius: 20px;
     display: block;
 }

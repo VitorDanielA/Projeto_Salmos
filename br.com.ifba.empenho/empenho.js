@@ -102,6 +102,7 @@ function closeAddPopup(){
 }
 
 function openPopup(id){
+    teladisabled()
     this.selectedId = id
     popup.classList.add("open_popup");
 }
@@ -126,6 +127,7 @@ function closePopup(){
 }
 
 function openInfoItens(id) {
+    teladisabled()
     this.selectedId = id
     this.selectedIdEdit = id
     document.getElementById("infoItensEmpenho").style.display = "block";
@@ -152,6 +154,7 @@ function closeInfoItens() {
 }
 
 function openEditPopup(id){
+    teladisabled()
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
     console.log('Id ',id)

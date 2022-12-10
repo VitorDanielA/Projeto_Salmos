@@ -82,6 +82,7 @@ function tableCreate(data){
             }
 
             function openPopup(id){
+                teladisabled()
                 this.selectedId = id
                 popup.classList.add("open_popup");
             }
@@ -107,6 +108,7 @@ function tableCreate(data){
             }
 
             function openEditPopup(id){
+                teladisabled()
                 this.selectedId = id
                 popupEdit.classList.add("popupEditOpen");
                 console.log('Id ',id)

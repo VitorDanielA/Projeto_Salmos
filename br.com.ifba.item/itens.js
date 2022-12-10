@@ -90,11 +90,13 @@ function closeAddPopup(){
 }
 
 function openPopup(id){
+    teladisabled()
     this.selectedId = id
     popup.classList.add("open_popup");
 }
 
 function teladisabled(){
+    
     telaDesativada.classList.add("disabled_tela");
     backdrop.classList.add("disabled_tela");
 }
@@ -115,6 +117,7 @@ function closePopup(){
 }
 
 function openForm(id) {
+    teladisabled()
     this.selectedId = id
     this.selectedIdEdit = id
     document.getElementById("myForm").style.display = "block";
@@ -141,6 +144,7 @@ function openForm(id) {
 }
 
 function openEditPopup(id){
+    teladisabled()
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
     console.log('Id ',id)

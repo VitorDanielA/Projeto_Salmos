@@ -114,7 +114,7 @@ td:nth-child(4), td:nth-child(5){
 }
 
 .homescreen:hover{
-    background-color: #2177a8;
+    box-shadow: 0 0 5px #165b79, 0 0 25px #165b79, 0 0 50px #165b79, 0 0 200px #165b79;
 }
 
 .homescreen img{
