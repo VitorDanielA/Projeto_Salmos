@@ -274,7 +274,7 @@ function openForm(id) {
 
     console.log('Requisicao achada ', usr)
 
-    document.getElementById('itemDemonstration').innerHTML = usr.itens
+    document.getElementById('itemDemonstration').innerHTML = usr.itens.nome
     document.getElementById('itemQuantia').innerHTML = usr.quantidadeItensReq
     teladisabled();
     document.getElementById('itemCodSaida').innerHTML = usr.codigoSaida
@@ -304,8 +304,8 @@ function openEditPopup(id){
     if(usr.setor){
         document.getElementById('EditSetor').value = usr.setor.id
     }
-    if(usr.itemRequisitado){
-       document.getElementById('EditItem').value = usr.itemRequisitado.id
+    if(usr.itens){
+       document.getElementById('EditItem').value = usr.itens.id
     }
     teladisabled();
 }
@@ -314,7 +314,7 @@ function editar(){
 
     let newRequisitante = document.getElementById('EditusuReq').value;
     let newSetor = document.getElementById('EditSetor').value
-    let newItemRequisitado = document.getElementById('EditItem').value
+    let newitens = document.getElementById('EditItem').value
 
     this.requisicao = this.requisicaoList.find(req=>{
         return req.id === this.selectedIdEdit
@@ -325,7 +325,7 @@ function editar(){
     this.requisicao.quantidadeItensReq = newQuantidadeItensReq
     this.requisicao.usuarioRequisitante = newRequisitante
     this.requisicao.setor = {id:newSetor}
-    this.requisicao.itemRequisitado = {id:newItemRequisitado}
+    this.requisicao.itens = {id:newitens}
     
     get('Item').then(itens=>{
         console.log('Itens ', itens)
@@ -418,7 +418,7 @@ function adicionar(){
     this.requisicao.quantidadeItensReq = document.getElementById('qtdReq').value;
     this.requisicao.requisitante = document.getElementById('usuReq').value;
     this.requisicao.setor = {id:document.getElementById('Setor').value};
-    this.requisicao.itemRequisitado = [{id:document.getElementById('Item').value}];
+    this.requisicao.itens = {id:document.getElementById('Item').value};
     this.requisicao.nome = "Req";
     this.requisicao.codigoSaida = codSaida;
 
@@ -439,7 +439,7 @@ function remover(){
         const found = req.find(element => element.id == this.selectedId)
         console.log(found)
         var returnValueQtd = found.quantidadeItensReq
-        var returnValueId = found.itemRequisitado.id
+        var returnValueId = found.itens.id
 
         get('Item').then(itens=>{
             console.log('Itens ', itens)
