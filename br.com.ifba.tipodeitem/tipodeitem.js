@@ -131,7 +131,6 @@ function adicionar(){
 
     tipodeitem.nome = document.getElementById("tipoDeItemNameAdd").value
     tipodeitem.descricao = document.getElementById("tipoDeItemDescricaoAdd").value
-    tipodeitem.nome = "teste"
 
     post('salvarTipoItem', tipodeitem ).then(result=>{
         console.log('result', result)
