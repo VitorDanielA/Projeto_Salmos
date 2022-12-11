@@ -156,14 +156,6 @@ function openEditPopup(id){
     console.log('Item achado ', usr)
     
     document.getElementById('itemName').value = usr.nome
-    document.getElementById('itemDescricaoEd').value = usr.descricao
-    document.getElementById('itemQuantidadeEd').value = usr.quantidade
-    document.getElementById('itemQuantidadeMinimaEd').value = usr.quantidadeMinima
-    document.getElementById('itemFornecedor').value = usr.fornecedor
-    document.getElementById('itemValidadeEd').value = usr.validade
-    document.getElementById('itemValorEd').value = usr.valor
-   
-    document.getElementById('itemType').value = usr.tipoItem
 }
 
 function closeEditPopup(){
@@ -225,31 +217,30 @@ var table = document.getElementById("itens-table");
 function editar(){
 
     var nome = document.getElementById("itemName").value;
-    var tipoDeItem = document.getElementById("itemType").value;
+    var tipoDeItem = document.getElementById("itemTypeEd").value;
     var quantidade = document.getElementById("itemQuantidadeEd").value;
-    var fornecedor = document.getElementById("itemFornecedor").value;
+    var fornecedor = document.getElementById("itemFornecedorEd").value;
     var quantidadeMinima = document.getElementById("itemQuantidadeMinimaEd").value;
     var descricao = document.getElementById("itemDescricaoEd").value;
     var dataValidade = document.getElementById('itemValidadeEd').value;
     var perecivel = document.getElementById('itemPerecivelEd').value;
     var valorItem = document.getElementById('itemValorEd').value;
     var codigoItem = "123"
-
+    
     this.item = this.ItemList.find(user=>{
         return user.id === this.selectedId
     })
 
-    this.item.nome = nome
-    this.item.quantidade = quantidade
-    this.item.tipoDeItem = tipoDeItem
-    this.item.fornecedor = fornecedor
-    this.item.quantidadeMinima = quantidadeMinima
-    this.item.descricao = descricao
-    this.item.tipoItem = tipoItem
-    this.item.dataValidade = dataValidade
-    this.item.perecivel = perecivel
-    this.item.valorItem = valorItem
-    	this.item.codigoItem = codigoItem
+    this.item.nome = nome;
+    this.item.quantidade = quantidade;
+    this.item.tipoDeItem = tipoDeItem;
+    this.item.fornecedor = fornecedor;
+    this.item.quantidadeMinima = quantidadeMinima;
+    this.item.descricao = descricao;
+    this.item.dataValidade = dataValidade;
+    this.item.perecivel = perecivel;
+    this.item.valorItem = valorItem;
+    this.item.codigoItem = codigoItem;
 
     console.log('Novo Item user ', this.item)
     post('salvarItem', this.item).then(result=>{
