@@ -48,11 +48,12 @@
 
         <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivelEd" id="itemPerecivelEd">
 
-        <select name="Tipo de Item" id="itemTypeEdit" class="itemType" >
-        
+        <select name="Tipo de Item" id="itemTypeEd" class="itemType"  placeholder="Tipo...">
         </select> <br>        
         
-        <input type="text" name="itemFornecedor" placeholder="Fornecedor..." autocomplete="off" class="itemFornecedor" id="itemFornecedor">
+        <select name="Fornecedor" id="itemFornecedorEd" class="itemFornecedor"  placeholder="Fornecedor...">
+        </select> <br>
+        
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>
     </div>
@@ -67,6 +68,7 @@
         <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidade" id="itemQuantidadeMinimaAdd" >
 
          <select name="Fornecedor" id="itemFornecedorAdd" class="itemFornecedor"  placeholder="Fornecedor...">
+        </select> <br>  
 
             <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidadeAdd" id="itemValidadeAdd">
 
@@ -74,10 +76,7 @@
 
             <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivelAdd" id="itemPerecivelAdd">
 
-        </select> <br>   
-        
         <select name="Tipo de Item" id="itemType" class="itemType"  placeholder="Tipo...">
-
         </select> <br>  
         
         <button type="button" onclick="closeAddPopup(), adicionar(), telaEnabled()">Confirmar</button>

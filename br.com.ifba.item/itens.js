@@ -2,6 +2,7 @@ var selectedId
 var selectedIdEdit
 var ItemList = [] 
 var item = {}
+
 setFornecedor()
 setTiposItem()
 atualizarTabela()
@@ -261,10 +262,10 @@ function editar(){
 }
 
 function setTiposItem(){
+    
     get('tipoDeItem').then(tipoitem=>{
         console.log('Tipos de item ', tipoitem)
         var multiCombo = document.getElementById('itemType')
-        var multiComboEdit = document.getElementById('itemTypeEdit')
         tipoitem.forEach(tipo=>{
             let option = document.createElement('option')
             option.value = tipo.id
@@ -273,7 +274,16 @@ function setTiposItem(){
             multiCombo.appendChild(option)
             
         })
-           
+
+        var multiCombo = document.getElementById('itemTypeEd')
+        tipoitem.forEach(tipo=>{
+            let option = document.createElement('option')
+            option.value = tipo.id
+            option.innerHTML = tipo.nome
+
+            multiCombo.appendChild(option)
+            
+        })
     }).catch(error=>{
         console.log('Error ', error)
     })
@@ -292,6 +302,15 @@ function setFornecedor(){
             
         })
            
+        var multiCombo = document.getElementById('itemFornecedorEd')
+        fornecedores.forEach(forn=>{
+            let option = document.createElement('option')
+            option.value = forn.id
+            option.innerHTML = forn.nome
+
+            multiCombo.appendChild(option)
+            
+        })
     }).catch(error=>{
         console.log('Error ', error)
     })
