@@ -411,7 +411,7 @@ tr:hover {
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
-    height: 45px;
+    height: 35px;
     margin: 4px 2px;
     border-radius: 25px;
     background-image: url(../images/item.png);
@@ -423,11 +423,26 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemQuantidade{
+.popupEdit .itemDescricaoEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
-    height: 45px;
+    height: 35px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/item.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
+.popupEdit .itemQuantidadeEd{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
     margin: 4px 2px;
     border-radius: 25px;
     background-image: url(../images/caixas.png);
@@ -439,11 +454,58 @@ tr:hover {
     outline: 0;
 }
 
+.popupEdit .itemValidadeEd{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/item.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
+
+.popupEdit .itemValorEd{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/item.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
+
+.popupEdit .itemPerecivelEd{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/item.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
 .popupEdit .itemType{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
-    height: 45px;
+    height: 35px;
     margin: 4px 2px;
     border-radius: 25px;
     background-image: url(../images/definicao-do-tipo-de-documento.png);
@@ -459,7 +521,7 @@ tr:hover {
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
-    height: 45px;
+    height: 35px;
     margin: 4px 2px;
     border-radius: 25px;
     background-image: url(../images/fornecedor-de-hoteis.png);
