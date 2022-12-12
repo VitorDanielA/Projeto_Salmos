@@ -121,7 +121,7 @@ tr:hover {
     cursor: pointer;
     position: absolute;
     top: 50px;
-    left: 1200px;
+    left: 930px;
 }
 
 .homescreen:hover{
@@ -172,9 +172,9 @@ tr:hover {
 }
 
 .adicionar{
-    position: absolute;
-    top: 50px;
-    right: 700px; 
+    position:absolute;
+    top: 50px ;
+    right: 570px; 
     width: 200px;
     height: 45px;
     background-color: #13293D;
@@ -230,7 +230,7 @@ tr:hover {
     margin-left: 10px;
 }
 
-.popupAdd .itemName{
+.popupAdd .itemNameAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -307,7 +307,7 @@ tr:hover {
 }
 
 
-.popupAdd .itemQuantidade{
+.popupAdd .itemQuantidadeAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -322,7 +322,21 @@ tr:hover {
     background-position-x: 20px;
     outline: 0;
 }
-
+.popupAdd .itemQuantidadeMinimaAdd{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/caixas.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
 .popupAdd .itemType{
     border: 1px #13293D solid;
     padding-left: 10px;
@@ -407,7 +421,7 @@ tr:hover {
     color: #e3e6d0;
 }
 
-.popupEdit .itemNameAdd{
+.popupEdit .itemNameEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -423,7 +437,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemDescricaoAdd{
+.popupEdit .itemDescricaoEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -438,7 +452,22 @@ tr:hover {
     background-position-x: 20px;
     outline: 0;
 }
-.popupEdit .itemQuantidadeAdd{
+.popupEdit .itemQuantidadeEd{
+    border: 1px #13293D solid;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    margin: 4px 2px;
+    border-radius: 25px;
+    background-image: url(../images/caixas.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 50px;
+    background-size: 1.3em;
+    background-position-x: 20px;
+    outline: 0;
+}
+.popupEdit .itemQuantidadeMinimaEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -454,7 +483,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemValidadeAdd{
+.popupEdit .itemValidadeEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -470,7 +499,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemValorAdd{
+.popupEdit .itemValorEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -486,7 +515,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemPerecivelAdd{
+.popupEdit .itemPerecivelEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -501,7 +530,7 @@ tr:hover {
     background-position-x: 20px;
     outline: 0;
 }
-.popupEdit .itemType{
+.popupEdit .itemTypeEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -517,7 +546,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemFornecedor{
+.popupEdit .itemFornecedorEd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;

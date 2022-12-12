@@ -155,14 +155,14 @@ function openEditPopup(id){
 
     console.log('Item achado ', usr)
     
-    document.getElementById('itemNameAdd').value = usr.nome;
-    document.getElementById('itemDescricaoAdd').value = usr.descricao;
-    document.getElementById('itemQuantidadeAdd').value = usr.quantidade;
-    document.getElementById('itemQuantidadeMinimaAdd').value = usr.quantidadeMinima;
-    document.getElementById('itemFornecedorAdd').value = usr.fornecedor;
-    document.getElementById('itemValidadeAdd').value = usr.validade;
-    document.getElementById('itemValorAdd').value = usr.valor;
-    document.getElementById('itemType').value = usr.tipoItem;
+    document.getElementById('itemNameEd').value = usr.nome;
+    document.getElementById('itemDescricaoEd').value = usr.descricao;
+    document.getElementById('itemQuantidadeEd').value = usr.quantidade;
+    document.getElementById('itemQuantidadeMinimaEd').value = usr.quantidadeMinima;
+    document.getElementById('itemFornecedorEd').value = usr.fornecedor;
+    document.getElementById('itemValidadeEd').value = usr.validade;
+    document.getElementById('itemValorEd').value = usr.valor;
+    document.getElementById('itemTypeEd').value = usr.tipoItem;
 
 }
 
@@ -175,7 +175,7 @@ function adicionar(){
     this.item.descricao = document.getElementById("itemDescricaoAdd").value;
     this.item.quantidade = document.getElementById("itemQuantidadeAdd").value;
     this.item.quantidadeMinima = document.getElementById("itemQuantidadeMinimaAdd").value;
-    this.item.fornecedor = {id:document.getElementById('itemFornecedorAdd').value}
+    this.item.fornecedor = {id:document.getElementById('itemFornecedor').value}
     this.item.dataValidade = document.getElementById('itemValidadeAdd').value;
     this.item.perecivel = document.getElementById('itemPerecivelAdd').value;
     this.item.valorItem = document.getElementById('itemValorAdd').value;
@@ -183,10 +183,10 @@ function adicionar(){
     this.item.codigoItem = "12345"
 
     post('salvarItem', item ).then(result=>{
-        console.log('result', result)
+        console.log('Result ', result)
         atualizarTabela()
     }).catch(error=>{
-        console.log('error', error)
+        console.log('Error ', error)
     })
 }
 
@@ -224,15 +224,15 @@ var table = document.getElementById("itens-table");
 
 function editar(){
 
-    var nome = document.getElementById('itemNameAdd').value;
-    var tipoDeItem = {id:document.getElementById('itemType').value}
-    var quantidade = document.getElementById('itemQuantidadeAdd').value;
-    var fornecedor = {id:document.getElementById('itemFornecedorAdd').value}
-    var quantidadeMinima = document.getElementById('itemQuantidadeMinimaAdd').value;
-    var descricao = document.getElementById('itemDescricaoAdd').value;
-    var dataValidade = document.getElementById('itemValidadeAdd').value;
-    var perecivel = document.getElementById('itemPerecivelAdd').value;
-    var valorItem = document.getElementById('itemValorAdd').value;
+    var nome = document.getElementById('itemNameEd').value;
+    var tipoDeItem = {id:document.getElementById('itemTypeEd').value}
+    var quantidade = document.getElementById('itemQuantidadeEd').value;
+    var fornecedor = {id:document.getElementById('itemFornecedorEd').value}
+    var quantidadeMinima = document.getElementById('itemQuantidadeMinimaEd').value;
+    var descricao = document.getElementById('itemDescricaoEd').value;
+    var dataValidade = document.getElementById('itemValidadeEd').value;
+    var perecivel = document.getElementById('itemPerecivelEd').value;
+    var valorItem = document.getElementById('itemValorEd').value;
     var codigoItem = "1234"
     
     this.item = this.ItemList.find(user=>{
@@ -291,7 +291,7 @@ function setTiposItem(){
 function setFornecedor(){
     get('fornecedor').then(fornecedores=>{
         console.log('Fornecedores ', fornecedores)
-        var multiCombo = document.getElementById('itemFornecedorAdd')
+        var multiCombo = document.getElementById('itemFornecedor')
         fornecedores.forEach(forn=>{
             let option = document.createElement('option')
             option.value = forn.id
