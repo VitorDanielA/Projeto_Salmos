@@ -166,14 +166,20 @@ function adicionar(){
     this.usuario.pessoa = null;
     console.log(this.usuario)
 
-    post('salvarUsuario', this.usuario).then(result=>{
-        console.log('result', result)
-        atualizarTabela()
-    }).catch(error=>{
-        console.log('error', error)
-    })
-    
+
+    //se os campos de login ou de senha estiverem vazios, não serão salvos
+    if(this.usuario.login != "" && this.usuario.senha != ""){
+        post('salvarUsuario', this.usuario).then(result=>{
+            console.log('result', result)
+            atualizarTabela()
+        }).catch(error=>{
+            console.log('error', error)
+        })
+    }else{console.log('error')}
     this.usuario = {}
+
+    document.getElementById('loginUsuarioAdd').value = '';
+    document.getElementById('senhaUsuarioAdd').value = '';
 }
 
 function remover(){

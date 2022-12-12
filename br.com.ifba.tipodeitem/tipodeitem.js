@@ -131,16 +131,23 @@ function closeEditPopup(){
 
 function adicionar(){
 
-    tipodeitem.nome = document.getElementById("tipoDeItemNameAdd").value
-    tipodeitem.descricao = document.getElementById("tipoDeItemDescricaoAdd").value
+    tipodeitem.nome = document.getElementById("tipoDeItemNameAdd").value;
+    tipodeitem.descricao = document.getElementById("tipoDeItemDescricaoAdd").value;
 
-    post('salvarTipoItem', tipodeitem ).then(result=>{
-        console.log('result', result)
-        console.log('item list',TipoDeItemList)
-        atualizarTabela()
-    }).catch(error=>{
-        console.log('error', error)
-    })
+    //se os campos de nome ou de descricao estiverem vazios, não serão salvos 
+    if(this.tipodeitem.nome != "" && this.tipodeitem.descricao != ""){
+        post('salvarTipoItem', tipodeitem ).then(result=>{
+            console.log('result', result)
+            console.log('item list',TipoDeItemList)
+            atualizarTabela()
+        }).catch(error=>{
+            console.log('error', error)
+        })
+    }else{console.log('error')}
+
+    document.getElementById("tipoDeItemNameAdd").value = '';
+    document.getElementById("tipoDeItemDescricaoAdd").value = '';
+
 }
 
 function remover(){
@@ -188,6 +195,7 @@ function editar(){
     this.tipodeitem.nome = nome
     this.tipodeitem.descricao = descricao
 
+    
     console.log('novo tipodeitem ', this.tipodeitem)
     post('salvarTipoItem', this.tipodeitem).then(result=>{
         console.log('Result ', result)
@@ -195,6 +203,7 @@ function editar(){
     }).catch(error=>{
         console.log('Error ', error)
     })
+    
     this.tipodeitem = {}
 }
 

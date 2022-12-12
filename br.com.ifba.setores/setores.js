@@ -130,15 +130,22 @@ function tableCreate(data){
                 this.setor.nome = document.getElementById('setorNameAdd').value;
                 this.setor.descricao = document.getElementById('setorDescricaoAdd').value;
                 console.log(setor)
-                post('salvarSetor', this.setor).then(result=>{
-                    console.log('result', result)
-                    atualizarTabela()
-                }).catch(error=>{
-                    console.log(setor)
-                    console.log('error', error)
-                })
 
+                //se os campos de nome ou de descricao estiverem vazios, não serão salvos 
+                if(this.setor.nome != "" && this.setor.descricao != ""){
+                    post('salvarSetor', this.setor).then(result=>{
+                        console.log('result', result)
+                        atualizarTabela()
+                    }).catch(error=>{
+                        console.log(setor)
+                        console.log('error', error)
+                    })
+                }else{console.log('error')}
+            
                 this.setor = {}
+
+                document.getElementById('setorNameAdd').value = '';
+                document.getElementById('setorDescricaoAdd').value = '';
             }
             
             

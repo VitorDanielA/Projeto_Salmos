@@ -179,14 +179,18 @@ function adicionar(){
     this.empenho.validade = document.getElementById('validadeEmpenhoAdd').value;
     this.empenho.valor = parseFloat(document.getElementById('valorEmpenhoAdd').value);
     this.empenho.itens = ItemList;
-   
-    post('salvarEmpenho', this.empenho).then(result=>{
-        console.log('result', result)
-        atualizarTabela()   
-    }).catch(error=>{
-        console.log('error', error)
-    })
-    
+
+    //se os campos de nome, valor(valores negativos não serão aceitos) e itens(quando estiver sendo salvo na tela) estiverem vazios, não serão salvos
+    //naturalmente sem a validade não salva, então não colocarei no if 
+    if(this.empenho.nota != "" && this.empenho.valor >= 0){
+        post('salvarEmpenho', this.empenho).then(result=>{
+            console.log('result', result)
+            atualizarTabela()   
+        }).catch(error=>{
+            console.log('error', error)
+        })
+    }else{console.log('error')}
+
     this.empenho = {}
 
     document.getElementById('notaEmpenhoAdd').value = '';

@@ -130,17 +130,23 @@ function tableCreate(data){
 
                 this.tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
                 this.tipodeusuario.descricao = document.getElementById('tipoDeUsuarioDescricaoAdd').value;
-                this.tipodeusuario.nome = document.getElementById('tipoDeUsuarioNameAdd').value;
+                
 
                 console.log(tipodeusuario)
                 console.log(tipodeusuario.id)
 
-                post('salvarPerfilUsuario', tipodeusuario).then(result=>{
-                    console.log('result', result)
-                    atualizarTabela()
-                }).catch(error=>{
-                    console.log('error', error)
-                })
+                ////se os campos de nome ou de descrição estiverem vazios, não serão salvos 
+                if(this.tipodeusuario.nome != "" && this.tipodeusuario.descricao != ""){
+                    post('salvarPerfilUsuario', tipodeusuario).then(result=>{
+                        console.log('result', result)
+                        atualizarTabela()
+                    }).catch(error=>{
+                        console.log('error', error)
+                    })
+                }else{console.log('error')}
+
+                document.getElementById('tipoDeUsuarioNameAdd').value = '';
+                document.getElementById('tipoDeUsuarioDescricaoAdd').value = '';
             }
             
             

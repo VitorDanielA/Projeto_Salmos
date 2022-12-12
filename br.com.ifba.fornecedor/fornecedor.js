@@ -128,14 +128,22 @@ function adicionar(){
     this.fornecedor.telefone = document.getElementById('fornecedorTelefoneAdd').value;
     this.fornecedor.cnpj = document.getElementById('fornecedorCpnjAdd').value;
 
-    post('salvarFornecedor', this.fornecedor).then(result=>{
-        console.log('result', result)
-        atualizarTabela()
-    }).catch(error=>{
-        console.log('error', error)
-    })
+    //se os campos de nome ou de cnpj estiverem vazios, não serão salvos 
+    if(this.fornecedor.nome != "" && this.fornecedor.cnpj != ""){
+        post('salvarFornecedor', this.fornecedor).then(result=>{
+            console.log('result', result)
+            atualizarTabela()
+        }).catch(error=>{
+            console.log('error', error)
+        })
+    }else{}
 
     this.fornecedor = {}
+
+    document.getElementById('fornecedorNameAdd').value = '';
+    document.getElementById('fornecedorEmailAdd').value = '';
+    document.getElementById('fornecedorTelefoneAdd').value = '';
+    document.getElementById('fornecedorCpnjAdd').value = '';
 }
 
 function remover(){
