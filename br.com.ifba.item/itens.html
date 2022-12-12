@@ -34,24 +34,24 @@
     <div class="popupEdit" id="popupEdit">
         <img src="../images/caneta.png" alt="editar">
         <h2>Digite as novas informações</h2>
-        <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemName" id="itemName">
+        <input type="text" name="itemName" placeholder="Nome..." autocomplete="off" class="itemNameAdd" id="itemNameAdd">
         
-        <input type="text" name="itemDescricao" placeholder="Descrição..." autocomplete="off" class="itemDescricaoEd" id="itemDescricaoEd" >
+        <input type="text" name="itemDescricao" placeholder="Descrição..." autocomplete="off" class="itemDescricaoAdd" id="itemDescricaoAdd" >
         
-        <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidadeEd" id="itemQuantidadeEd">
+        <input type="text" name="itemQuantidade" placeholder="Quantidade..." autocomplete="off" class="itemQuantidadeAdd" id="itemQuantidadeAdd">
         
-        <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidadeEd" id="itemQuantidadeMinimaEd" >
+        <input type="number" name="itemQuantidadeMinima" placeholder="Quantidade Minima..." autocomplete="off" class="itemQuantidadeAdd" id="itemQuantidadeMinimaAdd" >
 
-        <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidadeEd" id="itemValidadeEd">
+        <input type="date" name="itemValidade" placeholder="Data de Validade..." autocomplete="off" class="itemValidadeAdd" id="itemValidadeAdd">
 
-        <input type="number" name="itemValor" placeholder="Valor do Item..." autocomplete="off" class="itemValorEd" id="itemValorEd">
+        <input type="number" name="itemValor" placeholder="Valor do Item..." autocomplete="off" class="itemValorAdd" id="itemValorAdd">
 
-        <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivelEd" id="itemPerecivelEd">
+        <input type="text" name="itemPerecivel" placeholder="O item é perecível?..." autocomplete="off" class="itemPerecivelAdd" id="itemPerecivelAdd">
 
-        <select name="Tipo de Item" id="itemTypeEd" class="itemType"  placeholder="Tipo...">
+        <select name="Tipo de Item" id="itemType" class="itemType"  placeholder="Tipo...">
         </select> <br>        
         
-        <select name="Fornecedor" id="itemFornecedorEd" class="itemFornecedor"  placeholder="Fornecedor...">
+        <select name="Fornecedor" id="itemFornecedorAdd" class="itemFornecedor"  placeholder="Fornecedor...">
         </select> <br>
         <button type="button" onclick="closeEditPopup(), editar(), telaEnabled()">Confirmar</button>
         <button type="button" onclick="closeEditPopup(), telaEnabled()">Cancelar</button>

@@ -407,7 +407,7 @@ tr:hover {
     color: #e3e6d0;
 }
 
-.popupEdit .itemName{
+.popupEdit .itemNameAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -423,7 +423,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemDescricaoEd{
+.popupEdit .itemDescricaoAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -438,7 +438,7 @@ tr:hover {
     background-position-x: 20px;
     outline: 0;
 }
-.popupEdit .itemQuantidadeEd{
+.popupEdit .itemQuantidadeAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -454,7 +454,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemValidadeEd{
+.popupEdit .itemValidadeAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -470,7 +470,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemValorEd{
+.popupEdit .itemValorAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;
@@ -486,7 +486,7 @@ tr:hover {
     outline: 0;
 }
 
-.popupEdit .itemPerecivelEd{
+.popupEdit .itemPerecivelAdd{
     border: 1px #13293D solid;
     padding-left: 10px;
     width: 100%;

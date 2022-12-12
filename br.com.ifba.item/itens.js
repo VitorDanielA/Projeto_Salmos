@@ -155,7 +155,15 @@ function openEditPopup(id){
 
     console.log('Item achado ', usr)
     
-    document.getElementById('itemName').value = usr.nome
+    document.getElementById('itemNameAdd').value = usr.nome;
+    document.getElementById('itemDescricaoAdd').value = usr.descricao;
+    document.getElementById('itemQuantidadeAdd').value = usr.quantidade;
+    document.getElementById('itemQuantidadeMinimaAdd').value = usr.quantidadeMinima;
+    document.getElementById('itemFornecedorAdd').value = usr.fornecedor;
+    document.getElementById('itemValidadeAdd').value = usr.validade;
+    document.getElementById('itemValorAdd').value = usr.valor;
+    document.getElementById('itemType').value = usr.tipoItem;
+
 }
 
 function closeEditPopup(){
@@ -172,7 +180,7 @@ function adicionar(){
     this.item.perecivel = document.getElementById('itemPerecivelAdd').value;
     this.item.valorItem = document.getElementById('itemValorAdd').value;
     this.item.tipoDeItem = {id:document.getElementById('itemType').value}
-    this.item.codigoItem = "123"
+    this.item.codigoItem = "12345"
 
     post('salvarItem', item ).then(result=>{
         console.log('result', result)
@@ -216,16 +224,16 @@ var table = document.getElementById("itens-table");
 
 function editar(){
 
-    var nome = document.getElementById("itemName").value;
-    var tipoDeItem = document.getElementById("itemTypeEd").value;
-    var quantidade = document.getElementById("itemQuantidadeEd").value;
-    var fornecedor = document.getElementById("itemFornecedorEd").value;
-    var quantidadeMinima = document.getElementById("itemQuantidadeMinimaEd").value;
-    var descricao = document.getElementById("itemDescricaoEd").value;
-    var dataValidade = document.getElementById('itemValidadeEd').value;
-    var perecivel = document.getElementById('itemPerecivelEd').value;
-    var valorItem = document.getElementById('itemValorEd').value;
-    var codigoItem = "123"
+    var nome = document.getElementById('itemNameAdd').value;
+    var tipoDeItem = {id:document.getElementById('itemType').value}
+    var quantidade = document.getElementById('itemQuantidadeAdd').value;
+    var fornecedor = {id:document.getElementById('itemFornecedorAdd').value}
+    var quantidadeMinima = document.getElementById('itemQuantidadeMinimaAdd').value;
+    var descricao = document.getElementById('itemDescricaoAdd').value;
+    var dataValidade = document.getElementById('itemValidadeAdd').value;
+    var perecivel = document.getElementById('itemPerecivelAdd').value;
+    var valorItem = document.getElementById('itemValorAdd').value;
+    var codigoItem = "1234"
     
     this.item = this.ItemList.find(user=>{
         return user.id === this.selectedId
