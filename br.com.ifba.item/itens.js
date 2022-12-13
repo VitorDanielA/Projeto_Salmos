@@ -149,20 +149,28 @@ function openEditPopup(id){
     this.selectedId = id
     popupEdit.classList.add("popupEditOpen");
     console.log('Id ',id)
-    let usr = this.ItemList.find(user=>{
+    let item = this.ItemList.find(user=>{
         return user.id === id
     })
 
-    console.log('Item achado ', usr)
+    console.log('Item achado ', item)
     
-    document.getElementById('itemNameEd').value = usr.nome;
-    document.getElementById('itemDescricaoEd').value = usr.descricao;
-    document.getElementById('itemQuantidadeEd').value = usr.quantidade;
-    document.getElementById('itemQuantidadeMinimaEd').value = usr.quantidadeMinima;
-    document.getElementById('itemFornecedorEd').value = usr.fornecedor;
-    document.getElementById('itemValidadeEd').value = usr.validade;
-    document.getElementById('itemValorEd').value = usr.valor;
-    document.getElementById('itemTypeEd').value = usr.tipoItem;
+    document.getElementById('itemNameEd').value = item.nome;
+    document.getElementById('itemDescricaoEd').value = item.descricao;
+    document.getElementById('itemQuantidadeEd').value = item.quantidade;
+    document.getElementById('itemQuantidadeMinimaEd').value = item.quantidadeMinima;
+    document.getElementById('itemFornecedorEd').value = item.fornecedor ? item.fornecedor.id : '';
+
+    var now = new Date(item.dataValidade);
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+
+    document.getElementById('itemValidadeEd').value = today;
+    document.getElementById('itemValorEd').value = item.valorItem;
+    document.getElementById('itemPerecivelEd').checked = item.perecivel;
+    document.getElementById('itemTypeEd').value = item.tipoDeItem ? item.tipoDeItem.id: '';
 
 }
 
@@ -177,10 +185,14 @@ function adicionar(){
     this.item.quantidadeMinima = document.getElementById("itemQuantidadeMinimaAdd").value;
     this.item.fornecedor = {id:document.getElementById('itemFornecedor').value}
     this.item.dataValidade = document.getElementById('itemValidadeAdd').value;
-    this.item.perecivel = document.getElementById('itemPerecivelAdd').value;
+
+    this.item.perecivel = document.getElementById('itemPerecivelAdd').checked;
+
     this.item.valorItem = document.getElementById('itemValorAdd').value;
     this.item.tipoDeItem = {id:document.getElementById('itemType').value}
     this.item.codigoItem = "12345"
+
+    console.log("item ", item)
 
     post('salvarItem', item ).then(result=>{
         console.log('Result ', result)

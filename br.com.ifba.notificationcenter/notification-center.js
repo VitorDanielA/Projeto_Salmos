@@ -59,7 +59,7 @@ function fillNotifications(notList){
         divmesinfo.appendChild(pdata)
         let pinfo = document.createElement('p')
         let imgread = document.createElement('img')
-        imgread.setAttribute('src', not.readed ? '../images/icons8-ler-mensagem-24.png':'images/icons8-mensagem-24.png')
+        imgread.setAttribute('src', not.readed ? '../images/icons8-ler-mensagem-24.png':'../images/icons8-mensagem-24.png')
         pinfo.appendChild(imgread)
         pinfo.innerHTML += not.readed ? ('Lido| Em ' + not.whatObjectName) : ('Não Lido, clique para marcar como lido | Em ' + not.whatObjectName)
         divmesinfo.appendChild(pinfo)

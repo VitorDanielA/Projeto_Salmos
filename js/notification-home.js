@@ -1,3 +1,4 @@
+setInterval(initNot, 60000)
 
 function initNot() {
     get_no_load('notificationsUnread').then(not=>{
@@ -50,7 +51,7 @@ function fillNotifications(notList){
         div.setAttribute('class', 'notification-message')
 
         let img = document.createElement('img')
-        img.setAttribute('src', 'images/icons8-relógio-despertador-48.png')
+        img.setAttribute('src', '../images/icons8-relógio-despertador-48.png')
         div.appendChild(img)
         
         let p = document.createElement('p')
@@ -90,5 +91,5 @@ function notClick(id){
         
     // }).catch(error=>{
     // })
-    window.open('notificationcenter.html', '_blank').focus();
+    window.open('../br.com.ifba.notificationcenter/notificationcenter.html', '_blank').focus();
 }
