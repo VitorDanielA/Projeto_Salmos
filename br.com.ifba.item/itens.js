@@ -154,6 +154,7 @@ function openEditPopup(id){
     })
 
     console.log('Item achado ', item)
+    console.log(item.perecivel)
     
     document.getElementById('itemNameEd').value = item.nome;
     document.getElementById('itemDescricaoEd').value = item.descricao;
@@ -167,11 +168,10 @@ function openEditPopup(id){
 
     var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 
+    document.getElementById('itemTypeEd').value = item.tipoDeItem ? item.tipoDeItem.id: '';
+    document.getElementById('itemPerecivelEd').value = item.perecivel
     document.getElementById('itemValidadeEd').value = today;
     document.getElementById('itemValorEd').value = item.valorItem;
-    document.getElementById('itemPerecivelEd').checked = item.perecivel;
-    document.getElementById('itemTypeEd').value = item.tipoDeItem ? item.tipoDeItem.id: '';
-
 }
 
 function closeEditPopup(){
@@ -186,11 +186,11 @@ function adicionar(){
     this.item.fornecedor = {id:document.getElementById('itemFornecedor').value}
     this.item.dataValidade = document.getElementById('itemValidadeAdd').value;
 
-    this.item.perecivel = document.getElementById('itemPerecivelAdd').checked;
-
-    this.item.valorItem = document.getElementById('itemValorAdd').value;
+    this.item.perecivel = document.getElementById('itemPerecivelAdd').value;
     this.item.tipoDeItem = {id:document.getElementById('itemType').value}
     this.item.codigoItem = "12345"
+    this.item.valorItem = document.getElementById('itemValorAdd').value;
+    
 
     console.log("item ", item)
 
